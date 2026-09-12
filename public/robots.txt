@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /thinking/
+
+Sitemap: https://vindhyaumapathy.com/sitemap-index.xml

@@ -1,0 +1,206 @@
+---
+export interface Milestone {
+  year: string;
+  role: string;
+  organization: string;
+  focus: string;
+}
+
+const milestones: Milestone[] = [
+  {
+    year: 'Foundation',
+    role: 'Fellow & Educator',
+    organization: 'Teach For India',
+    focus: 'Grassroots Community Inquiry & Learner Agency'
+  },
+  {
+    year: 'Leadership',
+    role: 'Design Thinking Lead',
+    organization: 'CMR University',
+    focus: 'Institutional Curriculum Architecture & Faculty Enablement'
+  },
+  {
+    year: 'Present Practice',
+    role: 'Design Strategist & Facilitator',
+    organization: 'Independent Practice',
+    focus: 'Executive Sprints, Systems Framing & Creative Confidence'
+  }
+];
+---
+
+<div class="journey-track-wrapper" role="region" aria-label="Career Journey Timeline">
+  <!-- Screen reader accessibility overview -->
+  <p class="sr-only">
+    Career journey timeline of Vindhya Umapathy across three major milestones: First, Teach For India Fellow focusing on grassroots equity; second, Design Thinking Lead at CMR University scaling institutional curriculum; and third, Independent Design Strategist and Facilitator leading executive strategy sprints.
+  </p>
+
+  <!-- Responsive SVG Squiggle Track -->
+  <div class="squiggle-svg-wrapper" aria-hidden="true">
+    <svg class="squiggle-svg" viewBox="0 0 900 120" fill="none" preserveAspectRatio="none">
+      <path 
+        d="M 50,60 C 200,10 300,110 450,60 C 600,10 700,110 850,60" 
+        stroke="var(--color-border)" 
+        stroke-width="2" 
+        stroke-dasharray="4 4"
+      />
+      <path 
+        d="M 50,60 C 200,10 300,110 450,60 C 600,10 700,110 850,60" 
+        stroke="var(--color-accent)" 
+        stroke-width="2" 
+        stroke-linecap="round"
+      />
+      <circle cx="50" cy="60" r="6" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="3" />
+      <circle cx="450" cy="60" r="6" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="3" />
+      <circle cx="850" cy="60" r="6" fill="var(--color-accent)" stroke="var(--color-surface)" stroke-width="2" />
+    </svg>
+  </div>
+
+  <!-- Editorial Milestones Flow (No repetitive boxed cards) -->
+  <div class="milestones-flow">
+    {milestones.map((item, index) => (
+      <div class="milestone-entry">
+        <div class="milestone-top-line">
+          <span class="milestone-num">0{index + 1}</span>
+          <span class="milestone-era">{item.year}</span>
+        </div>
+
+        <div class="milestone-identity">
+          <h3 class="milestone-role">{item.role}</h3>
+          <span class="milestone-org">{item.organization}</span>
+        </div>
+
+        <p class="milestone-focus">{item.focus}</p>
+      </div>
+    ))}
+  </div>
+
+  <!-- Deck swap note -->
+  <div class="journey-footer-flag">
+    <span class="flag-icon">ℹ</span>
+    <span class="flag-text">
+      <strong>Launch Note:</strong> Built on scalable SVG tokens. If Vindhya has existing journey graphics from keynote presentations, they can be directly dropped in.
+    </span>
+  </div>
+</div>
+
+<style>
+  .journey-track-wrapper {
+    position: relative;
+    padding-top: var(--space-4);
+  }
+
+  .squiggle-svg-wrapper {
+    display: none;
+    width: 100%;
+    margin-bottom: var(--space-4);
+    pointer-events: none;
+  }
+
+  @media (min-width: 900px) {
+    .squiggle-svg-wrapper {
+      display: block;
+    }
+  }
+
+  .squiggle-svg {
+    width: 100%;
+    height: 70px;
+  }
+
+  /* Editorial Milestones Sequence (Breathable columns, no boxed cards) */
+  .milestones-flow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(var(--space-8), 2rem + 2vw, var(--space-12));
+  }
+
+  @media (min-width: 900px) {
+    .milestones-flow {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+  }
+
+  .milestone-entry {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(var(--space-6), 1.5rem + 1vw, var(--space-8));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition-all);
+  }
+
+  .milestone-entry:hover {
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px);
+    border-color: var(--color-border-emphasis);
+  }
+
+  .milestone-top-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .milestone-num {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent);
+  }
+
+  .milestone-era {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-text-muted);
+  }
+
+  .milestone-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .milestone-role {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-main);
+    line-height: var(--line-height-snug);
+  }
+
+  .milestone-org {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-md);
+    color: var(--color-accent);
+  }
+
+  .milestone-focus {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Footer flag */
+  .journey-footer-flag {
+    margin-top: clamp(var(--space-8), 2rem + 2vw, var(--space-12));
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .flag-icon {
+    flex-shrink: 0;
+  }
+</style>

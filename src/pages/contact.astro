@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<BaseLayout
+  title="Get in Touch — Vindhya Umapathy"
+  description="Initiate a conversation about consulting, design thinking workshops, institutional curriculum advisory, or speaking engagements with Vindhya Umapathy."
+>
+  <!-- Contact Header -->
+  <section class="section contact-hero-section" aria-label="Contact Introduction">
+    <div class="container">
+      <div class="contact-header-content">
+        <h1 class="page-title">Let's make sense of what's next.</h1>
+        <p class="page-lead">
+          Whether you are exploring a tailored team workshop, an institutional curriculum redesign, or need strategic framing for an ambiguous problem, I welcome your note.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Form & Direct Info Grid -->
+  <section class="section section-alt" aria-label="Contact Form and Details">
+    <div class="container">
+      <div class="contact-main-grid">
+        <!-- Left Column: Form Component -->
+        <div class="form-column">
+          <ContactForm id="contact-form" />
+        </div>
+
+        <!-- Right Column: Direct Info -->
+        <div class="details-column">
+          <div class="info-card">
+            <h2 class="info-card-title">Direct Connection</h2>
+            
+            <div class="info-item">
+              <span class="info-label">Direct Email</span>
+              <a href={`mailto:${siteConfig.contactEmail}`} class="info-link">
+                {siteConfig.contactEmail}
+              </a>
+              <span class="info-hint">Inquiries typically answered within 48 business hours.</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Location & Presence</span>
+              <p class="info-text">{siteConfig.location}</p>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Connect & Read</span>
+              <div class="social-links-row">
+                {siteConfig.socials.map((s) => (
+                  <a href={s.href} class="social-pill" target="_blank" rel="noopener noreferrer">
+                    {s.platform} ↗
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Header */
+  .contact-hero-section {
+    padding-top: clamp(var(--space-8), 2rem + 3vw, var(--space-16));
+    padding-bottom: clamp(var(--space-6), 1.5rem + 2vw, var(--space-10));
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+  }
+
+  .contact-header-content {
+    max-width: var(--container-narrow-width);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: clamp(var(--font-size-3xl), 2rem + 2.5vw, var(--font-size-4xl));
+    line-height: var(--line-height-tight);
+    color: var(--color-text-main);
+  }
+
+  .page-lead {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Main Grid */
+  .contact-main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(var(--space-8), 2rem + 3vw, var(--space-16));
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .contact-main-grid {
+      grid-template-columns: 1.4fr 1fr;
+    }
+  }
+
+  /* Details Column */
+  .details-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .info-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(var(--space-6), 1.5rem + 1vw, var(--space-8));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    box-shadow: var(--shadow-card);
+  }
+
+  .info-card-title {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-main);
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .info-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-text-muted);
+  }
+
+  .info-link {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-xl);
+    color: var(--color-accent);
+    font-weight: var(--font-weight-medium);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    word-break: break-all;
+  }
+
+  .info-link:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .info-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .info-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .social-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-1);
+  }
+
+  .social-pill {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-main);
+    background-color: var(--color-surface-tint);
+    border: 1px solid var(--color-border);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-medium);
+    transition: var(--transition-color);
+  }
+
+  .social-pill:hover {
+    background-color: var(--color-accent-soft);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+</style>

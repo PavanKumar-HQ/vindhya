@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout
+  title="Page Not Found (404) — Vindhya Umapathy"
+  description="The page you are seeking has either moved or does not exist. Return to the home page or get in touch."
+  noindex={true}
+>
+  <section class="section error-section" aria-label="Page Not Found">
+    <div class="container-reading">
+      <div class="error-card">
+        <span class="error-code">404</span>
+        
+        <h1 class="error-title">A moment of unexpected ambiguity.</h1>
+        
+        <p class="error-desc">
+          In design thinking, getting lost is occasionally where the most interesting discoveries occur. However, this specific URL doesn’t lead to a page.
+        </p>
+
+        <div class="error-nav-box">
+          <span class="nav-box-title">Helpful directions:</span>
+          <ul class="error-links">
+            <li><a href="/" class="error-link">Return to Home Overview →</a></li>
+            <li><a href="/services" class="error-link">Review Consulting & Workshop Services →</a></li>
+            <li><a href="/work" class="error-link">Browse Selected Case Studies →</a></li>
+            <li><a href="/contact" class="error-link">Send a Direct Inquiry →</a></li>
+          </ul>
+        </div>
+
+        <div class="error-actions">
+          <Button href="/" variant="primary" size="md">
+            Go to Homepage
+          </Button>
+          <Button href="/contact" variant="secondary" size="md">
+            Contact Vindhya
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-section {
+    padding-top: clamp(var(--space-12), 3rem + 4vw, var(--space-24));
+    padding-bottom: clamp(var(--space-12), 3rem + 4vw, var(--space-24));
+    background-color: var(--color-bg);
+  }
+
+  .error-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(var(--space-8), 2rem + 3vw, var(--space-16));
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .error-code {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-accent);
+  }
+
+  .error-title {
+    font-family: var(--font-serif);
+    font-size: clamp(var(--font-size-2xl), 1.8rem + 1vw, var(--font-size-3xl));
+    color: var(--color-text-main);
+    line-height: var(--line-height-tight);
+  }
+
+  .error-desc {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .error-nav-box {
+    padding: var(--space-5);
+    background-color: var(--color-surface-subtle);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .nav-box-title {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-text-muted);
+  }
+
+  .error-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .error-link {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .error-link:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  .error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+</style>

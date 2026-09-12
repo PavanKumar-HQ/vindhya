@@ -1,0 +1,115 @@
+---
+import { siteConfig } from '../data/siteConfig';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+  noindex?: boolean;
+  type?: 'website' | 'article' | 'profile';
+}
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.shortBio,
+  image = `${siteConfig.siteUrl}/images/og-image.jpg`,
+  canonicalUrl = Astro.url.href,
+  noindex = false,
+  type = 'website'
+} = Astro.props;
+
+const pageTitle = title.includes(siteConfig.siteName) ? title : `${title} | ${siteConfig.siteName}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteConfig.siteUrl}/#person`,
+      name: siteConfig.siteName,
+      jobTitle: 'Design Strategist, Educator, Facilitator',
+      description: siteConfig.shortBio,
+      url: siteConfig.siteUrl,
+      image: `${siteConfig.siteUrl}/images/vindhya-portrait.jpg`,
+      sameAs: siteConfig.socials.map((s) => s.href),
+      knowsAbout: [
+        'Design Thinking',
+        'Human-Centred Design',
+        'Curriculum Architecture',
+        'Workshop Facilitation',
+        'Educational Equity',
+        'Systems Thinking'
+      ]
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${siteConfig.siteUrl}/#service`,
+      name: 'Vindhya Umapathy Consulting Practice',
+      url: siteConfig.siteUrl,
+      description: siteConfig.headline,
+      founder: {
+        '@id': `${siteConfig.siteUrl}/#person`
+      },
+      areaServed: 'Worldwide',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Bengaluru',
+        addressRegion: 'Karnataka',
+        addressCountry: 'India'
+      }
+    }
+  ]
+};
+---
+
+  <!-- Character Set & Viewport -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary Meta Tags -->
+  <title>{pageTitle}</title>
+  <meta name="title" content={pageTitle} />
+  <meta name="description" content={description} />
+  <meta name="author" content={siteConfig.siteName} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  {noindex ? (
+    <meta name="robots" content="noindex, nofollow" />
+  ) : (
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  )}
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={type} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
+  <meta property="og:site_name" content={siteConfig.siteName} />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={canonicalUrl} />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={image} />
+
+  <!-- Baseline Security & Privacy Headers in HTML -->
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" 
+    rel="stylesheet"
+  />
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

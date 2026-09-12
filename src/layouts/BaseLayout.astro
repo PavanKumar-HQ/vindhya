@@ -1,0 +1,59 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import SEO from '../components/SEO.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+  noindex?: boolean;
+  type?: 'website' | 'article' | 'profile';
+}
+
+const {
+  title,
+  description,
+  image,
+  canonicalUrl,
+  noindex = false,
+  type = 'website'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SEO 
+      title={title}
+      description={description}
+      image={image}
+      canonicalUrl={canonicalUrl}
+      noindex={noindex}
+      type={type}
+    />
+    <ClientRouter fallback="swap" />
+  </head>
+  <body>
+    <!-- Skip to main content link for screen reader and keyboard accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+    <!-- Sticky Navigation Bar with persistent state across page transitions -->
+    <NavBar transition:persist />
+
+    <!-- Main Content Area with animated page transitions -->
+    <main id="main-content" transition:animate="fade">
+      <slot />
+    </main>
+
+    <!-- Global Footer -->
+    <Footer />
+
+    <!-- Smooth Scroll Reveal System -->
+    <ScrollReveal />
+  </body>
+</html>
