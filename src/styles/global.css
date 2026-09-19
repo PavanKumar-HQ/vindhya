@@ -142,6 +142,25 @@ button, input, textarea, select {
   color: inherit;
 }
 
+input, textarea, select {
+  font-size: 16px; /* Prevents auto-zoom on iOS Safari */
+}
+
+/* Mobile typography & layout safeguard */
+@media (max-width: 640px) {
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: pretty;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  p {
+    text-wrap: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+}
+
 /* --------------------------------------------------------------------------
    ACCESSIBILITY & FOCUS MANAGEMENT
    -------------------------------------------------------------------------- */

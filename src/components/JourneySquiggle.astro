@@ -243,4 +243,40 @@ const milestones: Milestone[] = [
   .flag-icon {
     flex-shrink: 0;
   }
+
+  @media (max-width: 640px) {
+    .milestones-flow {
+      gap: var(--space-4);
+      position: relative;
+      padding-left: var(--space-2);
+      border-left: 2px dashed var(--color-border);
+      margin-left: var(--space-3);
+    }
+
+    .milestone-entry {
+      padding: var(--space-4) var(--space-4);
+      border-radius: var(--radius-lg);
+      position: relative;
+    }
+
+    .milestone-entry::before {
+      content: '';
+      position: absolute;
+      left: calc(-1 * var(--space-2) - 5px);
+      top: var(--space-5);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--color-accent);
+      border: 2px solid var(--color-surface);
+    }
+
+    .milestone-role {
+      font-size: var(--font-size-md);
+    }
+
+    .milestone-org {
+      font-size: var(--font-size-sm);
+    }
+  }
 </style>

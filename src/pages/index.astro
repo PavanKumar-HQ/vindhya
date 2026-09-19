@@ -525,4 +525,54 @@ const forwardCards = [
     gap: var(--space-4);
     margin-top: var(--space-2);
   }
+
+  /* Mobile Optimizations */
+  @media (max-width: 640px) {
+    .hero-section {
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-8);
+    }
+
+    .hero-photo-placeholder {
+      padding: var(--space-6) var(--space-4);
+    }
+
+    .intro-photo-wrapper {
+      max-width: 260px;
+      margin: 0 auto;
+    }
+
+    .intro-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .intro-actions :global(.btn) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .pathways-grid {
+      gap: var(--space-4);
+    }
+
+    .pathway-item {
+      padding: var(--space-5) var(--space-4);
+      gap: var(--space-4);
+    }
+
+    .cta-inner {
+      padding: var(--space-6) var(--space-4);
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .cta-buttons :global(.btn) {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 </style>

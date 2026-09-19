@@ -475,4 +475,21 @@ const { id = 'contact-form' } = Astro.props;
       transform: rotate(360deg);
     }
   }
+
+  @media (max-width: 640px) {
+    .contact-form-card {
+      padding: var(--space-5) var(--space-4);
+      border-radius: var(--radius-lg);
+    }
+
+    .form-actions :global(.btn) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .form-reassurance {
+      max-width: 100%;
+      text-align: center;
+    }
+  }
 </style>

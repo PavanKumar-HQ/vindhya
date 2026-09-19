@@ -250,4 +250,27 @@ import { workCaseStudies } from '../data/workData';
     gap: var(--space-4);
     margin-top: var(--space-2);
   }
+
+  @media (max-width: 640px) {
+    .index-register-item {
+      padding: var(--space-3) var(--space-4);
+    }
+
+    .work-cta-card {
+      padding: var(--space-6) var(--space-4);
+      border-radius: var(--radius-lg);
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    .work-cta-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .work-cta-actions :global(.btn) {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 </style>

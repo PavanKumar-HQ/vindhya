@@ -83,16 +83,24 @@ const {
   /* Stats Grid */
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
-    padding-bottom: clamp(var(--space-8), 2rem + 2vw, var(--space-12));
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding-bottom: clamp(var(--space-6), 1.5rem + 2vw, var(--space-10));
     border-bottom: 1px solid rgba(255, 255, 255, 0.16);
     position: relative;
+  }
+
+  @media (min-width: 580px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-5);
+    }
   }
 
   @media (min-width: 900px) {
     .stats-grid {
       grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
     }
   }
 
@@ -100,10 +108,10 @@ const {
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
-    padding: var(--space-3);
+    padding: var(--space-4) var(--space-5);
     border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     transition: transform var(--duration-normal) var(--ease-spring),
                 background var(--duration-normal) var(--ease-standard),
                 border-color var(--duration-normal) var(--ease-standard);
@@ -117,7 +125,7 @@ const {
 
   .stat-value {
     font-family: var(--font-serif);
-    font-size: var(--font-size-3xl);
+    font-size: clamp(2rem, 1.8rem + 1vw, var(--font-size-3xl));
     font-weight: var(--font-weight-bold);
     color: var(--color-accent-contrast);
     line-height: 1;
@@ -142,7 +150,7 @@ const {
 
   /* Partners strip */
   .partners-wrapper {
-    margin-top: clamp(var(--space-8), 2rem + 2vw, var(--space-12));
+    margin-top: clamp(var(--space-6), 1.5rem + 2vw, var(--space-10));
     position: relative;
   }
 
@@ -153,18 +161,19 @@ const {
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wider);
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-4);
   }
 
   .partners-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
 
   @media (min-width: 768px) {
     .partners-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
     }
   }
 
@@ -177,7 +186,7 @@ const {
     -webkit-backdrop-filter: blur(8px);
     border: 1px dashed rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-lg);
-    padding: var(--space-5);
+    padding: var(--space-4) var(--space-5);
     transition: transform var(--duration-normal) var(--ease-spring),
                 background var(--duration-normal) var(--ease-standard),
                 border-color var(--duration-normal) var(--ease-standard);
