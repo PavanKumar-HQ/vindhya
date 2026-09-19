@@ -6,77 +6,81 @@ const currentPath = Astro.url.pathname;
 const cleanPath = currentPath.replace(/\/$/, '') || '/';
 ---
 
-<header class="site-header" id="site-header">
-  <div class="container header-inner">
-    <!-- Brand Logo / Wordmark -->
-    <a href="/" class="brand-link" aria-label={`${siteConfig.siteName} Home`}>
-      <span class="brand-name">{siteConfig.siteName}</span>
-      <span class="brand-title">Design Strategist & Facilitator</span>
-    </a>
+<div class="navbar-root">
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <!-- Brand Logo / Wordmark -->
+      <a href="/" class="brand-link" aria-label={`${siteConfig.siteName} Home`}>
+        <span class="brand-name">{siteConfig.siteName}</span>
+        <span class="brand-title">Design Strategist & Facilitator</span>
+      </a>
 
-    <!-- Desktop Navigation Links -->
-    <nav class="desktop-nav" aria-label="Primary Navigation">
-      <ul class="nav-list">
-        {siteConfig.navLinks.map((item) => {
-          const itemClean = item.href.replace(/\/$/, '') || '/';
-          const isActive = cleanPath === itemClean || (itemClean !== '/' && cleanPath.startsWith(itemClean));
-          return (
+      <!-- Desktop Navigation Links -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          {siteConfig.navLinks.map((item) => {
+            const itemClean = item.href.replace(/\/$/, '') || '/';
+            const isActive = cleanPath === itemClean || (itemClean !== '/' && cleanPath.startsWith(itemClean));
+            return (
+              <li class="nav-item">
+                <a 
+                  href={item.href} 
+                  class={`nav-link ${isActive ? 'nav-link--active' : ''}`}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+
+          {/* 
+            ======================================================================
+            NOTE FOR FUTURE DEVELOPER / CLIENT:
+            Hidden route `/thinking` is intentionally excluded from the navigation.
+            To make `/thinking` public in the navigation bar once essays are ready,
+            uncomment the following list item:
+            
             <li class="nav-item">
-              <a 
-                href={item.href} 
-                class={`nav-link ${isActive ? 'nav-link--active' : ''}`}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                {item.label}
+              <a href="/thinking" class={`nav-link ${cleanPath === '/thinking' ? 'nav-link--active' : ''}`}>
+                Thinking
               </a>
             </li>
-          );
-        })}
+            ======================================================================
+          */}
+        </ul>
+      </nav>
 
-        {/* 
-          ======================================================================
-          NOTE FOR FUTURE DEVELOPER / CLIENT:
-          Hidden route `/thinking` is intentionally excluded from the navigation.
-          To make `/thinking` public in the navigation bar once essays are ready,
-          uncomment the following list item:
-          
-          <li class="nav-item">
-            <a href="/thinking" class={`nav-link ${cleanPath === '/thinking' ? 'nav-link--active' : ''}`}>
-              Thinking
-            </a>
-          </li>
-          ======================================================================
-        */}
-      </ul>
-    </nav>
+      <!-- Header CTA -->
+      <div class="header-cta">
+        <Button href="/contact" variant="primary" size="sm">
+          Get in touch
+        </Button>
+      </div>
 
-    <!-- Header CTA -->
-    <div class="header-cta">
-      <Button href="/contact" variant="primary" size="sm">
-        Get in touch
-      </Button>
+      <!-- Mobile Menu Button -->
+      <button 
+        type="button" 
+        class="mobile-menu-toggle" 
+        id="mobile-menu-toggle" 
+        aria-expanded="false" 
+        aria-controls="mobile-nav" 
+        aria-label="Toggle navigation menu"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
     </div>
+  </header>
 
-    <!-- Mobile Menu Button -->
-    <button 
-      type="button" 
-      class="mobile-menu-toggle" 
-      id="mobile-menu-toggle" 
-      aria-expanded="false" 
-      aria-controls="mobile-nav" 
-      aria-label="Toggle navigation menu"
-    >
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-    </button>
-  </div>
-
-  <!-- Mobile Drawer Navigation -->
+  <!-- Mobile Drawer Backdrop (Outside header so it is never clipped by header height or backdrop-filter) -->
   <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
+  
+  <!-- Mobile Drawer Panel (Full height 100dvh, solid opaque white background) -->
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation" aria-hidden="true">
     <div class="mobile-nav-header">
-      <span class="brand-name">{siteConfig.siteName}</span>
+      <span class="drawer-brand-name">{siteConfig.siteName}</span>
       <button 
         type="button" 
         class="mobile-close-btn" 
@@ -120,7 +124,7 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
       <p class="mobile-contact-note">{siteConfig.contactEmail}</p>
     </div>
   </nav>
-</header>
+</div>
 
 <script>
   function setupNavBar() {
@@ -129,33 +133,54 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
     const mobileNav = document.getElementById('mobile-nav');
     const backdrop = document.getElementById('mobile-nav-backdrop');
 
+    if (!toggleBtn || !mobileNav || !backdrop) return;
+
     function openMenu() {
-      if (!mobileNav || !toggleBtn || !backdrop) return;
       mobileNav.classList.add('is-open');
       backdrop.classList.add('is-open');
       toggleBtn.setAttribute('aria-expanded', 'true');
       mobileNav.setAttribute('aria-hidden', 'false');
+      backdrop.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
     }
 
     function closeMenu() {
-      if (!mobileNav || !toggleBtn || !backdrop) return;
       mobileNav.classList.remove('is-open');
       backdrop.classList.remove('is-open');
       toggleBtn.setAttribute('aria-expanded', 'false');
       mobileNav.setAttribute('aria-hidden', 'true');
+      backdrop.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
     }
 
-    toggleBtn?.addEventListener('click', openMenu);
-    closeBtn?.addEventListener('click', closeMenu);
-    backdrop?.addEventListener('click', closeMenu);
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (mobileNav.classList.contains('is-open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    closeBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMenu();
+    });
+
+    backdrop.addEventListener('click', closeMenu);
+
+    // Close when tapping any link inside the mobile drawer
+    document.querySelectorAll('.mobile-nav-link, .mobile-cta-btn').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
 
     // Scroll elevation listener
     const header = document.getElementById('site-header');
     function handleScroll() {
       if (!header) return;
-      if (window.scrollY > 15) {
+      if (window.scrollY > 10) {
         header.classList.add('site-header--scrolled');
       } else {
         header.classList.remove('site-header--scrolled');
@@ -166,12 +191,12 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
 
     // Close on Escape
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileNav?.classList.contains('is-open')) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
         closeMenu();
       }
     });
 
-    // Close mobile menu whenever a navigation occurs
+    // Close on page transitions
     closeMenu();
 
     // Update active route highlight dynamically
@@ -194,12 +219,19 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
 </script>
 
 <style>
+  .navbar-root {
+    display: contents;
+  }
+
   .site-header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
     height: var(--nav-height);
-    background-color: rgba(250, 250, 250, 0.88);
+    background-color: rgba(250, 250, 250, 0.94);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--color-border-subtle);
@@ -211,9 +243,9 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
   }
 
   .site-header--scrolled {
-    background-color: rgba(250, 250, 250, 0.96);
-    box-shadow: 0 4px 20px -2px rgba(31, 43, 77, 0.07);
-    border-bottom-color: rgba(31, 43, 77, 0.12);
+    background-color: rgba(250, 250, 250, 0.98);
+    box-shadow: 0 4px 20px -2px rgba(31, 43, 77, 0.08);
+    border-bottom-color: rgba(31, 43, 77, 0.14);
   }
 
   .header-inner {
@@ -351,36 +383,52 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
     transition: var(--transition-all);
   }
 
-  /* Mobile Drawer */
+  /* Mobile Drawer Backdrop */
   .mobile-nav-backdrop {
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity var(--duration-normal) var(--ease-standard);
-    z-index: 200;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 9998;
   }
 
   .mobile-nav-backdrop.is-open {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
   }
 
+  /* Mobile Drawer Panel (Solid opaque white background, full 100dvh) */
   .mobile-nav {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     width: min(85vw, 360px);
-    background-color: var(--color-surface);
-    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+    height: 100vh;
+    height: 100dvh;
+    background-color: #FFFFFF !important;
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.25);
     transform: translateX(100%);
-    transition: transform var(--duration-slow) var(--ease-standard);
-    z-index: 201;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     padding: var(--space-6);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 
   .mobile-nav.is-open {
@@ -391,29 +439,40 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: var(--space-6);
+    padding-bottom: var(--space-5);
     border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+  }
+
+  .drawer-brand-name {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-md);
+    color: var(--color-text-main);
   }
 
   .mobile-close-btn {
     background: transparent;
     border: none;
-    font-size: var(--font-size-xl);
-    width: var(--touch-target-min);
-    height: var(--touch-target-min);
+    font-size: 1.5rem;
+    line-height: 1;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: var(--color-text-secondary);
+    color: var(--color-text-main);
+    border-radius: var(--radius-md);
   }
 
   .mobile-nav-list {
     list-style: none;
-    margin-top: var(--space-6);
+    margin-top: var(--space-5);
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+    flex-shrink: 0;
   }
 
   .mobile-nav-link {
@@ -437,6 +496,7 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
+    flex-shrink: 0;
   }
 
   .mobile-cta-btn {
