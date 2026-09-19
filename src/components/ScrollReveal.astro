@@ -4,30 +4,75 @@
 
 <script>
   function setupScrollReveal() {
-    // Check user preference for reduced motion
+    // 1. Reading Progress Bar Engine
+    const progressBar = document.getElementById('scroll-progress-bar');
+    let ticking = false;
+
+    function updateProgress() {
+      if (!progressBar) return;
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const progress = Math.min(100, Math.max(0, (window.scrollY / totalHeight) * 100));
+        progressBar.style.width = `${progress}%`;
+      } else {
+        progressBar.style.width = '0%';
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateProgress();
+
+    // 2. Reduced Motion Check
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
-      document.querySelectorAll('.reveal-on-scroll, .reveal-item').forEach((el) => {
+      document.querySelectorAll('.reveal-item, [data-reveal]').forEach((el) => {
         el.classList.add('is-revealed');
       });
       return;
     }
 
-    const targets = document.querySelectorAll(
-      '.feature-card, .workshop-card, .service-panel-card, .pathway-item, .principle-item, .milestone-entry, .faq-card, .services-cta-banner, .about-cta-card, .cta-inner, .credibility-band, .case-header, .section-intro, .section-header-wrap'
-    );
+    // 3. Scroll Reveal Engine
+    const selector = [
+      '.hero-text-block',
+      '.hero-photo-placeholder',
+      '.intro-photo-wrapper',
+      '.intro-content',
+      '.section-header-wrap',
+      '.pathway-item',
+      '.stat-item',
+      '.partner-card',
+      '.cta-inner',
+      '.work-header-content',
+      '.anchor-index-wrapper',
+      '.case-header',
+      '.case-card',
+      '.service-panel-card',
+      '.workshop-card',
+      '.about-photo-col',
+      '.about-story-col',
+      '.journey-track-wrapper',
+      '.milestone-entry',
+      '.contact-form-card',
+      '.info-card',
+      '.faq-card',
+      '.services-cta-banner',
+      '.about-cta-card',
+      '.work-cta-card'
+    ].join(', ');
 
+    const targets = document.querySelectorAll(selector);
     if (!targets.length) return;
 
-    // Check for native CSS View Timeline support
-    const supportsCssTimeline = window.CSS && CSS.supports && CSS.supports('(animation-timeline: view()) and (animation-range: entry)');
+    // Check elements already visible in the initial viewport
+    const windowHeight = window.innerHeight;
 
-    if (supportsCssTimeline) {
-      targets.forEach((el) => el.classList.add('reveal-on-scroll'));
-      return;
-    }
-
-    // High performance IntersectionObserver fallback
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -39,32 +84,36 @@
       },
       {
         root: null,
-        threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -30px 0px'
       }
     );
 
     targets.forEach((el) => {
-      el.classList.add('reveal-item');
-      observer.observe(el);
+      // If already within initial screen, reveal immediately to prevent pop-in delay
+      const rect = el.getBoundingClientRect();
+      if (rect.top < windowHeight * 0.95 && rect.bottom > 0) {
+        el.classList.add('reveal-item', 'is-revealed');
+      } else {
+        el.classList.add('reveal-item');
+        observer.observe(el);
+      }
     });
   }
 
-  // Bind to both initial load and Astro client-side SPA navigations
+  // Bind to initial load and every Astro View Transitions navigation
   document.addEventListener('astro:page-load', setupScrollReveal);
 </script>
 
 <style is:global>
   /* --------------------------------------------------------------------------
-     SCROLL REVEAL ANIMATIONS
+     REFINED SCROLL REVEAL ANIMATIONS
      -------------------------------------------------------------------------- */
-
-  /* 1. Progressive Enhancement: IntersectionObserver Fallback Engine */
   .reveal-item {
     opacity: 0;
-    transform: translateY(22px);
-    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(24px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
 
@@ -73,63 +122,46 @@
     transform: translateY(0);
   }
 
-  /* Staggered cascades for grid cards */
-  .case-cards-grid > .reveal-item:nth-child(1),
-  .workshop-cards-grid > .reveal-item:nth-child(1),
+  /* Natural staggered delay cascades for grid containers */
   .pathways-grid > .reveal-item:nth-child(1),
-  .principles-row > .reveal-item:nth-child(1) {
+  .workshop-cards-grid > .reveal-item:nth-child(1),
+  .case-cards-grid > .reveal-item:nth-child(1),
+  .milestones-flow > .reveal-item:nth-child(1),
+  .stats-grid > .reveal-item:nth-child(1),
+  .partners-grid > .reveal-item:nth-child(1) {
     transition-delay: 0ms;
   }
 
-  .case-cards-grid > .reveal-item:nth-child(2),
-  .workshop-cards-grid > .reveal-item:nth-child(2),
   .pathways-grid > .reveal-item:nth-child(2),
-  .principles-row > .reveal-item:nth-child(2) {
-    transition-delay: 90ms;
+  .workshop-cards-grid > .reveal-item:nth-child(2),
+  .case-cards-grid > .reveal-item:nth-child(2),
+  .milestones-flow > .reveal-item:nth-child(2),
+  .stats-grid > .reveal-item:nth-child(2),
+  .partners-grid > .reveal-item:nth-child(2) {
+    transition-delay: 100ms;
   }
 
-  .case-cards-grid > .reveal-item:nth-child(3),
-  .workshop-cards-grid > .reveal-item:nth-child(3),
   .pathways-grid > .reveal-item:nth-child(3),
-  .principles-row > .reveal-item:nth-child(3) {
-    transition-delay: 180ms;
+  .workshop-cards-grid > .reveal-item:nth-child(3),
+  .case-cards-grid > .reveal-item:nth-child(3),
+  .milestones-flow > .reveal-item:nth-child(3),
+  .stats-grid > .reveal-item:nth-child(3) {
+    transition-delay: 200ms;
   }
 
-  .case-cards-grid > .reveal-item:nth-child(4),
-  .principles-row > .reveal-item:nth-child(4) {
-    transition-delay: 270ms;
+  .case-cards-grid > .reveal-item:nth-child(4) {
+    transition-delay: 300ms;
   }
 
-  /* 2. Modern Native CSS View-Timeline (when supported) */
-  @media (prefers-reduced-motion: no-preference) {
-    @supports ((animation-timeline: view()) and (animation-range: entry)) {
-      .reveal-on-scroll {
-        animation: scroll-fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-        animation-timeline: view();
-        animation-range: entry 5% cover 28%;
-      }
-
-      @keyframes scroll-fade-in {
-        from {
-          opacity: 0;
-          transform: translateY(22px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    }
-  }
-
-  /* 3. Respect Reduced Motion */
+  /* Respect Reduced Motion */
   @media (prefers-reduced-motion: reduce) {
-    .reveal-item,
-    .reveal-on-scroll {
+    .reveal-item {
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;
-      animation: none !important;
+    }
+    #scroll-progress-bar {
+      display: none !important;
     }
   }
 </style>

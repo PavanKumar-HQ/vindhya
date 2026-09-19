@@ -156,6 +156,8 @@ const forwardCards = [
   .hero-section {
     padding-top: clamp(var(--space-8), 2rem + 3vw, var(--space-16));
     padding-bottom: clamp(var(--space-10), 2rem + 3vw, var(--space-16));
+    background: var(--gradient-ambient-hero);
+    position: relative;
   }
 
   .hero-container {
@@ -196,6 +198,11 @@ const forwardCards = [
     align-items: center;
     justify-content: center;
     text-align: center;
+    transition: border-color var(--duration-normal) var(--ease-standard);
+  }
+
+  .hero-photo-placeholder:hover {
+    border-color: var(--color-accent);
   }
 
   .placeholder-label {
@@ -237,6 +244,13 @@ const forwardCards = [
     background-color: var(--color-surface-tint);
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-card);
+    transition: transform var(--duration-slow) var(--ease-spring),
+                box-shadow var(--duration-slow) var(--ease-spring);
+  }
+
+  .photo-frame:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: var(--shadow-hover);
   }
 
   .portrait-img {
@@ -340,18 +354,23 @@ const forwardCards = [
     justify-content: space-between;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     padding: clamp(var(--space-5), 1.25rem + 1vw, var(--space-8));
     text-decoration: none;
     color: inherit;
-    transition: var(--transition-all);
+    transition: transform var(--duration-normal) var(--ease-spring),
+                box-shadow var(--duration-normal) var(--ease-spring),
+                border-color var(--duration-normal) var(--ease-standard),
+                background-color var(--duration-normal) var(--ease-standard);
     gap: var(--space-6);
+    box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
 
   .pathway-item:hover {
     border-color: var(--color-accent);
-    background-color: var(--color-surface-tint);
-    transform: translateY(-2px);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
   }
 
   .pathway-body {
@@ -394,11 +413,11 @@ const forwardCards = [
   .pathway-arrow {
     font-size: var(--font-size-sm);
     color: var(--color-accent);
-    transition: transform var(--duration-fast) var(--ease-standard);
+    transition: transform var(--duration-normal) var(--ease-spring);
   }
 
   .pathway-item:hover .pathway-arrow {
-    transform: translateX(3px);
+    transform: translateX(6px);
   }
 
   /* 5. Closing CTA */
@@ -416,11 +435,16 @@ const forwardCards = [
     border-radius: var(--radius-xl);
     padding: clamp(var(--space-8), 2rem + 3vw, var(--space-16));
     text-align: center;
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.8);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--space-4);
+    transition: box-shadow var(--duration-normal) var(--ease-spring);
+  }
+
+  .cta-inner:hover {
+    box-shadow: var(--shadow-hover);
   }
 
   .cta-title {

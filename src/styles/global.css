@@ -21,6 +21,45 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Custom Selection Highlight */
+::selection {
+  background-color: rgba(31, 43, 77, 0.15);
+  color: var(--color-accent);
+}
+
+/* Elegant Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-emphasis);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Global Reading Progress Indicator Bar */
+#scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-accent), #4f649c);
+  z-index: 10000;
+  pointer-events: none;
+  transition: width 80ms ease-out;
+}
+
 body {
   min-height: 100vh;
   display: flex;
@@ -28,6 +67,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text-main);
   overflow-x: hidden;
+  position: relative;
 }
 
 main {

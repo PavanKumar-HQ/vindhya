@@ -151,6 +151,19 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
     closeBtn?.addEventListener('click', closeMenu);
     backdrop?.addEventListener('click', closeMenu);
 
+    // Scroll elevation listener
+    const header = document.getElementById('site-header');
+    function handleScroll() {
+      if (!header) return;
+      if (window.scrollY > 15) {
+        header.classList.add('site-header--scrolled');
+      } else {
+        header.classList.remove('site-header--scrolled');
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
     // Close on Escape
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && mobileNav?.classList.contains('is-open')) {
@@ -186,13 +199,21 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
     top: 0;
     z-index: 100;
     height: var(--nav-height);
-    background-color: rgba(250, 250, 250, 0.94);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(250, 250, 250, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--color-border-subtle);
     display: flex;
     align-items: center;
-    transition: var(--transition-color);
+    transition: background-color var(--duration-normal) var(--ease-standard),
+                box-shadow var(--duration-normal) var(--ease-standard),
+                border-color var(--duration-normal) var(--ease-standard);
+  }
+
+  .site-header--scrolled {
+    background-color: rgba(250, 250, 250, 0.96);
+    box-shadow: 0 4px 20px -2px rgba(31, 43, 77, 0.07);
+    border-bottom-color: rgba(31, 43, 77, 0.12);
   }
 
   .header-inner {
@@ -207,6 +228,11 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
     display: flex;
     flex-direction: column;
     text-decoration: none;
+    transition: transform var(--duration-fast) var(--ease-standard);
+  }
+
+  .brand-link:hover {
+    transform: translateY(-1px);
   }
 
   .brand-name {
@@ -251,16 +277,7 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
     transition: var(--transition-color);
   }
 
-  .nav-link:hover {
-    color: var(--color-accent);
-  }
-
-  .nav-link--active {
-    color: var(--color-accent);
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .nav-link--active::after {
+  .nav-link::after {
     content: '';
     position: absolute;
     bottom: -2px;
@@ -269,6 +286,28 @@ const cleanPath = currentPath.replace(/\/$/, '') || '/';
     height: 2px;
     background-color: var(--color-accent);
     border-radius: var(--radius-full);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent);
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .nav-link--active {
+    color: var(--color-accent);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .nav-link--active::after {
+    transform: scaleX(1) !important;
+    transform-origin: left;
   }
 
   /* Header CTA */

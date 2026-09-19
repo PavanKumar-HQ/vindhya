@@ -131,17 +131,22 @@ import { workCaseStudies } from '../data/workData';
     gap: var(--space-3);
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     padding: var(--space-4) var(--space-5);
     text-decoration: none;
     color: inherit;
-    transition: var(--transition-all);
+    box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: transform var(--duration-normal) var(--ease-spring),
+                box-shadow var(--duration-normal) var(--ease-spring),
+                border-color var(--duration-normal) var(--ease-standard),
+                background-color var(--duration-normal) var(--ease-standard);
   }
 
   .index-register-item:hover {
     border-color: var(--color-accent);
-    background-color: var(--color-surface-tint);
-    transform: translateY(-1px);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
   }
 
   .index-num {
@@ -183,13 +188,14 @@ import { workCaseStudies } from '../data/workData';
   .index-arrow {
     font-size: var(--font-size-sm);
     color: var(--color-text-muted);
-    transition: transform var(--duration-fast) var(--ease-standard);
+    transition: transform var(--duration-normal) var(--ease-spring),
+                color var(--duration-fast) var(--ease-standard);
     flex-shrink: 0;
   }
 
   .index-register-item:hover .index-arrow {
+    transform: translateY(4px);
     color: var(--color-accent);
-    transform: translateY(2px);
   }
 
   /* Case Studies List */
@@ -198,7 +204,7 @@ import { workCaseStudies } from '../data/workData';
     flex-direction: column;
   }
 
-  /* CTA Section */
+  /* Closing CTA Banner */
   .work-cta-section {
     background-color: var(--color-bg);
   }
@@ -208,15 +214,20 @@ import { workCaseStudies } from '../data/workData';
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
     padding: clamp(var(--space-8), 2rem + 3vw, var(--space-16));
-    text-align: center;
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.8);
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: var(--space-4);
     max-width: var(--container-narrow-width);
     margin-left: auto;
     margin-right: auto;
+    transition: box-shadow var(--duration-normal) var(--ease-spring);
+  }
+
+  .work-cta-card:hover {
+    box-shadow: var(--shadow-hover);
   }
 
   .work-cta-title {

@@ -55,11 +55,17 @@ const Element = isLink ? 'a' : 'button';
     text-decoration: none;
     cursor: pointer;
     border-radius: var(--radius-md);
-    transition: var(--transition-all);
+    transition: transform var(--duration-normal) var(--ease-spring),
+                box-shadow var(--duration-normal) var(--ease-spring),
+                background-color var(--duration-normal) var(--ease-standard),
+                border-color var(--duration-normal) var(--ease-standard),
+                color var(--duration-normal) var(--ease-standard);
     white-space: nowrap;
     line-height: var(--line-height-tight);
     min-height: var(--touch-target-min);
     border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
   }
 
   /* Sizes */
@@ -80,23 +86,24 @@ const Element = isLink ? 'a' : 'button';
 
   /* Variants */
   .btn--primary {
-    background-color: var(--color-accent);
+    background: linear-gradient(180deg, #24325a 0%, var(--color-accent) 100%);
     color: var(--color-accent-contrast);
     border-color: var(--color-accent);
-    box-shadow: var(--shadow-subtle);
+    box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
 
   .btn--primary:hover:not(:disabled) {
-    background-color: var(--color-accent-hover);
+    background: linear-gradient(180deg, #2c3c6d 0%, var(--color-accent-hover) 100%);
     border-color: var(--color-accent-hover);
     color: var(--color-accent-contrast);
-    box-shadow: var(--shadow-card);
-    transform: translateY(-1px);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
   }
 
   .btn--primary:active:not(:disabled) {
     background-color: var(--color-accent-active);
-    transform: translateY(0);
+    transform: translateY(1px) scale(0.99);
+    box-shadow: var(--shadow-subtle);
   }
 
   .btn--secondary {
@@ -108,12 +115,14 @@ const Element = isLink ? 'a' : 'button';
   .btn--secondary:hover:not(:disabled) {
     background-color: var(--color-accent-soft);
     color: var(--color-accent-hover);
-    transform: translateY(-1px);
+    border-color: var(--color-accent-hover);
+    box-shadow: var(--shadow-subtle);
+    transform: translateY(-2px);
   }
 
   .btn--secondary:active:not(:disabled) {
     background-color: var(--color-accent-soft);
-    transform: translateY(0);
+    transform: translateY(1px) scale(0.99);
   }
 
   .btn--ghost {
@@ -125,6 +134,7 @@ const Element = isLink ? 'a' : 'button';
   .btn--ghost:hover:not(:disabled) {
     background-color: var(--color-surface-subtle);
     color: var(--color-accent);
+    transform: translateY(-1px);
   }
 
   .btn--text {

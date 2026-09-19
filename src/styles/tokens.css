@@ -136,24 +136,43 @@
 
   /* Subtle, calm elevations */
   --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-card: 0 4px 12px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
-  --shadow-hover: 0 12px 24px -4px rgba(31, 43, 77, 0.08), 0 4px 8px -2px rgba(31, 43, 77, 0.04);
+  --shadow-card: 0 4px 14px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 16px 32px -6px rgba(31, 43, 77, 0.09), 0 6px 14px -2px rgba(31, 43, 77, 0.04);
+  --shadow-elevated: 0 20px 40px -8px rgba(31, 43, 77, 0.12), 0 8px 16px -4px rgba(31, 43, 77, 0.06);
+  --shadow-glow: 0 0 24px rgba(31, 43, 77, 0.1);
   --shadow-focus: 0 0 0 3px var(--color-focus-ring);
+
+  /* Glassmorphic surfaces */
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-bg-hover: rgba(255, 255, 255, 0.94);
+  --glass-border: rgba(31, 43, 77, 0.08);
+  --glass-border-hover: rgba(31, 43, 77, 0.2);
+  --glass-blur: blur(14px);
+
+  /* Ambient subtle gradients */
+  --gradient-ambient-hero: radial-gradient(circle at 80% 20%, rgba(31, 43, 77, 0.035) 0%, transparent 70%);
+  --gradient-card-shine: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(247, 248, 250, 0.8));
 
   /* --------------------------------------------------------------------------
      5. MOTION & TRANSITIONS
      Single deliberate easing curve across the entire site
      -------------------------------------------------------------------------- */
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
   --duration-fast: 150ms;
   --duration-normal: 250ms;
   --duration-slow: 400ms;
+  --duration-gentle: 600ms;
 
   --transition-color: color var(--duration-normal) var(--ease-standard),
                       background-color var(--duration-normal) var(--ease-standard),
                       border-color var(--duration-normal) var(--ease-standard);
-  --transition-elevation: box-shadow var(--duration-normal) var(--ease-standard),
-                          transform var(--duration-normal) var(--ease-standard);
+  --transition-elevation: box-shadow var(--duration-normal) var(--ease-spring),
+                          transform var(--duration-normal) var(--ease-spring);
+  --transition-spring: transform var(--duration-slow) var(--ease-spring),
+                       box-shadow var(--duration-slow) var(--ease-spring),
+                       border-color var(--duration-normal) var(--ease-standard);
   --transition-all: all var(--duration-normal) var(--ease-standard);
 
   /* --------------------------------------------------------------------------

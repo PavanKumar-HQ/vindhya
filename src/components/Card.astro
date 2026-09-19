@@ -36,10 +36,14 @@ const Element = isLink ? 'a' : 'article';
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    transition: var(--transition-all);
+    transition: transform var(--duration-normal) var(--ease-spring),
+                box-shadow var(--duration-normal) var(--ease-spring),
+                border-color var(--duration-normal) var(--ease-standard),
+                background-color var(--duration-normal) var(--ease-standard);
     text-decoration: none;
     color: inherit;
     position: relative;
+    box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
 
   /* Padding scales */
@@ -64,7 +68,7 @@ const Element = isLink ? 'a' : 'article';
   .card--elevated {
     background-color: var(--color-surface);
     border-color: var(--color-border-subtle);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
 
   .card--tint {
@@ -86,8 +90,8 @@ const Element = isLink ? 'a' : 'article';
   .card--clickable:hover,
   .card--interactive:hover {
     border-color: var(--color-accent);
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
   }
 
   .card--clickable:active,
