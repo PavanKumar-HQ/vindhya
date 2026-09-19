@@ -262,20 +262,36 @@ import { siteConfig } from '../data/siteConfig';
     margin-top: var(--space-2);
   }
 
-  .about-cta-title {
-    font-family: var(--font-serif);
-    font-size: clamp(var(--font-size-2xl), 1.8rem + 1vw, var(--font-size-3xl));
-    color: var(--color-text-main);
-  }
+  @media (max-width: 640px) {
+    .about-photo-col {
+      max-width: 260px;
+      margin: 0 auto;
+    }
 
-  .about-cta-sub {
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    max-width: 540px;
-    line-height: var(--line-height-relaxed);
-  }
+    .about-actions {
+      flex-direction: column;
+      width: 100%;
+    }
 
-  .about-cta-btn-wrap {
-    margin-top: var(--space-2);
+    .about-actions :global(.btn) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .about-cta-card {
+      padding: var(--space-6) var(--space-4);
+      border-radius: var(--radius-lg);
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    .about-cta-btn-wrap {
+      width: 100%;
+    }
+
+    .about-cta-btn-wrap :global(.btn) {
+      width: 100%;
+      justify-content: center;
+    }
   }
 </style>

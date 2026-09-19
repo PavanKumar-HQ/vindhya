@@ -4,9 +4,8 @@
 
 <script>
   function setupScrollReveal() {
-    // 1. Reading Progress Bar & Scroll Indicator Engine
+    // 1. Reading Progress Bar Engine
     const progressBar = document.getElementById('scroll-progress-bar');
-    const scrollIndicator = document.getElementById('hero-scroll-indicator');
     let ticking = false;
 
     function handleScroll() {
@@ -23,17 +22,6 @@
         }
       }
 
-      // Hero scroll indicator fade
-      if (scrollIndicator) {
-        if (scrollY > 35) {
-          scrollIndicator.style.opacity = '0';
-          scrollIndicator.style.pointerEvents = 'none';
-        } else {
-          scrollIndicator.style.opacity = '0.8';
-          scrollIndicator.style.pointerEvents = 'auto';
-        }
-      }
-
       ticking = false;
     }
 
@@ -46,11 +34,17 @@
 
     handleScroll();
 
-    // 2. Reduced Motion Check
+    // 2. Reduced Motion or Mobile Safety Check
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
+    const isMobile = window.innerWidth <= 768;
+
+    if (prefersReducedMotion || isMobile) {
       document.querySelectorAll('.reveal-item, [data-reveal]').forEach((el) => {
         el.classList.add('is-revealed');
+      });
+      // Still trigger counter numbers directly on mobile
+      document.querySelectorAll('[data-counter-target]').forEach((c) => {
+        animateCounter(c as HTMLElement);
       });
       return;
     }
@@ -70,7 +64,7 @@
       const targetNum = parseInt(numStr, 10);
       if (isNaN(targetNum)) return;
 
-      const duration = 1400; // ms
+      const duration = 1200; // ms
       const startTime = performance.now();
 
       function update(now: number) {
@@ -95,7 +89,6 @@
     const selector = [
       '.hero-text-block',
       '.hero-photo-placeholder',
-      '.hero-scroll-indicator',
       '.intro-photo-wrapper',
       '.intro-content',
       '.section-header-wrap',
@@ -147,8 +140,8 @@
       },
       {
         root: null,
-        threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -20px 0px'
       }
     );
 
@@ -159,7 +152,7 @@
     targets.forEach((el) => {
       el.classList.add('reveal-item');
       const rect = el.getBoundingClientRect();
-      if (rect.top < windowHeight * 0.9 && rect.bottom > 0) {
+      if (rect.top < windowHeight * 0.95 && rect.bottom > 0) {
         aboveFold.push(el);
       } else {
         belowFold.push(el);
@@ -176,8 +169,19 @@
         if (el.hasAttribute('data-counter-target')) {
           animateCounter(el);
         }
-      }, 60 + index * 90);
+      }, 40 + index * 60);
     });
+
+    // Failsafe timer: Ensure all elements are revealed within 500ms so nothing can ever be stuck hidden
+    setTimeout(() => {
+      targets.forEach((el) => {
+        if (!el.classList.contains('is-revealed')) {
+          el.classList.add('is-revealed');
+          const counters = el.querySelectorAll('[data-counter-target]');
+          counters.forEach((c) => animateCounter(c as HTMLElement));
+        }
+      });
+    }, 500);
   }
 
   // Bind to initial load and every Astro View Transitions navigation
@@ -186,19 +190,27 @@
 
 <style is:global>
   /* --------------------------------------------------------------------------
-     REFINED SCROLL REVEAL ANIMATIONS
+     REFINED SCROLL REVEAL ANIMATIONS (DESKTOP)
      -------------------------------------------------------------------------- */
   .reveal-item {
     opacity: 0;
-    transform: translateY(32px) scale(0.985);
-    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal-item.is-revealed {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
+  }
+
+  /* Instant, robust visibility on mobile / iPhone to guarantee no blank content */
+  @media (max-width: 768px) {
+    .reveal-item {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
   }
 
   /* Natural staggered delay cascades for grid containers */
@@ -217,7 +229,7 @@
   .milestones-flow > .reveal-item:nth-child(2),
   .stats-grid > .reveal-item:nth-child(2),
   .partners-grid > .reveal-item:nth-child(2) {
-    transition-delay: 150ms;
+    transition-delay: 120ms;
   }
 
   .pathways-grid > .reveal-item:nth-child(3),
@@ -225,11 +237,11 @@
   .case-cards-grid > .reveal-item:nth-child(3),
   .milestones-flow > .reveal-item:nth-child(3),
   .stats-grid > .reveal-item:nth-child(3) {
-    transition-delay: 250ms;
+    transition-delay: 180ms;
   }
 
   .case-cards-grid > .reveal-item:nth-child(4) {
-    transition-delay: 350ms;
+    transition-delay: 240ms;
   }
 
   /* Respect Reduced Motion */
@@ -239,8 +251,7 @@
       transform: none !important;
       transition: none !important;
     }
-    #scroll-progress-bar,
-    .hero-scroll-indicator {
+    #scroll-progress-bar {
       display: none !important;
     }
   }
