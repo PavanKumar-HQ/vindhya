@@ -1,33 +1,50 @@
 ---
-// ScrollReveal.astro — Smooth, accessible scroll-reveal engine with View Transitions support
+// ScrollReveal.astro — Smooth, accessible scroll-reveal & counter engine with View Transitions support
 ---
 
 <script>
   function setupScrollReveal() {
-    // 1. Reading Progress Bar Engine
+    // 1. Reading Progress Bar & Scroll Indicator Engine
     const progressBar = document.getElementById('scroll-progress-bar');
+    const scrollIndicator = document.getElementById('hero-scroll-indicator');
     let ticking = false;
 
-    function updateProgress() {
-      if (!progressBar) return;
+    function handleScroll() {
+      const scrollY = window.scrollY;
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        const progress = Math.min(100, Math.max(0, (window.scrollY / totalHeight) * 100));
-        progressBar.style.width = `${progress}%`;
-      } else {
-        progressBar.style.width = '0%';
+
+      // Progress bar
+      if (progressBar) {
+        if (totalHeight > 0) {
+          const progress = Math.min(100, Math.max(0, (scrollY / totalHeight) * 100));
+          progressBar.style.width = `${progress}%`;
+        } else {
+          progressBar.style.width = '0%';
+        }
       }
+
+      // Hero scroll indicator fade
+      if (scrollIndicator) {
+        if (scrollY > 35) {
+          scrollIndicator.style.opacity = '0';
+          scrollIndicator.style.pointerEvents = 'none';
+        } else {
+          scrollIndicator.style.opacity = '0.8';
+          scrollIndicator.style.pointerEvents = 'auto';
+        }
+      }
+
       ticking = false;
     }
 
     window.addEventListener('scroll', () => {
       if (!ticking) {
-        window.requestAnimationFrame(updateProgress);
+        window.requestAnimationFrame(handleScroll);
         ticking = true;
       }
     }, { passive: true });
 
-    updateProgress();
+    handleScroll();
 
     // 2. Reduced Motion Check
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -38,10 +55,47 @@
       return;
     }
 
-    // 3. Scroll Reveal Engine
+    // 3. Numeric Counter Roll-Up Function
+    function animateCounter(el: HTMLElement) {
+      if (el.dataset.counterDone === 'true') return;
+      el.dataset.counterDone = 'true';
+
+      const rawTarget = el.getAttribute('data-counter-target') || el.textContent || '';
+      const match = rawTarget.match(/^(\D*)(\d[\d,]*)(.*)$/);
+      if (!match) return;
+
+      const prefix = match[1] || '';
+      const numStr = match[2].replace(/,/g, '');
+      const suffix = match[3] || '';
+      const targetNum = parseInt(numStr, 10);
+      if (isNaN(targetNum)) return;
+
+      const duration = 1400; // ms
+      const startTime = performance.now();
+
+      function update(now: number) {
+        const elapsed = now - startTime;
+        const progress = Math.min(1, elapsed / duration);
+        // Exponential ease-out
+        const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const currentVal = Math.round(ease * targetNum);
+        el.textContent = `${prefix}${currentVal.toLocaleString()}${suffix}`;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = rawTarget;
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    // 4. Scroll Reveal Targets Selector
     const selector = [
       '.hero-text-block',
       '.hero-photo-placeholder',
+      '.hero-scroll-indicator',
       '.intro-photo-wrapper',
       '.intro-content',
       '.section-header-wrap',
@@ -67,37 +121,62 @@
       '.work-cta-card'
     ].join(', ');
 
-    const targets = document.querySelectorAll(selector);
+    const targets = Array.from(document.querySelectorAll(selector)) as HTMLElement[];
     if (!targets.length) return;
 
-    // Check elements already visible in the initial viewport
     const windowHeight = window.innerHeight;
 
+    // IntersectionObserver for elements as you scroll down
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            observer.unobserve(entry.target);
+            const el = entry.target as HTMLElement;
+            el.classList.add('is-revealed');
+
+            // Trigger any counters within this revealed block
+            const counters = el.querySelectorAll('[data-counter-target]');
+            counters.forEach((c) => animateCounter(c as HTMLElement));
+            if (el.hasAttribute('data-counter-target')) {
+              animateCounter(el);
+            }
+
+            observer.unobserve(el);
           }
         });
       },
       {
         root: null,
-        threshold: 0.08,
-        rootMargin: '0px 0px -30px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
       }
     );
 
+    // Differentiate elements above the fold vs below the fold
+    const aboveFold: HTMLElement[] = [];
+    const belowFold: HTMLElement[] = [];
+
     targets.forEach((el) => {
-      // If already within initial screen, reveal immediately to prevent pop-in delay
+      el.classList.add('reveal-item');
       const rect = el.getBoundingClientRect();
-      if (rect.top < windowHeight * 0.95 && rect.bottom > 0) {
-        el.classList.add('reveal-item', 'is-revealed');
+      if (rect.top < windowHeight * 0.9 && rect.bottom > 0) {
+        aboveFold.push(el);
       } else {
-        el.classList.add('reveal-item');
+        belowFold.push(el);
         observer.observe(el);
       }
+    });
+
+    // Staggered reveal for above-the-fold elements upon page entrance
+    aboveFold.forEach((el, index) => {
+      setTimeout(() => {
+        el.classList.add('is-revealed');
+        const counters = el.querySelectorAll('[data-counter-target]');
+        counters.forEach((c) => animateCounter(c as HTMLElement));
+        if (el.hasAttribute('data-counter-target')) {
+          animateCounter(el);
+        }
+      }, 60 + index * 90);
     });
   }
 
@@ -111,15 +190,15 @@
      -------------------------------------------------------------------------- */
   .reveal-item {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(32px) scale(0.985);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
 
   .reveal-item.is-revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 
   /* Natural staggered delay cascades for grid containers */
@@ -129,7 +208,7 @@
   .milestones-flow > .reveal-item:nth-child(1),
   .stats-grid > .reveal-item:nth-child(1),
   .partners-grid > .reveal-item:nth-child(1) {
-    transition-delay: 0ms;
+    transition-delay: 50ms;
   }
 
   .pathways-grid > .reveal-item:nth-child(2),
@@ -138,7 +217,7 @@
   .milestones-flow > .reveal-item:nth-child(2),
   .stats-grid > .reveal-item:nth-child(2),
   .partners-grid > .reveal-item:nth-child(2) {
-    transition-delay: 100ms;
+    transition-delay: 150ms;
   }
 
   .pathways-grid > .reveal-item:nth-child(3),
@@ -146,11 +225,11 @@
   .case-cards-grid > .reveal-item:nth-child(3),
   .milestones-flow > .reveal-item:nth-child(3),
   .stats-grid > .reveal-item:nth-child(3) {
-    transition-delay: 200ms;
+    transition-delay: 250ms;
   }
 
   .case-cards-grid > .reveal-item:nth-child(4) {
-    transition-delay: 300ms;
+    transition-delay: 350ms;
   }
 
   /* Respect Reduced Motion */
@@ -160,7 +239,8 @@
       transform: none !important;
       transition: none !important;
     }
-    #scroll-progress-bar {
+    #scroll-progress-bar,
+    .hero-scroll-indicator {
       display: none !important;
     }
   }

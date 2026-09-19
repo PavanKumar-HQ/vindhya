@@ -45,6 +45,14 @@ const forwardCards = [
       <div class="hero-photo-placeholder" role="region" aria-label="Photo placeholder">
         <p class="placeholder-label">[Photo placeholder: Vindhya facilitating, teaching, or at CAUSE — awaiting client asset]</p>
       </div>
+
+      <!-- Subtle Floating Scroll Indicator -->
+      <div class="hero-scroll-indicator" id="hero-scroll-indicator" aria-hidden="true">
+        <span class="scroll-mouse">
+          <span class="scroll-wheel"></span>
+        </span>
+        <span class="scroll-text">Scroll to explore</span>
+      </div>
     </div>
   </section>
 
@@ -210,6 +218,56 @@ const forwardCards = [
     font-size: var(--font-size-sm);
     color: var(--color-text-muted);
     letter-spacing: var(--letter-spacing-wide);
+  }
+
+  /* Hero Scroll Indicator */
+  .hero-scroll-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+    opacity: 0.8;
+    transition: opacity var(--duration-normal) var(--ease-standard);
+  }
+
+  .scroll-mouse {
+    width: 20px;
+    height: 32px;
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-full);
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+  }
+
+  .scroll-wheel {
+    width: 3px;
+    height: 6px;
+    background-color: var(--color-accent);
+    border-radius: var(--radius-full);
+    animation: mouse-scroll 1.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
+  @keyframes mouse-scroll {
+    0% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+
+  .scroll-text {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    letter-spacing: var(--letter-spacing-wider);
+    text-transform: uppercase;
   }
 
   /* 2. Intro Section */

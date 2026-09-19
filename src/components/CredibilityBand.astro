@@ -20,7 +20,7 @@ const {
     <div class="stats-grid">
       {siteConfig.stats.map((stat) => (
         <div class="stat-item">
-          <span class="stat-value">{stat.value}</span>
+          <span class="stat-value" data-counter-target={stat.value}>{stat.value}</span>
           <span class="stat-label">{stat.label}</span>
           {stat.detail && <span class="stat-detail">{stat.detail}</span>}
         </div>
