@@ -1,0 +1,13 @@
+{
+  "name": "vindhya",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Geniusphere AI Exam Lab - Karnataka State Board Classes 9 & 10",
+  "bin": {
+    "astro": "./astro"
+  },
+  "scripts": {
+    "build": "echo 'Static site ready'",
+    "astro": "./astro"
+  }
+}
