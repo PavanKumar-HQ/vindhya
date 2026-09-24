@@ -2842,3 +2842,201 @@ body.site-body {
   line-height: 1.35;
 }
 
+
+/* ==========================================================================
+   MODULE 1 OPENING: 2026 AUTHENTIC STUDENT NARRATIVE STYLES
+   ========================================================================== */
+
+/* Relatable Story Card */
+.relatable-story-card {
+  background: #FFFFFF;
+  border: 2.5px solid #000;
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.story-lead {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.story-highlight-box {
+  background: #FFFDE7;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.story-highlight-box p {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--nb-ink);
+  margin: 0;
+}
+
+.story-punchline {
+  font-size: 1.35rem !important;
+  font-weight: 900;
+  color: var(--nb-red);
+}
+
+.story-caption {
+  font-size: 0.88rem;
+  color: #666;
+  text-align: right;
+  margin: 0.5rem 0 0 0;
+}
+
+/* 10:30 PM Nightmare Banner */
+.nightmare-banner {
+  background: #0B132B;
+  color: #FFFFFF;
+  border: 2.5px solid #000;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 4px 4px 0 #000;
+  text-align: center;
+}
+
+.banner-line {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.highlight-red {
+  color: var(--nb-red);
+  background: #FFFFFF;
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  border: 2px solid #000;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  box-shadow: 3px 3px 0 #000;
+}
+
+/* Big Hook Card */
+.big-hook-card {
+  background: #FFFFFF;
+  border: 3px solid #000;
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 6px 6px 0 #000;
+  text-align: center;
+}
+
+.hook-quote {
+  font-size: 1.75rem;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--nb-ink);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.hook-sub {
+  font-size: 1.05rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Three Pillars Strip */
+.three-pillars-strip {
+  display: flex;
+  gap: 0.65rem;
+  justify-content: center;
+}
+
+.pillar-chip {
+  flex: 1;
+  text-align: center;
+  padding: 0.65rem 0.75rem;
+  border: 2px solid #000;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 900;
+  box-shadow: 3px 3px 0 #000;
+}
+
+/* Philosophy Quote Card */
+.philosophy-quote-card {
+  background: #FFFDF0;
+  border: 3px solid #000;
+  border-radius: 12px;
+  padding: 1.5rem 1.4rem;
+  box-shadow: 5px 5px 0 #000;
+  text-align: center;
+}
+
+.philosophy-quote-card .quote-sub {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #444;
+}
+
+/* Question Ladder */
+.question-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.ladder-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #FFFFFF;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  box-shadow: 2px 2px 0 #000;
+  transition: transform 0.15s ease;
+}
+
+.ladder-item:hover {
+  transform: translateX(4px);
+}
+
+.ladder-badge {
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 0.15rem 0.45rem;
+  border: 1.5px solid #000;
+  border-radius: 4px;
+  background: #F1F5F9;
+  flex-shrink: 0;
+}
+
+.ladder-text {
+  font-size: 0.92rem;
+  color: var(--nb-ink);
+}
+
+.item-master {
+  background: #F0FDF4;
+  border-color: #000;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.item-master .ladder-text {
+  color: #166534;
+  font-size: 0.98rem;
+}
+
+.ladder-ask {
+  background: var(--nb-yellow);
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.92rem;
+  text-align: center;
+  box-shadow: 2px 2px 0 #000;
+}
+
