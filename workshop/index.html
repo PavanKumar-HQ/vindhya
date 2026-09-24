@@ -1,0 +1,3132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geniusphere AI Exam Lab | 120-Min Auditorium Deck & Student Lab</title>
+  <meta name="description" content="Complete Geniusphere AI Exam Lab workshop carousel deck and 60-minute student computer lab for Classes 9 & 10.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="site-body">
+
+  <!-- ========================================================================= -->
+  <!-- MASTER TOP BAR & MODE SWITCHER                                            -->
+  <!-- ========================================================================= -->
+  <header class="master-header" id="masterHeader">
+    <div class="header-inner">
+      <div class="header-brand">
+        <div class="brandex-header-pill">
+          <img src="assets/brandex_logo.png" alt="Brandex" class="brandex-header-img">
+        </div>
+        <div class="brand-titles">
+          <span class="brand-title">AI EXAM LAB</span>
+          <span class="brand-subtitle">Karnataka State Board &bull; Classes 9 & 10</span>
+        </div>
+      </div>
+
+      <!-- Mode Selector -->
+      <nav class="mode-tabs" aria-label="Mode Selection">
+        <button type="button" class="mode-tab active" id="tabDeck" onclick="switchMainMode('deck')" title="Auditorium Presentation (36 Merged Panoramic Slides)">
+          <span class="tab-icon">📽️</span> Presentation (36 Slides)
+        </button>
+        <button type="button" class="mode-tab" id="tabLab" onclick="switchMainMode('lab')" title="Student Computer Lab (7 Hands-On Missions)">
+          <span class="tab-icon">🧪</span> Student Lab (7 Missions)
+        </button>
+        <button type="button" class="mode-tab" id="tabOverview" onclick="switchMainMode('overview')" title="Attention Architecture & Workshop Guide">
+          <span class="tab-icon">📖</span> Guide
+        </button>
+      </nav>
+
+      <!-- Utility Actions -->
+      <div class="header-right-actions">
+        <!-- Live Workshop Session Timer -->
+        <div class="session-timer-pill" id="sessionTimerDisplay" onclick="toggleSessionTimer()" title="Click to Start / Pause Workshop Timer">
+          <span class="timer-dot"></span>
+          <span class="timer-text" id="sessionTimerText">⏱️ 00:00</span>
+        </div>
+
+        <!-- Slide Navigator Quick-Jump -->
+        <button type="button" class="btn btn-outline btn-xs" onclick="openSlideNavigator()" title="Jump to any slide (Hotkey: G)">
+          🧭 Nav [G]
+        </button>
+
+        <!-- Socratic Simulator Trigger -->
+        <button type="button" class="btn btn-outline btn-xs" onclick="openSocraticSimulator()" title="Launch Socratic AI Tutor Simulator (Hotkey: S)">
+          🤖 Sim
+        </button>
+
+        <!-- Student Cheatsheet 1-Pager -->
+        <button type="button" class="btn btn-outline btn-xs" onclick="openCheatsheetModal()" title="View & Print Student Cheatsheet (Hotkey: C)">
+          📄 Cheatsheet
+        </button>
+
+        <!-- Theme Toggle (Neo-Brutalist Light/Dark) -->
+        <button type="button" class="btn btn-outline btn-xs" id="themeToggleBtn" onclick="toggleBrutalistTheme()" title="Switch Neo-Brutalist Theme [D]">
+          ☀️ Theme [D]
+        </button>
+
+        <!-- Projector Contrast Boost -->
+        <button type="button" class="btn btn-outline btn-xs" id="projectorBoostBtn" onclick="toggleProjectorBoost()" title="Toggle High-Contrast for Dim Projectors (Hotkey: B)">
+          💡 Projector
+        </button>
+
+        <!-- Audio Sound Effects Toggle -->
+        <button type="button" class="btn btn-outline btn-xs" id="audioMuteBtn" onclick="toggleAudioMute()" title="Mute/Unmute Audio (Hotkey: M)">
+          🔊 Audio
+        </button>
+
+        <!-- Fullscreen Stage Projection -->
+        <button type="button" class="btn btn-primary btn-xs" id="fullscreenToggleBtn" onclick="toggleFullscreen()" title="Toggle Fullscreen Stage (Hotkey: F)">
+          ⛶ Fullscreen [F]
+        </button>
+
+        <!-- Keyboard Shortcuts Help -->
+        <button type="button" class="btn btn-ghost btn-xs" onclick="openShortcutsModal()" title="Keyboard Shortcuts (Hotkey: ?)">
+          ⌨️ [?]
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- MODE 1: 📽️ AUDITORIUM CAROUSEL STAGE (71 SLIDES COMPLETE)                -->
+  <!-- ========================================================================= -->
+  <main class="deck-wrapper" id="deckContainer">
+
+    <!-- Carousel Header Bar -->
+    <div class="deck-top-bar">
+      <div class="deck-info">
+        <span class="section-tag" id="deckSectionTag">MODULE 1 &bull; 0–10 MIN</span>
+        <span class="deck-timing-badge" id="deckTimingBadge">THE AI REALITY CHECK</span>
+      </div>
+
+      <!-- Slide Counter -->
+      <div class="deck-counter clickable-counter" onclick="openSlideNavigator()" title="Click to open Slide Navigator (Hotkey: G)">
+        <span class="current-slide-num" id="currentSlideDisplay">01</span>
+        <span class="counter-slash">/</span>
+        <span class="total-slides-num" id="totalSlidesDisplay">36</span>
+      </div>
+
+      <!-- Presenter Script Drawer Toggle -->
+      <button type="button" class="btn btn-primary btn-xs" id="toggleScriptBtn" onclick="togglePresenterScript()">
+        🎤 <span id="scriptToggleLabel">Show Presenter Script [P]</span>
+      </button>
+    </div>
+
+    <!-- PPT Cinematic Top Progress Bar -->
+    <div class="deck-progress-bar">
+      <div class="deck-progress-fill" id="deckProgressFill" style="width: 1.4%;"></div>
+    </div>
+
+    <!-- MAIN CAROUSEL VIEWPORT WITH CLICK ARROWS -->
+    <div class="carousel-stage">
+      
+      <!-- Click Arrow: Left (Previous Slide) -->
+      <button type="button" class="carousel-nav-btn prev-arrow" id="deckPrevBtn" onclick="prevSlide()" aria-label="Previous Slide">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <!-- Slides Container -->
+      <div class="slides-viewport">
+                <!-- MERGED SLIDE 01: OPENING &bull; BE HONEST -->
+        <div class="carousel-slide active" data-index="0" data-section="0–15 MIN • PART 1: AI FOR EXAMS" data-title="OPENING &bull; BE HONEST">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">0–15 MIN • PART 1: AI FOR EXAMS</span>
+                <span class="m-badge badge-navy">PART 01 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">OPENING <span class="title-sep">&bull;</span> BE HONEST</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box center-aligned">
+            <span class="slide-eyebrow">GENIUSPHERE PRESENTS</span>
+            <h1 class="slide-hero-title">AI EXAM LAB</h1>
+            <p class="slide-hero-sub">Learn with AI. Don't let AI learn for you.</p>
+            <div class="slide-visual-media mt-2">
+              <img src="assets/hero_learning_loop.jpg" alt="AI & Human Cognitive Loop" class="slide-presentation-img" style="max-height: 250px;">
+            </div>
+            <div class="flow-sequence-box mt-2" style="max-width: 680px; margin: 1rem auto;">
+              <div class="seq-step">STUDENT</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step">AI</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step">THINK</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step">ANSWER</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step highlight">LEARN</div>
+            </div>
+            <div class="slide-footer-tag">Karnataka State Board &bull; Classes 9 & 10</div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-yellow">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">🚨 500 STUDENTS IN THIS HALL</span>
+              <span class="brutal-stamp stamp-tilt">CONFESSION TIME</span>
+              <span class="brutal-sticker sticker-cyan">CLASS 9 & 10</span>
+            </div>
+            <h2 class="poster-hero-heading">BE HONEST. 👀<br>HAVE YOU USED AI FOR HOMEWORK?</h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-yellow">
+                <div class="contrast-header">🙌 HANDS UP HIGH IF:</div>
+                <p class="contrast-body">“You pasted a school question into ChatGPT or Gemini just to get it done fast!”</p>
+                <div class="contrast-stat-tag stat-yellow">~85% OF STUDENTS IN THE ROOM</div>
+              </div>
+              <div class="contrast-col col-pink">
+                <div class="contrast-header">🤔 KEEP HANDS UP IF:</div>
+                <p class="contrast-body">“You actually UNDERSTOOD and could explain that exact answer right now on a blank paper!”</p>
+                <div class="contrast-stat-tag stat-pink">DROPS TO LESS THAN 10%! 📉</div>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🎯</span> <strong>TODAY'S MISSION:</strong> We are not learning to escape homework. We are learning how to use AI to <strong>dominate board exams</strong>.
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 02: THE REAL QUESTION &bull; EXAM IN 7 DAYS -->
+        <div class="carousel-slide" data-index="1" data-section="0–15 MIN • PART 1: AI FOR EXAMS" data-title="THE REAL QUESTION &bull; EXAM IN 7 DAYS">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">0–15 MIN • PART 1: AI FOR EXAMS</span>
+                <span class="m-badge badge-navy">PART 02 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">THE REAL QUESTION <span class="title-sep">&bull;</span> EXAM IN 7 DAYS</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box center-aligned">
+            <h2 class="slide-title-large">
+              AI CAN GIVE YOU AN ANSWER.<br>
+              <span class="text-highlight">BUT CAN IT HELP YOU LEARN?</span>
+            </h2>
+            <div class="comparison-cards-editorial mt-3" style="max-width: 650px; margin: 1.5rem auto;">
+              <div class="comp-box">
+                <span class="comp-who">ANSWER</span>
+                <p class="comp-quote">Appears on screen in 3s.<br>Zero brain effort.</p>
+              </div>
+              <div class="comp-box highlight">
+                <span class="comp-who">UNDERSTANDING</span>
+                <p class="comp-quote">Stays in your memory.<br>Scores in the board exam.</p>
+              </div>
+            </div>
+            <p class="slide-quote-sub">An answer appearing on your screen doesn't mean learning happened.</p>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">RELATABLE SITUATION</span>
+            <h2 class="slide-heading-standard">EXAM IN 7 DAYS.</h2>
+            <div class="bullet-list-editorial">
+              <div class="bullet-item">• 6 chapters left to cover</div>
+              <div class="bullet-item">• One chapter makes absolutely no sense</div>
+              <div class="bullet-item">• You don't know what to revise</div>
+              <div class="bullet-item">• You don't know if you're prepared</div>
+              <div class="bullet-item highlight">• It's 10:30 PM. What are you doing?</div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 03: WHAT'S YOUR MOVE? &bull; WHAT IF D WAS DIFFERENT? -->
+        <div class="carousel-slide" data-index="2" data-section="0–15 MIN • PART 1: AI FOR EXAMS" data-title="WHAT'S YOUR MOVE? &bull; WHAT IF D WAS DIFFERENT?">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">0–15 MIN • PART 1: AI FOR EXAMS</span>
+                <span class="m-badge badge-navy">PART 03 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">WHAT'S YOUR MOVE? <span class="title-sep">&bull;</span> WHAT IF D WAS DIFFERENT?</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">DON'T THINK. JUST SHOUT THE LETTER!</span>
+            <h2 class="slide-heading-standard">WHAT'S YOUR MOVE?</h2>
+            <div class="options-grid">
+              <div class="option-card"><span class="opt-letter">A</span> “I'll start tomorrow at 5 AM.” (And sleep till 8)</div>
+              <div class="option-card"><span class="opt-letter">B</span> Watch a 30-min YouTube video at 2x.</div>
+              <div class="option-card"><span class="opt-letter">C</span> Call my friend and panic together.</div>
+              <div class="option-card highlight"><span class="opt-letter">D</span> Ask AI.</div>
+            </div>
+            <div class="slide-bottom-note">By the end of this session, we'll see what happens when you choose D properly.</div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box center-aligned">
+            <span class="slide-eyebrow">THE PARADIGM SHIFT</span>
+            <h2 class="slide-title-large">WHAT IF...</h2>
+            <p class="slide-statement">Instead of: <strong style="color: var(--brand-red);">“Give me the answer.”</strong></p>
+            <div class="flow-sequence-box mt-2" style="max-width: 720px; margin: 1rem auto;">
+              <div class="seq-step">EXPLAIN</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step">ASK</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step">PRACTISE</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step">CHECK</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step highlight">REVISE</div>
+            </div>
+            <p class="slide-quote-sub">From Answer Machine &rarr; to Study Partner.</p>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 04: THE AI STUDY PARTNER &bull; OUR RULE -->
+        <div class="carousel-slide" data-index="3" data-section="0–15 MIN • PART 1: AI FOR EXAMS" data-title="THE AI STUDY PARTNER &bull; OUR RULE">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">0–15 MIN • PART 1: AI FOR EXAMS</span>
+                <span class="m-badge badge-navy">PART 04 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">THE AI STUDY PARTNER <span class="title-sep">&bull;</span> OUR RULE</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">IMAGINE THIS CONVERSATION</span>
+            <h2 class="slide-heading-standard">THE PATIENT STUDY PARTNER</h2>
+            <div class="bullet-list-editorial mt-2">
+              <div class="bullet-item"><strong>You:</strong> “I don't understand this concept.”</div>
+              <div class="bullet-item"><strong>AI:</strong> “Let me explain it differently with a cricket example.”</div>
+              <div class="bullet-item"><strong>You:</strong> “Still don't get the second part.”</div>
+              <div class="bullet-item"><strong>AI:</strong> “Here's another simpler analogy. Now let me test you.”</div>
+              <div class="bullet-item"><strong>You:</strong> [Answers in your own words]</div>
+              <div class="bullet-item highlight"><strong>AI:</strong> “You understood part 1, but missed the main scientific keyword in part 2!”</div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-yellow">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">⚡ THE #1 WORKSHOP LAW</span>
+              <span class="brutal-stamp stamp-tilt">NON-NEGOTIABLE</span>
+              <span class="brutal-sticker sticker-lime">BOARD EXAM SUCCESS</span>
+            </div>
+            <h2 class="poster-hero-heading">
+              DON'T USE AI TO AVOID THINKING.<br>
+              <mark class="poster-highlight">USE AI TO THINK BETTER.</mark>
+            </h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-bad">
+                <div class="contrast-header">❌ THE LAZY COPY TRAP</div>
+                <p class="contrast-body">“Hey ChatGPT, give me the 5-mark answer for Ohm's Law.”</p>
+                <div class="contrast-tag tag-bad">Brain: 0% Effort &bull; Exam: FAILED</div>
+              </div>
+              <div class="contrast-col col-good">
+                <div class="contrast-header">⚡ THE GENIUSPHERE METHOD</div>
+                <p class="contrast-body">“Hey ChatGPT, test me on Ohm's Law. Give me a tricky situation and check my reasoning!”</p>
+                <div class="contrast-tag tag-good">Brain: 100% Active &bull; Exam: TOP 1% SCORE</div>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">💡</span> <strong>REALITY CHECK:</strong> In the board exam hall, you cannot bring ChatGPT. You only bring what is in your brain!
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 05: YOU ALREADY KNOW THIS &bull; AI VS YOU -->
+        <div class="carousel-slide" data-index="4" data-section="0–15 MIN • PART 1: AI FOR EXAMS" data-title="YOU ALREADY KNOW THIS &bull; AI VS YOU">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">0–15 MIN • PART 1: AI FOR EXAMS</span>
+                <span class="m-badge badge-navy">PART 05 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">YOU ALREADY KNOW THIS <span class="title-sep">&bull;</span> AI VS YOU</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">ASKING A TEACHER</span>
+            <h2 class="slide-heading-standard">WHICH STUDENT GETS A 10x BETTER EXPLANATION?</h2>
+            <div class="comparison-cards-editorial mt-2">
+              <div class="comp-box">
+                <span class="comp-who">STUDENT A</span>
+                <p class="comp-quote">“Sir, explain this.”</p>
+                <span class="comp-result">Teacher repeats the same textbook lecture.</span>
+              </div>
+              <div class="comp-box highlight">
+                <span class="comp-who">STUDENT B</span>
+                <p class="comp-quote">“Sir, I understood the first part, but I don't understand why this happens. Can you explain it using a cricket example?”</p>
+                <span class="comp-result">Teacher gives a crystal-clear custom explanation!</span>
+              </div>
+            </div>
+            <div class="slide-bottom-note">That's prompting. Prompting is simply giving context to a teacher.</div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-cyan">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">⏱️ 10-SECOND SPEED DRILL</span>
+              <span class="brutal-stamp">HUMAN 🧠 VS AI 🤖</span>
+            </div>
+            <h2 class="poster-hero-heading">“WHY DOES ICE FLOAT ON WATER?”</h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-white">
+                <div class="contrast-header">🧠 YOUR TURN (10 SECONDS)</div>
+                <p class="contrast-body">Formulate your explanation right now. What scientific keywords must appear?</p>
+                <div class="contrast-tag tag-yellow">Density? Molecular lattice? Hydrogen bonds?</div>
+              </div>
+              <div class="contrast-col col-good">
+                <div class="contrast-header">🤖 AI BENCHMARK ANSWER</div>
+                <p class="contrast-body">“Water expands as it freezes due to hydrogen bonding creating an open hexagonal cage structure, making ice 9% less dense than liquid water.”</p>
+                <div class="contrast-tag tag-good">Gold Standard Keywords Identified</div>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🔑</span> <strong>THE LESSON:</strong> AI didn't replace your thinking. It gave you an instant benchmark to compare your knowledge against!
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 06: WHAT CAN AI DO? &bull; SIX USEFUL JOBS -->
+        <div class="carousel-slide" data-index="5" data-section="15–40 MIN • PART 2: CHATGPT AS TUTOR" data-title="WHAT CAN AI DO? &bull; SIX USEFUL JOBS">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">15–40 MIN • PART 2: CHATGPT AS TUTOR</span>
+                <span class="m-badge badge-navy">PART 06 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">WHAT CAN AI DO? <span class="title-sep">&bull;</span> SIX USEFUL JOBS</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="poster-slide-card poster-white">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-lime">WORKSHOP SYLLABUS</span>
+              <span class="brutal-stamp stamp-tilt">6 CORE SKILLS</span>
+              <span class="brutal-sticker sticker-yellow">KARNATAKA BOARD</span>
+            </div>
+            <h2 class="poster-hero-heading" style="font-size: 1.55rem;">WHAT YOU WILL ACTUALLY LEARN TODAY</h2>
+            <div class="skills-syllabus-table-wrap mt-2">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--bx-navy-border); color: var(--text-muted); font-family: var(--font-display);">
+                    <th style="padding: 0.4rem 0.6rem;">SKILL</th>
+                    <th style="padding: 0.4rem 0.6rem;">WHAT WE TEACH YOU</th>
+                    <th style="padding: 0.4rem 0.6rem;">TOOL</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 0.45rem 0.6rem; font-weight: 800; color: var(--bx-cyan);">1. UNDERSTAND</td>
+                    <td style="padding: 0.45rem 0.6rem;">How to make AI explain a difficult concept at your exact level</td>
+                    <td style="padding: 0.45rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">ChatGPT / Gemini</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 0.45rem 0.6rem; font-weight: 800; color: var(--bx-emerald);">2. ASK</td>
+                    <td style="padding: 0.45rem 0.6rem;">How to give AI useful context, constraints & instructions</td>
+                    <td style="padding: 0.45rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">ChatGPT / Gemini</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 0.45rem 0.6rem; font-weight: 800; color: var(--bx-amber);">3. STUDY</td>
+                    <td style="padding: 0.45rem 0.6rem;">How to turn a chapter into concepts, examples and explanations</td>
+                    <td style="padding: 0.45rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">ChatGPT / Gemini</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 0.45rem 0.6rem; font-weight: 800; color: var(--bx-rose);">4. PRACTISE</td>
+                    <td style="padding: 0.45rem 0.6rem;">How to make AI generate exam questions and conduct a quiz</td>
+                    <td style="padding: 0.45rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">ChatGPT / Gemini</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 0.45rem 0.6rem; font-weight: 800; color: #a78bfa;">5. CHECK</td>
+                    <td style="padding: 0.45rem 0.6rem;">How to submit YOUR OWN answer and get examiner feedback</td>
+                    <td style="padding: 0.45rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">ChatGPT / Gemini</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.45rem 0.6rem; font-weight: 800; color: var(--bx-cobalt);">6. YOUR MATERIAL</td>
+                    <td style="padding: 0.45rem 0.6rem;">How to upload your textbook/notes/PDF to NotebookLM & study</td>
+                    <td style="padding: 0.45rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">NotebookLM</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">PART 1 &bull; 0–15 MIN &bull; THE MENTAL SHIFT</span>
+            <h2 class="slide-heading-standard">AI IS NOT JUST AN ANSWER GENERATOR</h2>
+            <p class="slide-statement mb-2">Don't use AI to write homework. Use it as your active study partner across 6 roles:</p>
+            <div class="six-grid-editorial mt-2">
+              <div class="sg-item"><strong style="color: var(--bx-cyan);">01. EXPLAINER</strong> Dissects dense textbook sentences until clear</div>
+              <div class="sg-item"><strong style="color: var(--bx-emerald);">02. TUTOR</strong> Guides your reasoning step-by-step</div>
+              <div class="sg-item"><strong style="color: var(--bx-amber);">03. QUESTION GENERATOR</strong> Creates 2-mark & 3-mark board questions</div>
+              <div class="sg-item"><strong style="color: var(--bx-rose);">04. QUIZ MASTER</strong> Tests you one question at a time</div>
+              <div class="sg-item"><strong style="color: #a78bfa;">05. ANSWER CHECKER</strong> Audits your attempt for missing keywords</div>
+              <div class="sg-item"><strong style="color: var(--bx-cobalt);">06. REVISION ASSISTANT</strong> Summarizes key definitions and formulas</div>
+            </div>
+            <div class="slide-bottom-note mt-2">💡 They don't need definitions of AI. They need: <em>“Here are 6 ways to use AI while studying.”</em></div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 07: CHATGPT AS PERSONAL TUTOR &bull; SKILL 1: ASK TO EXPLAIN -->
+        <div class="carousel-slide" data-index="6" data-section="15–40 MIN • PART 2: CHATGPT AS TUTOR" data-title="CHATGPT AS PERSONAL TUTOR &bull; SKILL 1: ASK TO EXPLAIN">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">15–40 MIN • PART 2: CHATGPT AS TUTOR</span>
+                <span class="m-badge badge-navy">PART 07 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">CHATGPT AS PERSONAL TUTOR <span class="title-sep">&bull;</span> SKILL 1: ASK TO EXPLAIN</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">SKILL 1 • ASK TO EXPLAIN</span>
+            <h2 class="slide-heading-standard">BAD PROMPT VS BETTER PROMPT:</h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-bad">
+                <div class="contrast-header">❌ VAGUE & LAZY</div>
+                <p class="contrast-body" style="font-size: 1.15rem; font-weight: 700; color: #f43f5e;">“Explain electricity.”</p>
+                <div class="contrast-tag tag-bad">Result: College-level wall of text. 0% understanding.</div>
+              </div>
+              <div class="contrast-col col-good">
+                <div class="contrast-header">⚡ FOCUSED & CONTEXTUAL</div>
+                <p class="contrast-body" style="font-size: 0.95rem; font-weight: 600; color: #10b981;">“I'm a Class 10 Karnataka State Board student. Explain electric current in simple language using an everyday example.”</p>
+                <div class="contrast-tag tag-good">Result: Crystal-clear mental model tailored to your exam!</div>
+              </div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-cyan">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">TEACHING FORMULA</span>
+              <span class="brutal-stamp">THE 4 ANCHORS</span>
+            </div>
+            <h2 class="poster-hero-heading" style="font-size: 1.45rem;">ALWAYS ADD CONTEXT TO CHATGPT</h2>
+            <div class="four-pill-grid mt-2">
+              <div class="fp-card fp-pink">
+                <span class="fp-num">WHO AM I?</span>
+                <strong>Class 10 Student</strong>
+                <p>Sets the cognitive level</p>
+              </div>
+              <div class="fp-card fp-yellow">
+                <span class="fp-num">WHAT DO I WANT?</span>
+                <strong>Explain Electric Current</strong>
+                <p>Target concept</p>
+              </div>
+              <div class="fp-card fp-lime">
+                <span class="fp-num">ADD THE LEVEL</span>
+                <strong>Simple Language</strong>
+                <p>No unnecessary jargon</p>
+              </div>
+              <div class="fp-card fp-white">
+                <span class="fp-num">ADD THE FORMAT</span>
+                <strong>Everyday Analogy</strong>
+                <p>Water flowing in pipes</p>
+              </div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 08: SKILL 2: ASK FOLLOW-UP QUESTIONS &bull; THE LEARNING CONVERSATION -->
+        <div class="carousel-slide" data-index="7" data-section="15–40 MIN • PART 2: CHATGPT AS TUTOR" data-title="SKILL 2: ASK FOLLOW-UP QUESTIONS &bull; THE LEARNING CONVERSATION">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">15–40 MIN • PART 2: CHATGPT AS TUTOR</span>
+                <span class="m-badge badge-navy">PART 08 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">SKILL 2: ASK FOLLOW-UP QUESTIONS <span class="title-sep">&bull;</span> THE LEARNING CONVERSATION</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">CRITICAL MISTAKE TO AVOID</span>
+            <h2 class="slide-heading-standard">DON'T START A NEW CHAT FOR EVERY QUESTION!</h2>
+            <p class="slide-statement mb-2">Have a real back-and-forth dialogue with AI:</p>
+            <div class="bullet-list-editorial">
+              <div class="bullet-item"><strong>1. Ask initial concept:</strong> <code>“Explain Newton's First Law.”</code></div>
+              <div class="bullet-item"><strong>2. Clarify confusion:</strong> <code>“I still don't understand inertia. Explain that part again.”</code></div>
+              <div class="bullet-item"><strong>3. Request example:</strong> <code>“Give me a real-life example.”</code></div>
+              <div class="bullet-item"><strong>4. Ground in passion:</strong> <code>“Now explain it using cricket.”</code></div>
+              <div class="bullet-item highlight"><strong>5. Diagnostic check:</strong> <code>“Ask me one question to check whether I understood.”</code></div>
+            </div>
+            <div class="slide-bottom-note mt-2">This is 10x more valuable than memorizing 20 complex prompt templates!</div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box center-aligned">
+            <span class="slide-eyebrow">SKILL 4 PREVIEW &bull; THE RETRIEVAL LOOP</span>
+            <h2 class="slide-title-large">
+              DON'T ASK AI FOR THE ANSWER.<br>
+              <span class="text-highlight">ASK FOR A QUESTION.</span>
+            </h2>
+            <div class="flow-sequence-box mt-3" style="max-width: 650px; margin: 1.5rem auto;">
+              <div class="seq-step">AI</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step">QUESTION</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step highlight">YOU</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step">ANSWER</div>
+            </div>
+            <p class="slide-quote-sub">Which one builds memory for the board exam? The question you answer yourself!</p>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 09: JOB 05: CHECK &bull; JOB 06: REVISE -->
+        <div class="carousel-slide" data-index="8" data-section="15–40 MIN • PART 2: CHATGPT AS TUTOR" data-title="JOB 05: CHECK &bull; JOB 06: REVISE">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">15–40 MIN • PART 2: CHATGPT AS TUTOR</span>
+                <span class="m-badge badge-navy">PART 09 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">JOB 05: CHECK <span class="title-sep">&bull;</span> JOB 06: REVISE</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">JOB 05</span>
+            <h2 class="slide-heading-standard">“HERE'S MY ANSWER. CHECK ME.”</h2>
+            <div class="bullet-list-editorial">
+              <div class="bullet-item"><strong>1. What did I get right?</strong></div>
+              <div class="bullet-item"><strong>2. What did I misunderstand or miss?</strong></div>
+              <div class="bullet-item"><strong>3. Give me a hint, do NOT rewrite the answer!</strong></div>
+            </div>
+            <div class="slide-bottom-note">AI should not always rewrite your answer. It should guide your self-correction.</div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-lime">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">JOB 06 &bull; ACTIVE REVISION</span>
+              <span class="brutal-stamp stamp-tilt">GAP HUNTER</span>
+            </div>
+            <h2 class="poster-hero-heading">FIND THE GAP BEFORE THE EXAM DOES.</h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-white">
+                <div class="contrast-header">😴 PASSIVE STUDENT REVISION</div>
+                <p class="contrast-body">Rereading highlighted textbook pages for the 4th time thinking: “I know this.” (Illusion of competence!)</p>
+                <div class="contrast-tag tag-bad">Result: Blank out on twist questions</div>
+              </div>
+              <div class="contrast-col col-yellow">
+                <div class="contrast-header">🎯 AI GAP REVISION PROMPT</div>
+                <p class="contrast-body"><code>“Ask me 3 tricky application questions on Refraction that Class 10 students usually get wrong.”</code></p>
+                <div class="contrast-tag tag-good">Result: Pinpoint blind spots in 5 minutes!</div>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">💥</span> <strong>GOLDEN TRUTH:</strong> Better to feel the pain of a mistake in front of AI today than on the answer sheet tomorrow!
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 10: THE GENIUSPHERE LOOP &bull; THE TRAP -->
+        <div class="carousel-slide" data-index="9" data-section="15–40 MIN • PART 2: CHATGPT AS TUTOR" data-title="THE GENIUSPHERE LOOP &bull; THE TRAP">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">15–40 MIN • PART 2: CHATGPT AS TUTOR</span>
+                <span class="m-badge badge-navy">PART 10 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">THE GENIUSPHERE LOOP <span class="title-sep">&bull;</span> THE TRAP</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box center-aligned">
+            <span class="slide-eyebrow">THE REPEATABLE METHOD</span>
+            <h2 class="slide-heading-standard">THE GENIUSPHERE STUDY LOOP</h2>
+            <div class="flow-sequence-box mt-3" style="max-width: 800px; margin: 1.5rem auto;">
+              <div class="seq-step">UNDERSTAND</div>
+              <div class="seq-arr">↓</div>
+              <div class="seq-step">PRACTISE</div>
+              <div class="seq-arr">↓</div>
+              <div class="seq-step">ANSWER</div>
+              <div class="seq-arr">↓</div>
+              <div class="seq-step">CHECK</div>
+              <div class="seq-arr">↓</div>
+              <div class="seq-step">REVISE</div>
+              <div class="seq-arr">↓</div>
+              <div class="seq-step highlight">TEST AGAIN</div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">THE DANGER</span>
+            <h2 class="slide-heading-standard">AI CAN MAKE STUDYING TOO EASY.</h2>
+            <div class="comparison-cards-editorial mt-2">
+              <div class="comp-box">
+                <span class="comp-who">THE LAZY WAY</span>
+                <p class="comp-quote">Question &rarr; AI Answer &rarr; Copy &rarr; Memorise &rarr; Forget</p>
+                <span class="comp-result">Result: Blank mind in exam hall.</span>
+              </div>
+              <div class="comp-box highlight">
+                <span class="comp-who">THE BETTER WAY</span>
+                <p class="comp-quote">Question &rarr; Think &rarr; Answer &rarr; AI Feedback &rarr; Improve</p>
+                <span class="comp-result">Result: Long-term memory & distinction marks.</span>
+              </div>
+            </div>
+            <div class="twist-box mt-2 text-center">
+              <strong>“Ctrl+C is not a study technique.”</strong>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 11: THREE TOOLS &bull; CHATGPT -->
+        <div class="carousel-slide" data-index="10" data-section="15–40 MIN • PART 2: CHATGPT AS TUTOR" data-title="THREE TOOLS &bull; CHATGPT">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">15–40 MIN • PART 2: CHATGPT AS TUTOR</span>
+                <span class="m-badge badge-navy">PART 11 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">THREE TOOLS <span class="title-sep">&bull;</span> CHATGPT</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box center-aligned">
+            <span class="slide-eyebrow">MODULE 3 • THE 3-TOOL TOOLKIT</span>
+            <h2 class="slide-massive-quote">THREE TOOLS.</h2>
+            <p class="slide-hero-sub">THREE DIFFERENT WAYS TO STUDY.</p>
+            <div class="three-tools-deck mt-3">
+              <div class="deck-tool"><h3>ChatGPT</h3><div class="tool-tagline">“Teach me.”</div></div>
+              <div class="deck-tool highlight"><h3>Google Gemini</h3><div class="tool-tagline">“Help me explore.”</div></div>
+              <div class="deck-tool"><h3>NotebookLM</h3><div class="tool-tagline">“Study this material.”</div></div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">TOOL 01 • CHATGPT</span>
+            <h2 class="slide-heading-standard">THINK: “TEACH ME.”</h2>
+            <div class="bullet-list-editorial">
+              <div class="bullet-item">• Understand difficult topics through dialogue</div>
+              <div class="bullet-item">• Practise with follow-up questions</div>
+              <div class="bullet-item">• Check answers against board marking criteria</div>
+              <div class="bullet-item">• Revise weak points interactively</div>
+            </div>
+            <div class="prompt-box-editorial mt-2">
+              <code>“I don't understand Newton's First Law. Explain simply and give an everyday example.”</code>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 12: CHATGPT INTERACTION &bull; GEMINI -->
+        <div class="carousel-slide" data-index="11" data-section="40–65 MIN • PART 3: CHATGPT EXAM PARTNER" data-title="CHATGPT INTERACTION &bull; GEMINI">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">40–65 MIN • PART 3: CHATGPT EXAM PARTNER</span>
+                <span class="m-badge badge-navy">PART 12 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">CHATGPT INTERACTION <span class="title-sep">&bull;</span> GEMINI</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">AI JUST EXPLAINED. WHAT NEXT?</span>
+            <h2 class="slide-heading-standard">WHAT SHOULD WE ASK NEXT?</h2>
+            <div class="options-grid">
+              <div class="option-card"><span class="opt-letter">A</span> “Give me the answer.”</div>
+              <div class="option-card"><span class="opt-letter">B</span> “Explain it again.”</div>
+              <div class="option-card highlight"><span class="opt-letter">C</span> “Test me with a 2-mark question.”</div>
+              <div class="option-card highlight"><span class="opt-letter">D</span> “Give me a tricky situation to solve.”</div>
+            </div>
+            <div class="slide-bottom-note">Shout C or D! We never ask for answers—we command AI to challenge us!</div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">TOOL 02 • GOOGLE GEMINI</span>
+            <h2 class="slide-heading-standard">THINK: “HELP ME EXPLORE & SEE.”</h2>
+            <div class="slide-media-row mt-2">
+              <div class="slide-media-left">
+                <img src="assets/optics_diagram_visual.jpg" alt="Optics Ray Tracing Diagram" class="slide-presentation-img">
+              </div>
+              <div class="slide-media-right">
+                <div class="bullet-list-editorial">
+                  <div class="bullet-item">• Visual explanations & ray optics blueprints</div>
+                  <div class="bullet-item">• Biology flowcharts, nephrons, and circuits</div>
+                  <div class="bullet-item">• Step-by-step drawing instructions for exam sheets</div>
+                  <div class="bullet-item highlight">• Over 35% of Science marks depend on diagrams!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 13: SAME QUESTION, DIFFERENT AI &bull; DON'T ASK THIS -->
+        <div class="carousel-slide" data-index="12" data-section="40–65 MIN • PART 3: CHATGPT EXAM PARTNER" data-title="SAME QUESTION, DIFFERENT AI &bull; DON'T ASK THIS">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">40–65 MIN • PART 3: CHATGPT EXAM PARTNER</span>
+                <span class="m-badge badge-navy">PART 13 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">SAME QUESTION, DIFFERENT AI <span class="title-sep">&bull;</span> DON'T ASK THIS</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box center-aligned">
+            <span class="slide-eyebrow">PART 4 &bull; 65–80 MIN &bull; HEAD-TO-HEAD COMPARISON</span>
+            <h2 class="slide-question-hero">SAME PROBLEM &bull; TWO DIFFERENT AIS</h2>
+            <div class="prompt-box-editorial" style="max-width: 720px; text-align: left;">
+              <code>“I'm a Class 10 student preparing for my Science exam. Explain electric current in simple language using an everyday example.”</code>
+            </div>
+            <h3 class="vote-prompt mt-2">Compare ChatGPT vs Gemini Live:</h3>
+            <div class="poll-options mt-2">
+              <div class="vote-option" data-choice="chatgpt"><strong>A &bull; CHATGPT:</strong> Water-in-a-pipe flow analogy + step-by-step logic</div>
+              <div class="vote-option" data-choice="gemini"><strong>B &bull; GEMINI:</strong> Visual circuit diagrams, SI unit relationships & exploration</div>
+            </div>
+            <div class="slide-bottom-note">Different AI tools produce different responses. Learn to evaluate the response rather than blindly trusting whichever tool you opened first!</div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-yellow">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">MINDSET REFRAME</span>
+              <span class="brutal-stamp">THE 3-TOOL ARSENAL</span>
+            </div>
+            <h2 class="poster-hero-heading">STOP ASKING: <mark class="poster-highlight">“WHICH AI IS NUMBER ONE?”</mark></h2>
+            <div class="three-tools-deck mt-2">
+              <div class="deck-tool">
+                <span class="tool-badge-pill pill-cyan">CHATGPT</span>
+                <h3>“TEACH ME”</h3>
+                <p>The Interactive Socratic Tutor & Evaluation Partner</p>
+                <div class="tool-sub-use">Best for: Back-and-forth quizzing & answer checking</div>
+              </div>
+              <div class="deck-tool highlight">
+                <span class="tool-badge-pill pill-lime">GEMINI</span>
+                <h3>“SHOW ME”</h3>
+                <p>Visual Multimodal Explorer & Diagram Master</p>
+                <div class="tool-sub-use">Best for: Ray diagrams, circuits & organ systems</div>
+              </div>
+              <div class="deck-tool">
+                <span class="tool-badge-pill pill-yellow">NOTEBOOKLM</span>
+                <h3>“LOCK TO SYLLABUS”</h3>
+                <p>Grounding Engine & Zero-Hallucination Book Companion</p>
+                <div class="tool-sub-use">Best for: Your exact State Board PDF chapter</div>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🛠️</span> <strong>ANALOGY:</strong> A hammer isn't better than a screwdriver. Pick the right tool for the job!
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 14: NOTEBOOKLM &bull; THE CRUCIAL DIFFERENCE -->
+        <div class="carousel-slide" data-index="13" data-section="40–65 MIN • PART 3: CHATGPT EXAM PARTNER" data-title="NOTEBOOKLM &bull; THE CRUCIAL DIFFERENCE">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">40–65 MIN • PART 3: CHATGPT EXAM PARTNER</span>
+                <span class="m-badge badge-navy">PART 14 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">NOTEBOOKLM <span class="title-sep">&bull;</span> THE CRUCIAL DIFFERENCE</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">TOOL 03 • NOTEBOOKLM</span>
+            <h2 class="slide-heading-standard">THINK: “STUDY THIS MATERIAL WITH ME.”</h2>
+            <div class="slide-media-row mt-2">
+              <div class="slide-media-left">
+                <img src="assets/notebooklm_grounding_mock.jpg" alt="NotebookLM Textbook Grounding Mock" class="slide-presentation-img">
+              </div>
+              <div class="slide-media-right">
+                <div class="notebooklm-visual-mock">
+                  <div class="nl-source">📄 Source: Karnataka State Board Science Chapter PDF</div>
+                  <div class="nl-query">Query: “Quiz me strictly based on this chapter.”</div>
+                  <div class="nl-answer">Every single answer cites the exact textbook page [1] [2]. Zero hallucination!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">THE MENTAL DIVIDE</span>
+            <h2 class="slide-heading-standard">TEACH ME vs STUDY THIS WITH ME</h2>
+            <div class="comparison-cards-editorial mt-2">
+              <div class="comp-box">
+                <span class="comp-who">“TEACH ME.”</span>
+                <p class="comp-quote">ChatGPT / Gemini</p>
+                <span class="comp-result">Searches the entire world. Great for intuition and analogies.</span>
+              </div>
+              <div class="comp-box highlight">
+                <span class="comp-who">“STUDY THIS WITH ME.”</span>
+                <p class="comp-quote">NotebookLM</p>
+                <span class="comp-result">Locked 100% to your uploaded textbook PDF. No syllabus leaks.</span>
+              </div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 15: QUICK GAME: WHICH TOOL? &bull; TRANSITION TO LIVE DEMOS -->
+        <div class="carousel-slide" data-index="14" data-section="40–65 MIN • PART 3: CHATGPT EXAM PARTNER" data-title="QUICK GAME: WHICH TOOL? &bull; TRANSITION TO LIVE DEMOS">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">40–65 MIN • PART 3: CHATGPT EXAM PARTNER</span>
+                <span class="m-badge badge-navy">PART 15 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">QUICK GAME: WHICH TOOL? <span class="title-sep">&bull;</span> TRANSITION TO LIVE DEMOS</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">RAPID-FIRE DRILL</span>
+            <h2 class="slide-heading-standard">WHICH TOOL WOULD YOU USE?</h2>
+            <div class="bullet-list-editorial">
+              <div class="bullet-item"><strong>Situation 1:</strong> “I don't understand how light bends in a prism.” &rarr; <em>Gemini!</em></div>
+              <div class="bullet-item"><strong>Situation 2:</strong> “I have 25 pages of state board notes and 4 hours.” &rarr; <em>NotebookLM!</em></div>
+              <div class="bullet-item highlight"><strong>Situation 3:</strong> “I wrote a 3-mark answer and want it graded.” &rarr; <em>ChatGPT!</em></div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-lime">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">STAGE PIVOT</span>
+              <span class="brutal-stamp stamp-tilt">THE REAL ACTION</span>
+              <span class="brutal-sticker sticker-cyan">LIVE ON PROJECTOR</span>
+            </div>
+            <h2 class="poster-hero-heading">ENOUGH TALKING ABOUT TOOLS.<br><mark class="poster-highlight">LET'S ACTUALLY STUDY ON SCREEN.</mark></h2>
+            <div class="flow-sequence-box mt-3" style="max-width: 820px; margin: 1.5rem auto;">
+              <div class="seq-step">1. REAL TOPIC</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step">2. BAD PROMPT</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step">3. UPGRADE PROMPT</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step highlight">4. EXAM LOCK</div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🔬</span> <strong>CASE STUDY TOPIC:</strong> Karnataka Board Science — <em>Force, Laws of Motion & Inertia</em>. Watch what happens!
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 16: THE PROBLEM &bull; BAD AI QUESTION -->
+        <div class="carousel-slide" data-index="15" data-section="40–65 MIN • PART 3: CHATGPT EXAM PARTNER" data-title="THE PROBLEM &bull; BAD AI QUESTION">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">40–65 MIN • PART 3: CHATGPT EXAM PARTNER</span>
+                <span class="m-badge badge-navy">PART 16 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">THE PROBLEM <span class="title-sep">&bull;</span> BAD AI QUESTION</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">MODULE 4 • LIVE DEMO 1</span>
+            <h2 class="slide-heading-standard">“I DON'T UNDERSTAND THIS.”</h2>
+            <div class="slide-media-row mt-2">
+              <div class="slide-media-left">
+                <img src="assets/physics_inertia_visual.jpg" alt="Inertia Physics Experiment Visual" class="slide-presentation-img">
+              </div>
+              <div class="slide-media-right">
+                <div class="bullet-list-editorial">
+                  <div class="bullet-item"><strong>TOPIC:</strong> FORCE & LAWS OF MOTION</div>
+                  <div class="bullet-item"><strong>BOARD:</strong> Karnataka State Board Class 9</div>
+                  <div class="bullet-item"><strong>GOAL:</strong> Master Inertia, School Bus & Cricket dynamics</div>
+                </div>
+                <div class="slide-bottom-note mt-2">What do you normally do when a physics chapter makes no sense?</div>
+              </div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-pink">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">THE LAZY MISTAKE</span>
+              <span class="brutal-stamp stamp-tilt">DO NOT DO THIS</span>
+            </div>
+            <h2 class="poster-hero-heading">TYPING 5 WORDS: <mark class="poster-highlight">“EXPLAIN NEWTON'S 1ST LAW”</mark></h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-white">
+                <div class="contrast-header">🤖 WHAT AI DUMPS BACK AT YOU:</div>
+                <p class="contrast-body">“An object at rest stays at rest and an object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced force.”</p>
+                <div class="contrast-tag tag-bad">Textbook jargon overload &bull; 0% intuition gained</div>
+              </div>
+              <div class="contrast-col col-yellow">
+                <div class="contrast-header">⚠️ WHY THIS FAILS STUDENTS AT 11 PM:</div>
+                <p class="contrast-body">It's 100% factually accurate, but it didn't solve the student's confusion! If textbook words worked, you wouldn't need AI.</p>
+                <div class="contrast-tag tag-yellow">Lazy Input = Lazy Output</div>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🚨</span> <strong>LESSON:</strong> When you give AI zero context, AI gives you zero teaching.
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 17: BETTER QUESTION &bull; WHAT CHANGED? -->
+        <div class="carousel-slide" data-index="16" data-section="40–65 MIN • PART 3: CHATGPT EXAM PARTNER" data-title="BETTER QUESTION &bull; WHAT CHANGED?">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">40–65 MIN • PART 3: CHATGPT EXAM PARTNER</span>
+                <span class="m-badge badge-navy">PART 17 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">BETTER QUESTION <span class="title-sep">&bull;</span> WHAT CHANGED?</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">THE UPGRADED PROMPT</span>
+            <div class="demo-prompt-card">
+              <pre><code>I'm a Class 9 Karnataka Board student struggling with Newton's First Law.
+Explain it in simple English using a school-bus example.
+Explain why passengers fall forward when the driver slams the brakes.
+Then ask me ONE question to check if I understood inertia.
+Do not give me the answer until I try.</code></pre>
+            </div>
+            <div class="slide-bottom-note">Notice the formula: WHO + PROBLEM + HOW + EXAMPLE + RULE.</div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-cyan">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">PROMPT SURGERY</span>
+              <span class="brutal-stamp stamp-tilt">THE SECRET</span>
+            </div>
+            <h2 class="poster-hero-heading">DID WE UPGRADE THE AI? <mark class="poster-highlight">NO. WE UPGRADED US.</mark></h2>
+            <div class="four-pill-grid mt-2">
+              <div class="fp-card fp-yellow">
+                <span class="fp-num">1. WHO</span>
+                <strong>Class 9 Student</strong>
+                <p>Calibrates language level</p>
+              </div>
+              <div class="fp-card fp-lime">
+                <span class="fp-num">2. GAP</span>
+                <strong>Confused about Inertia</strong>
+                <p>Targets the exact pain</p>
+              </div>
+              <div class="fp-card fp-cyan">
+                <span class="fp-num">3. HOW</span>
+                <strong>Cricket Bus Example</strong>
+                <p>Builds concrete intuition</p>
+              </div>
+              <div class="fp-card fp-pink">
+                <span class="fp-num">4. RULE</span>
+                <strong>Quiz Me First!</strong>
+                <p>Forces active recall</p>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🎯</span> <strong>TAKEAWAY:</strong> When you change how you ask, you completely change how you learn!
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 18: CRICKET TEST &bull; AI AS TUTOR -->
+        <div class="carousel-slide" data-index="17" data-section="40–65 MIN • PART 3: CHATGPT EXAM PARTNER" data-title="CRICKET TEST &bull; AI AS TUTOR">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">40–65 MIN • PART 3: CHATGPT EXAM PARTNER</span>
+                <span class="m-badge badge-navy">PART 18 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">CRICKET TEST <span class="title-sep">&bull;</span> AI AS TUTOR</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">SECOND ANALOGY</span>
+            <h2 class="slide-heading-standard">CAN AI EXPLAIN IT ANOTHER WAY?</h2>
+            <div class="prompt-box-editorial">
+              <code>“Now explain inertia using a cricket example. Give me a situation and ask what would happen.”</code>
+            </div>
+            <div class="twist-box mt-2">
+              <strong>AI asks us:</strong> If a cricket ball is rolling on an infinite frictionless glass pitch, when will it stop rolling?
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-yellow">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">THE COGNITIVE LOOP</span>
+              <span class="brutal-stamp stamp-tilt">ACTIVE RECALL</span>
+            </div>
+            <h2 class="poster-hero-heading">THE ACTIVE TUTOR EQUATION</h2>
+            <div class="flow-sequence-box mt-3" style="max-width: 850px; margin: 1.5rem auto;">
+              <div class="seq-step">AI EXPLAINS</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step highlight">YOU THINK</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step">AI QUESTIONS</div>
+              <div class="seq-arr">→</div>
+              <div class="seq-step highlight">YOU ANSWER</div>
+            </div>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-white">
+                <div class="contrast-header">WHO DID THE WORK?</div>
+                <p class="contrast-body">You read, you visualized, you predicted, and you verified. Your neurons fired!</p>
+              </div>
+              <div class="contrast-col col-lime">
+                <div class="contrast-header">WHO RETAINS THE KNOWLEDGE?</div>
+                <p class="contrast-body">YOU DO. Because effortful retrieval builds long-term synaptic memory.</p>
+              </div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 19: CATCH MY ANSWER &bull; THREE WAYS TO USE AI -->
+        <div class="carousel-slide" data-index="18" data-section="40–65 MIN • PART 3: CHATGPT EXAM PARTNER" data-title="CATCH MY ANSWER &bull; THREE WAYS TO USE AI">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">40–65 MIN • PART 3: CHATGPT EXAM PARTNER</span>
+                <span class="m-badge badge-navy">PART 19 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">CATCH MY ANSWER <span class="title-sep">&bull;</span> THREE WAYS TO USE AI</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="poster-slide-card poster-pink">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">AUDIENCE REFEREE TIME</span>
+              <span class="brutal-stamp stamp-tilt">SPOT THE FLAW</span>
+            </div>
+            <h2 class="poster-hero-heading">STUDENT ANSWERS: “THE BUS PUSHES THEM.”</h2>
+            <p class="slide-hero-sub text-center">Is this scientifically accurate? SHOUT YES OR NO!</p>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-bad">
+                <div class="contrast-header">❌ THE MISCONCEPTION</div>
+                <p class="contrast-body">“The bus pushed the passengers forward when braking.” — <strong>0 MARKS!</strong> There is no forward force acting on them!</p>
+              </div>
+              <div class="contrast-col col-good">
+                <div class="contrast-header">⚡ THE CORRECT PHYSICS</div>
+                <p class="contrast-body">“Due to <strong>inertia of motion</strong>, the upper body continues moving forward while feet stop with the bus.” — <strong>FULL 2/2 MARKS!</strong></p>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🎯</span> <strong>HOW AI HELPS:</strong> AI catches this exact keyword mistake before your board examiner does!
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-white">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-lime">MATURITY MODEL</span>
+              <span class="brutal-stamp">WHICH STUDENT ARE YOU?</span>
+            </div>
+            <h2 class="poster-hero-heading">THREE LEVELS OF USING AI</h2>
+            <div class="three-tools-deck mt-2">
+              <div class="deck-tool" style="background: #ffe4e6;">
+                <span class="tool-badge-pill pill-pink">LEVEL 1 &bull; ❌</span>
+                <h3>“GIVE ME THE ANSWER”</h3>
+                <p>Copy-pasting answers</p>
+                <div class="tool-sub-use">Retention: 0% &bull; Board score: Disaster</div>
+              </div>
+              <div class="deck-tool" style="background: #fefce8;">
+                <span class="tool-badge-pill pill-yellow">LEVEL 2 &bull; ⚠️</span>
+                <h3>“EXPLAIN IT TO ME”</h3>
+                <p>Watching someone else work out</p>
+                <div class="tool-sub-use">Retention: 25% &bull; Passive feeling of knowing</div>
+              </div>
+              <div class="deck-tool highlight" style="background: #dcfce7;">
+                <span class="tool-badge-pill pill-lime">LEVEL 3 &bull; ⚡</span>
+                <h3>“TEST ME & CHECK ME”</h3>
+                <p>Active sparring partner</p>
+                <div class="tool-sub-use">Retention: 90% &bull; Exam Confidence: TOP 1%</div>
+              </div>
+            </div>
+            <div class="mt-2 text-center">
+              <button type="button" class="btn btn-primary btn-sm" onclick="openSocraticSimulator()">
+                🤖 Launch Live Socratic AI Tutor Simulator
+              </button>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 20: MINI CHALLENGE &bull; UNDERSTANDING ≠ EXAM READY -->
+        <div class="carousel-slide" data-index="19" data-section="65–80 MIN • PART 4: GEMINI STUDY WORKFLOW" data-title="MINI CHALLENGE &bull; UNDERSTANDING ≠ EXAM READY">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">65–80 MIN • PART 4: GEMINI STUDY WORKFLOW</span>
+                <span class="m-badge badge-navy">PART 20 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">MINI CHALLENGE <span class="title-sep">&bull;</span> UNDERSTANDING ≠ EXAM READY</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box center-aligned">
+            <span class="slide-eyebrow">YOUR TURN • 30 SECONDS</span>
+            <h2 class="bad-prompt-large">“Explain electricity.”</h2>
+            <p class="slide-quote-sub">Build a 5-star prompt using WHO + WHAT + HOW + RULE!</p>
+            <div class="slide-action-pill mt-2">👉 STUDENT TO THE MICROPHONE!</div>
+
+            <!-- Stage 30-Second Countdown Timer Widget -->
+            <div class="stage-countdown-widget mt-2" id="stageCountdownWidget">
+              <div class="countdown-bar-wrap">
+                <div class="countdown-progress-bar" id="countdownProgressBar" style="width: 100%;"></div>
+              </div>
+              <div class="countdown-controls-row">
+                <span class="countdown-digital" id="countdownDigital">⏱️ 30s</span>
+                <button type="button" class="btn btn-primary btn-xs" id="countdownStartBtn" onclick="toggleStageCountdown(30)">▶️ Start Timer</button>
+                <button type="button" class="btn btn-outline btn-xs" onclick="resetStageCountdown(30)">↺ Reset</button>
+              </div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-yellow">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">MODULE 5 &bull; THE EXAM GAP</span>
+              <span class="brutal-stamp stamp-tilt">BRUTAL TRUTH</span>
+            </div>
+            <h2 class="poster-hero-heading">“I UNDERSTAND IT.”<br><mark class="poster-highlight">DOES THAT MEAN YOU GET FULL MARKS?</mark></h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-white">
+                <div class="contrast-header">🧠 IN YOUR HEAD</div>
+                <p class="contrast-body">“I know what inertia is. It's when things keep going.”<br><em>(Feels good, but worth 0.5 marks!)</em></p>
+              </div>
+              <div class="contrast-col col-good">
+                <div class="contrast-header">📝 ON THE EXAM PAPER</div>
+                <p class="contrast-body">Requires 3 explicit elements: <strong>Definition + Unbalanced Force + SI Unit / Formula</strong>.<br><em>(Earns full 3/3 marks!)</em></p>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🎯</span> <strong>BOARD EXAM REALITY:</strong> Examiners don't grade what you meant. They grade the scientific keywords on paper!
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 21: BUILD A TEST &bull; STUDENT ANSWERS LIVE -->
+        <div class="carousel-slide" data-index="20" data-section="65–80 MIN • PART 4: GEMINI STUDY WORKFLOW" data-title="BUILD A TEST &bull; STUDENT ANSWERS LIVE">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">65–80 MIN • PART 4: GEMINI STUDY WORKFLOW</span>
+                <span class="m-badge badge-navy">PART 21 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">BUILD A TEST <span class="title-sep">&bull;</span> STUDENT ANSWERS LIVE</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">EXAMINER MODE</span>
+            <h2 class="slide-heading-standard">LET AI BECOME YOUR EXAMINER.</h2>
+            <div class="demo-prompt-card">
+              <pre><code>I am preparing for Karnataka Board Class 9 Science.
+Create five 2-mark and 3-mark questions testing understanding of Inertia rather than memorisation.
+Ask me one question at a time.
+Do not show the answer until I respond.</code></pre>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-cyan">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">3-MARK BOARD QUESTION</span>
+              <span class="brutal-stamp">LIVE VOLUNTEER</span>
+            </div>
+            <h2 class="poster-hero-heading">“WHY CANNOT ATHLETES STOP IMMEDIATELY AFTER THE FINISH LINE?”</h2>
+            <div class="prompt-box-editorial mt-2">
+              <code>STUDENT VOLUNTEER PROMPT: “Grade this answer out of 3 marks based on Karnataka Board criteria: 'The athlete was running fast so their speed carries them across.' What marks did I lose?”</code>
+            </div>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-bad">
+                <div class="contrast-header">LOST MARKS (-2)</div>
+                <p class="contrast-body">Missing term: <strong>“Inertia of motion”</strong><br>Missing law: <strong>Newton's First Law reference</strong></p>
+              </div>
+              <div class="contrast-col col-good">
+                <div class="contrast-header">AI COACHING INSTANT FEEDBACK</div>
+                <p class="contrast-body">“1/3 Marks. You captured the idea, but board key mandates mentioning inertia of motion resisting change in velocity.”</p>
+              </div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 22: CHECK MY ANSWER &bull; WRONG ANSWERS ARE USEFUL -->
+        <div class="carousel-slide" data-index="21" data-section="65–80 MIN • PART 4: GEMINI STUDY WORKFLOW" data-title="CHECK MY ANSWER &bull; WRONG ANSWERS ARE USEFUL">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">65–80 MIN • PART 4: GEMINI STUDY WORKFLOW</span>
+                <span class="m-badge badge-navy">PART 22 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">CHECK MY ANSWER <span class="title-sep">&bull;</span> WRONG ANSWERS ARE USEFUL</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">STRICT EVALUATION</span>
+            <h2 class="slide-heading-standard">THE STRICT BOARD EXAMINER PROMPT:</h2>
+            <div class="demo-prompt-card">
+              <pre><code>Here is my answer. Grade it like a strict Karnataka Board examiner out of 2 marks.
+Tell me:
+1. Marks awarded
+2. Missing scientific keywords
+3. A hint to improve my answer myself.</code></pre>
+            </div>
+            <div class="slide-bottom-note">Score: 1/2 Marks. Flagged missing keyword: “Inertia of motion”.</div>
+            <div class="mt-2">
+              <button type="button" class="btn btn-primary btn-sm" onclick="openSocraticSimulator()">
+                ⚡ Test This Prompt with Live AI Simulator
+              </button>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-lime">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">REFRAMING FAILURE</span>
+              <span class="brutal-stamp stamp-tilt">NO SHAME</span>
+            </div>
+            <h2 class="poster-hero-heading">A WRONG ANSWER TODAY = FULL MARKS IN EXAM.</h2>
+            <div class="four-pill-grid mt-2">
+              <div class="fp-card fp-pink">
+                <span class="fp-num">STEP 1</span>
+                <strong>MISTAKE</strong>
+                <p>Make it in private with AI</p>
+              </div>
+              <div class="fp-card fp-yellow">
+                <span class="fp-num">STEP 2</span>
+                <strong>DIAGNOSIS</strong>
+                <p>AI spots the exact missing keyword</p>
+              </div>
+              <div class="fp-card fp-cyan">
+                <span class="fp-num">STEP 3</span>
+                <strong>CORRECTION</strong>
+                <p>Rewrite once in your own words</p>
+              </div>
+              <div class="fp-card fp-lime">
+                <span class="fp-num">STEP 4</span>
+                <strong>100% LOCK</strong>
+                <p>You will NEVER forget it on exam day</p>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🛡️</span> <strong>SAFE ZONE:</strong> AI has zero ego and never judges you. Make all your mistakes here!
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 23: THE REVISION FLYWHEEL &bull; MINI GAME: WHO IS PRACTISING? -->
+        <div class="carousel-slide" data-index="22" data-section="65–80 MIN • PART 4: GEMINI STUDY WORKFLOW" data-title="THE REVISION FLYWHEEL &bull; MINI GAME: WHO IS PRACTISING?">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">65–80 MIN • PART 4: GEMINI STUDY WORKFLOW</span>
+                <span class="m-badge badge-navy">PART 23 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">THE REVISION FLYWHEEL <span class="title-sep">&bull;</span> MINI GAME: WHO IS PRACTISING?</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box center-aligned">
+            <span class="slide-eyebrow">THE FLYWHEEL</span>
+            <h2 class="slide-heading-standard">THE REVISION LOOP:</h2>
+            <div class="flow-sequence-box mt-3" style="max-width: 720px; margin: 1.5rem auto;">
+              <div class="seq-step">STUDY</div>
+              <div class="seq-arr">&rarr;</div>
+              <div class="seq-step">TRY</div>
+              <div class="seq-arr">&rarr;</div>
+              <div class="seq-step">FEEDBACK</div>
+              <div class="seq-arr">&rarr;</div>
+              <div class="seq-step">FIX</div>
+              <div class="seq-arr">&rarr;</div>
+              <div class="seq-step highlight">TRY AGAIN</div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">BEHAVIOR AUDIT</span>
+            <h2 class="slide-heading-standard">WHICH STUDENT IS ACTUALLY PRACTISING?</h2>
+            <div class="options-grid">
+              <div class="option-card"><span class="opt-letter">A</span> Reads AI's beautifully formatted answer 5 times.</div>
+              <div class="option-card"><span class="opt-letter">B</span> Copies AI's answer with 4 coloured pens.</div>
+              <div class="option-card highlight"><span class="opt-letter">C</span> Writes answer &rarr; gets 1/2 marks &rarr; rewrites with keywords.</div>
+              <div class="option-card"><span class="opt-letter">D</span> Uses AI to write homework while watching reels.</div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 24: EXAM TOMORROW &bull; WHAT IF AI HAD YOUR MATERIAL? -->
+        <div class="carousel-slide" data-index="23" data-section="80–105 MIN • PART 5: NOTEBOOKLM STUDY MATERIAL" data-title="EXAM TOMORROW &bull; WHAT IF AI HAD YOUR MATERIAL?">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">80–105 MIN • PART 5: NOTEBOOKLM STUDY MATERIAL</span>
+                <span class="m-badge badge-navy">PART 24 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">EXAM TOMORROW <span class="title-sep">&bull;</span> WHAT IF AI HAD YOUR MATERIAL?</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="poster-slide-card poster-pink">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">EMERGENCY PROTOCOL</span>
+              <span class="brutal-stamp stamp-tilt">PANIC NO MORE</span>
+            </div>
+            <h2 class="poster-hero-heading">EXAM TOMORROW. 3 CHAPTERS. 2 HOURS.</h2>
+            <div class="four-pill-grid mt-2">
+              <div class="fp-card fp-yellow">
+                <span class="fp-num">00–30 MIN</span>
+                <strong>PRIORITISE</strong>
+                <p>“List the top 5 high-yield 3-mark & 5-mark topics for Karnataka Board.”</p>
+              </div>
+              <div class="fp-card fp-cyan">
+                <span class="fp-num">30–60 MIN</span>
+                <strong>ACTIVE RECALL</strong>
+                <p>“Quiz me 1 question at a time. Do not reveal answer until I reply.”</p>
+              </div>
+              <div class="fp-card fp-lime">
+                <span class="fp-num">60–90 MIN</span>
+                <strong>DIAGRAM AUDIT</strong>
+                <p>“Give step-by-step ray tracing checklist for convex lens.”</p>
+              </div>
+              <div class="fp-card fp-purple">
+                <span class="fp-num">90–120 MIN</span>
+                <strong>FORMULA LOCK</strong>
+                <p>“Test me on units, sign conventions & definitions only.”</p>
+              </div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-cyan">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">MODULE 6 &bull; GROUNDING</span>
+              <span class="brutal-stamp stamp-tilt">ENTER NOTEBOOKLM</span>
+            </div>
+            <h2 class="poster-hero-heading">WHAT IF AI ONLY KNEW <mark class="poster-highlight">YOUR EXACT TEXTBOOK?</mark></h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-bad">
+                <div class="contrast-header">🌐 REGULAR CHATGPT / INTERNET AI</div>
+                <p class="contrast-body">Trained on the entire internet. Might bring CBSE, ICSE, or American syllabus terms you don't need!</p>
+              </div>
+              <div class="contrast-col col-good">
+                <div class="contrast-header">🔒 NOTEBOOKLM GROUNDING</div>
+                <p class="contrast-body">Locked inside your uploaded Karnataka State Board Science PDF. 100% syllabus accuracy with verifiable page citations!</p>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🎯</span> <strong>ZERO HALLUCINATIONS:</strong> It answers only from what your teacher will test you on.
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 25: NOTEBOOKLM ARCHITECTURE &bull; LIVE NOTEBOOKLM DEMO -->
+        <div class="carousel-slide" data-index="24" data-section="80–105 MIN • PART 5: NOTEBOOKLM STUDY MATERIAL" data-title="NOTEBOOKLM ARCHITECTURE &bull; LIVE NOTEBOOKLM DEMO">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">80–105 MIN • PART 5: NOTEBOOKLM STUDY MATERIAL</span>
+                <span class="m-badge badge-navy">PART 25 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">NOTEBOOKLM ARCHITECTURE <span class="title-sep">&bull;</span> LIVE NOTEBOOKLM DEMO</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">YOUR SYLLABUS VAULT</span>
+            <h2 class="slide-heading-standard">YOUR MATERIAL. YOUR QUESTIONS. YOUR LEARNING.</h2>
+            <div class="flow-sequence-box mt-2" style="max-width: 750px; margin: 1rem auto;">
+              <div class="seq-step">PDF SOURCE</div>
+              <div class="seq-arr">&rarr;</div>
+              <div class="seq-step">KEY CONCEPTS</div>
+              <div class="seq-arr">&rarr;</div>
+              <div class="seq-step">REVISION</div>
+              <div class="seq-arr">&rarr;</div>
+              <div class="seq-step highlight">EXAM QUIZ</div>
+            </div>
+            <div class="slide-bottom-note">Zero hallucinations. 100% inside your board syllabus.</div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">LIVE EXTRACTION</span>
+            <h2 class="slide-heading-standard">EXTRACTING KEY EXAM CONCEPTS</h2>
+            <div class="demo-prompt-card">
+              <pre><code>Based ONLY on the uploaded Karnataka Board study material:
+Identify the 3 key concepts most likely to be asked in board exams.
+Explain each briefly in simple language with citations.</code></pre>
+            </div>
+            <div class="slide-bottom-note">Ask: What would you normally do with 30 pages of notes?</div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 26: FIND THE DIFFICULT PART &bull; MAKE A REVISION SHEET -->
+        <div class="carousel-slide" data-index="25" data-section="80–105 MIN • PART 5: NOTEBOOKLM STUDY MATERIAL" data-title="FIND THE DIFFICULT PART &bull; MAKE A REVISION SHEET">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">80–105 MIN • PART 5: NOTEBOOKLM STUDY MATERIAL</span>
+                <span class="m-badge badge-navy">PART 26 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">FIND THE DIFFICULT PART <span class="title-sep">&bull;</span> MAKE A REVISION SHEET</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">GROUNDED SIMPLIFICATION</span>
+            <h2 class="slide-heading-standard">DEEP-DIVE INTO CONFUSING SECTIONS</h2>
+            <div class="demo-prompt-card">
+              <pre><code>I don't understand the section on Action & Reaction forces on Page 112.
+Explain it using a skateboard analogy, staying 100% faithful to the textbook terminology.</code></pre>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">AUTOMATED REVISION</span>
+            <h2 class="slide-heading-standard">CREATE A 1-PAGE BOARD REVISION SHEET</h2>
+            <div class="demo-prompt-card">
+              <pre><code>Using ONLY the material provided, create a concise revision sheet containing:
+1. Core definitions
+2. Key formulas & SI units
+3. Five questions I must be able to answer before tomorrow's exam.</code></pre>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 27: QUIZ MY MATERIAL &bull; THE TERRIBLE PROMPT -->
+        <div class="carousel-slide" data-index="26" data-section="80–105 MIN • PART 5: NOTEBOOKLM STUDY MATERIAL" data-title="QUIZ MY MATERIAL &bull; THE TERRIBLE PROMPT">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">80–105 MIN • PART 5: NOTEBOOKLM STUDY MATERIAL</span>
+                <span class="m-badge badge-navy">PART 27 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">QUIZ MY MATERIAL <span class="title-sep">&bull;</span> THE TERRIBLE PROMPT</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box center-aligned">
+            <span class="slide-eyebrow">WOULD YOU RATHER?</span>
+            <h2 class="slide-question-hero">WOULD YOU RATHER...</h2>
+            <div class="wyr-grid">
+              <div class="wyr-card">📖 Re-read 20 textbook pages for the 4th time</div>
+              <div class="wyr-or">OR</div>
+              <div class="wyr-card highlight">🤖 Let NotebookLM quiz you with exact page citations?</div>
+            </div>
+            <div class="twist-box mt-2">
+              <strong>“Good. Your textbook just became an examiner!”</strong>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box center-aligned">
+            <span class="slide-eyebrow">MODULE 7 • PROMPTING</span>
+            <h2 class="bad-prompt-large">“Explain electricity.”</h2>
+            <h3 class="vote-prompt mt-2">WHAT'S WRONG WITH THIS PROMPT?</h3>
+            <p class="slide-quote-sub">Too broad • No class • No problem • No desired format • No testing rule</p>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 28: PROMPT UPGRADE &bull; THE 5-PART MASTER FORMULA -->
+        <div class="carousel-slide" data-index="27" data-section="80–105 MIN • PART 5: NOTEBOOKLM STUDY MATERIAL" data-title="PROMPT UPGRADE &bull; THE 5-PART MASTER FORMULA">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">80–105 MIN • PART 5: NOTEBOOKLM STUDY MATERIAL</span>
+                <span class="m-badge badge-navy">PART 28 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">PROMPT UPGRADE <span class="title-sep">&bull;</span> THE 5-PART MASTER FORMULA</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="poster-slide-card poster-yellow">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">PROMPT MASTERY</span>
+              <span class="brutal-stamp">THE 5-LEVEL STAIRCASE</span>
+            </div>
+            <h2 class="poster-hero-heading">WATCH A PROMPT GROW UP: ELECTRICITY</h2>
+            <div class="staircase-grid mt-2">
+              <div class="stair-step"><span class="s-level s-red">L1</span> “Explain electricity.” <em>(Too generic)</em></div>
+              <div class="stair-step"><span class="s-level s-orange">L2</span> “Explain electricity for a Class 10 student.” <em>(Better)</em></div>
+              <div class="stair-step"><span class="s-level s-yellow">L3</span> “...in simple words using a water pipe analogy.” <em>(Clear intuition)</em></div>
+              <div class="stair-step"><span class="s-level s-cyan">L4</span> “...and give me 2 exam practice questions on Ohm's Law.” <em>(Active)</em></div>
+              <div class="stair-step stair-highlight"><span class="s-level s-green">L5</span> “...ask questions ONE BY ONE and grade my answers against board criteria!” <em>(God Mode ⚡)</em></div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-white">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-lime">THE GENIUSPHERE BLUEPRINT</span>
+              <span class="brutal-stamp stamp-tilt">SAVE THIS</span>
+            </div>
+            <h2 class="poster-hero-heading">THE 5-PART PROMPT FORMULA</h2>
+            <div class="five-blocks-row mt-2">
+              <div class="f-block fb-yellow"><strong>1. WHO</strong> Class 10 Board Student</div>
+              <div class="f-block fb-cyan"><strong>2. WHAT</strong> Specific Concept Gap</div>
+              <div class="f-block fb-lime"><strong>3. CONTEXT</strong> 3-Mark Question Prep</div>
+              <div class="f-block fb-orange"><strong>4. HOW</strong> Real-Life Analogy</div>
+              <div class="f-block fb-pink"><strong>5. RULE</strong> Quiz Me First!</div>
+            </div>
+            <div class="prompt-box-editorial mt-2">
+              <code>“I am a Class 10 Karnataka Board student [WHO]. I am confused about Electric Potential Difference [WHAT]. Explain with a water pump analogy [HOW] for a 3-mark question [CONTEXT]. Then quiz me one question at a time [RULE].”</code>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 29: TEACHER ANALOGY REVISITED &bull; PROMPT BATTLE ⚔️ -->
+        <div class="carousel-slide" data-index="28" data-section="105–115 MIN • PART 6: PROMPTING IN 10 MIN" data-title="TEACHER ANALOGY REVISITED &bull; PROMPT BATTLE ⚔️">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">105–115 MIN • PART 6: PROMPTING IN 10 MIN</span>
+                <span class="m-badge badge-navy">PART 29 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">TEACHER ANALOGY REVISITED <span class="title-sep">&bull;</span> PROMPT BATTLE ⚔️</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="poster-slide-card poster-lime">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">PROMPT WISDOM</span>
+              <span class="brutal-stamp">THE GOLDEN RULE</span>
+            </div>
+            <h2 class="poster-hero-heading">“BETTER QUESTIONS CREATE BETTER LEARNING.”</h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-white">
+                <div class="contrast-header">STUDENT WALKS UP TO TEACHER:</div>
+                <p class="contrast-body">“Sir, teach me Physics.”<br><em>Teacher has no idea where to start!</em></p>
+              </div>
+              <div class="contrast-col col-yellow">
+                <div class="contrast-header">STUDENT ASKS PRECISELY:</div>
+                <p class="contrast-body">“Sir, I understand potential difference, but why does resistance increase with wire length?”<br><em>Teacher gives a 60-second breakthrough explanation!</em></p>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🎯</span> <strong>AI IS THE SAME:</strong> Treat AI like a brilliant teacher standing in front of you. Give it context!
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-pink">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">AUDIENCE BATTLE &bull; 45 SECONDS</span>
+              <span class="brutal-stamp stamp-tilt">ARENA TIME</span>
+            </div>
+            <h2 class="poster-hero-heading">PROMPT BATTLE ⚔️: LEFT WING VS RIGHT WING!</h2>
+            <p class="slide-hero-sub text-center">Topic: <strong>“Refraction through a Glass Slab & Lateral Displacement”</strong></p>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-white">
+                <div class="contrast-header">🔵 LEFT WING AUDIENCE</div>
+                <p class="contrast-body">Craft a prompt that commands AI to explain with a car-moving-from-road-to-mud analogy.</p>
+              </div>
+              <div class="contrast-col col-yellow">
+                <div class="contrast-header">🔴 RIGHT WING AUDIENCE</div>
+                <p class="contrast-body">Craft a prompt that commands AI to quiz you with ray-tracing ray angles and normal lines.</p>
+              </div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 30: CONTROL THE CONVERSATION &bull; CHECK MY WORK RULE -->
+        <div class="carousel-slide" data-index="29" data-section="105–115 MIN • PART 6: PROMPTING IN 10 MIN" data-title="CONTROL THE CONVERSATION &bull; CHECK MY WORK RULE">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">105–115 MIN • PART 6: PROMPTING IN 10 MIN</span>
+                <span class="m-badge badge-navy">PART 30 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">CONTROL THE CONVERSATION <span class="title-sep">&bull;</span> CHECK MY WORK RULE</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">META-PROMPTING</span>
+            <h2 class="slide-heading-standard">DESIGNING YOUR LEARNING PROCESS</h2>
+            <div class="demo-prompt-card">
+              <pre><code>I'm preparing for my Science exam.
+Quiz me on this topic one question at a time.
+Do not give me the answer before I respond.
+If I get it right, make the next question harder.
+If I get it wrong, explain the mistake and give me a similar question to try again.</code></pre>
+            </div>
+            <div class="slide-bottom-note">You are designing your own adaptive learning coach.</div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-yellow">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">ACADEMIC INTEGRITY</span>
+              <span class="brutal-stamp stamp-tilt">MANDATORY RULE</span>
+            </div>
+            <h2 class="poster-hero-heading">“CHECK MY REASONING, DO NOT REWRITE MY ANSWER.”</h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-bad">
+                <div class="contrast-header">❌ WHY REWRITING KILLS LEARNING:</div>
+                <p class="contrast-body">When AI writes fancy 10th-grade English sentences for you, your brain feels satisfied without building any vocabulary or writing skill.</p>
+              </div>
+              <div class="contrast-col col-good">
+                <div class="contrast-header">⚡ WHAT YOU MUST ASK INSTEAD:</div>
+                <p class="contrast-body"><code>“Point out the 2 scientific keywords I missed, but let ME rewrite the sentence myself.”</code></p>
+              </div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 31: CAN YOU TRUST AI? &bull; CONFIDENT ≠ CORRECT -->
+        <div class="carousel-slide" data-index="30" data-section="105–115 MIN • PART 6: PROMPTING IN 10 MIN" data-title="CAN YOU TRUST AI? &bull; CONFIDENT ≠ CORRECT">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">105–115 MIN • PART 6: PROMPTING IN 10 MIN</span>
+                <span class="m-badge badge-navy">PART 31 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">CAN YOU TRUST AI? <span class="title-sep">&bull;</span> CONFIDENT ≠ CORRECT</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="poster-slide-card poster-white">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-lime">MODULE 8 &bull; AI MISTAKES</span>
+              <span class="brutal-stamp">AUDIENCE VOTE</span>
+            </div>
+            <h2 class="poster-hero-heading">CAN YOU TRUST AI FOR BOARD EXAMS?</h2>
+            <div class="vote-grid-large mt-3">
+              <div class="vote-option vo-green">
+                <span class="vo-letter">A</span>
+                <span class="vo-label">YES!</span>
+                <p>“It's smarter than everyone.”</p>
+              </div>
+              <div class="vote-option vo-red">
+                <span class="vo-letter">B</span>
+                <span class="vo-label">NO!</span>
+                <p>“It lies all the time.”</p>
+              </div>
+              <div class="vote-option vo-yellow vo-winner">
+                <span class="vo-letter">C</span>
+                <span class="vo-label">IT DEPENDS! ⚡</span>
+                <p>“Trust, but verify with your textbook!”</p>
+              </div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-pink">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">CRITICAL PUNCHLINE</span>
+              <span class="brutal-stamp stamp-tilt">WATCH OUT</span>
+            </div>
+            <h2 class="poster-hero-heading">CONFIDENT <mark class="poster-highlight">DOES NOT MEAN CORRECT.</mark></h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-white">
+                <div class="contrast-header">🎭 HOW AI SOUNDS:</div>
+                <p class="contrast-body">Like a Harvard professor wearing a lab coat. Flawless grammar, perfectly confident tone, zero hesitation!</p>
+              </div>
+              <div class="contrast-col col-yellow">
+                <div class="contrast-header">⚠️ WHAT MIGHT ACTUALLY BE HAPPENING:</div>
+                <p class="contrast-body">It could be hallucinating a formula or mixing up an exception in the periodic table! You must always check.</p>
+              </div>
+            </div>
+            <div class="poster-footer-strip mt-2">
+              <span class="strip-icon">🛡️</span> <strong>REMEMBER:</strong> In board exam evaluations, writing a confident hallucination gets you 0 marks.
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 32: CATCH THE AI &bull; PART 7: 5 RESPONSIBLE AI RULES -->
+        <div class="carousel-slide" data-index="31" data-section="115–120 MIN • PART 7: RESPONSIBLE AI & LAB" data-title="CATCH THE AI &bull; PART 7: 5 RESPONSIBLE AI RULES">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">115–120 MIN • PART 7: RESPONSIBLE AI & LAB</span>
+                <span class="m-badge badge-navy">PART 32 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">CATCH THE AI <span class="title-sep">&bull;</span> PART 7: 5 RESPONSIBLE AI RULES</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="poster-slide-card poster-cyan">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">DETECTIVE CHALLENGE</span>
+              <span class="brutal-stamp stamp-tilt">SPOT THE BLUNDER</span>
+            </div>
+            <h2 class="poster-hero-heading">SPOT THE SCIENTIFIC ERROR ON SCREEN:</h2>
+            <div class="prompt-box-editorial mt-2">
+              <code>Q: “Do desert plants take up Carbon Dioxide during daytime?”<br>AI SAYS: “Yes! Desert plants open stomata at noon to take in CO2 for photosynthesis.”</code>
+            </div>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-bad">
+                <div class="contrast-header">❌ THE ERROR</div>
+                <p class="contrast-body">If desert plants open stomata at noon, they would lose all water through transpiration and die!</p>
+              </div>
+              <div class="contrast-col col-good">
+                <div class="contrast-header">⚡ THE REAL BIOLOGY (PAGE 96)</div>
+                <p class="contrast-body">Desert plants open stomata at <strong>NIGHT</strong> to absorb CO2 and store it as an intermediate!</p>
+              </div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-yellow">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">PART 7 &bull; 115–120 MIN</span>
+              <span class="brutal-stamp">5 RESPONSIBLE AI RULES</span>
+            </div>
+            <h2 class="poster-hero-heading" style="font-size: 1.35rem;">THE 5 RULES OF STUDYING WITH AI</h2>
+            <div class="bullet-list-editorial mt-2">
+              <div class="bullet-item"><strong style="color: var(--bx-rose);">1. AI CAN BE WRONG:</strong> It generates plausible text, not guaranteed ground truth.</div>
+              <div class="bullet-item"><strong style="color: var(--bx-amber);">2. DON'T BLINDLY COPY:</strong> Copying creates zero synaptic retention for exam day.</div>
+              <div class="bullet-item"><strong style="color: var(--bx-cyan);">3. VERIFY WITH TEXTBOOK:</strong> Always cross-check numbers, formulas & ray diagrams with your official board book.</div>
+              <div class="bullet-item"><strong style="color: var(--bx-emerald);">4. ANSWER YOURSELF FIRST:</strong> Try answering before asking AI for hints. Effortful retrieval builds memory.</div>
+              <div class="bullet-item highlight"><strong style="color: #a78bfa;">5. PRIVACY SHIELD:</strong> Never type passwords, OTPs, Aadhaar numbers, or personal secrets into AI prompts.</div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 33: STOP. CHECK. THINK. &bull; RESPONSIBLE AI: FIVE RULES -->
+        <div class="carousel-slide" data-index="32" data-section="115–120 MIN • PART 7: RESPONSIBLE AI & LAB" data-title="STOP. CHECK. THINK. &bull; RESPONSIBLE AI: FIVE RULES">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">115–120 MIN • PART 7: RESPONSIBLE AI & LAB</span>
+                <span class="m-badge badge-navy">PART 33 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">STOP. CHECK. THINK. <span class="title-sep">&bull;</span> RESPONSIBLE AI: FIVE RULES</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="poster-slide-card poster-white">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-lime">THE 3-STEP PROTOCOL</span>
+              <span class="brutal-stamp stamp-tilt">SURVIVAL KIT</span>
+            </div>
+            <h2 class="poster-hero-heading">THE VERIFICATION PROTOCOL</h2>
+            <div class="traffic-light-grid mt-3">
+              <div class="tl-card tl-red">
+                <span class="tl-icon">🔴</span>
+                <h3>STOP</h3>
+                <p>Never blindly copy AI output directly into homework or exam prep notes.</p>
+              </div>
+              <div class="tl-card tl-yellow">
+                <span class="tl-icon">🟡</span>
+                <h3>CHECK</h3>
+                <p>Cross-verify against your Karnataka State Board approved textbook & syllabus.</p>
+              </div>
+              <div class="tl-card tl-green">
+                <span class="tl-icon">🟢</span>
+                <h3>THINK</h3>
+                <p>Close the laptop screen. Can you explain the concept out loud in your own words?</p>
+              </div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">ACADEMIC INTEGRITY</span>
+            <h2 class="slide-heading-standard">FIVE RULES FOR REAL STUDENTS:</h2>
+            <div class="bullet-list-editorial">
+              <div class="bullet-item"><strong>01. TRY FIRST:</strong> Always attempt before asking AI</div>
+              <div class="bullet-item"><strong>02. DON'T COPY:</strong> Write answers in your own words</div>
+              <div class="bullet-item"><strong>03. VERIFY FACTS:</strong> Always ground in your textbook</div>
+              <div class="bullet-item"><strong>04. PROTECT PRIVACY:</strong> Never upload personal info</div>
+              <div class="bullet-item highlight"><strong>05. USE TO LEARN:</strong> AI is a sparring partner, not a cheat code</div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 34: YOUR MISSION &bull; THE 5 LAB STEPS -->
+        <div class="carousel-slide" data-index="33" data-section="115–120 MIN • PART 7: RESPONSIBLE AI & LAB" data-title="YOUR MISSION &bull; THE 5 LAB STEPS">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">115–120 MIN • PART 7: RESPONSIBLE AI & LAB</span>
+                <span class="m-badge badge-navy">PART 34 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">YOUR MISSION <span class="title-sep">&bull;</span> THE 5 LAB STEPS</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="poster-slide-card poster-lime">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-pink">MODULE 9 &bull; COMPUTER LAB</span>
+              <span class="brutal-stamp stamp-tilt">ACTION TIME</span>
+            </div>
+            <h2 class="poster-hero-heading">🚨 YOUR LAB MISSION: <mark class="poster-highlight">CONQUER THE CHAPTER YOU HATE!</mark></h2>
+            <p class="slide-hero-sub text-center">That one chapter you keep telling your parents you'll study tomorrow. 😂 Pick it now:</p>
+            <div class="four-pill-grid mt-2">
+              <div class="fp-card fp-yellow"><strong>Physics</strong> Force & Laws of Motion</div>
+              <div class="fp-card fp-cyan"><strong>Physics</strong> Light & Ray Optics</div>
+              <div class="fp-card fp-lime"><strong>Chemistry</strong> Chemical Reactions & Equations</div>
+              <div class="fp-card fp-pink"><strong>Biology</strong> Life Processes & Respiration</div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-yellow">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-cyan">WORKFLOW GUIDE</span>
+              <span class="brutal-stamp">60 MINUTES</span>
+            </div>
+            <h2 class="poster-hero-heading">THE 5 STEPS TO LAB VICTORY:</h2>
+            <div class="five-blocks-row mt-2">
+              <div class="f-block fb-white"><strong>1. EXPLAIN</strong> Command AI to give an analogy</div>
+              <div class="f-block fb-lime"><strong>2. QUIZ</strong> Command AI to test you 1 question</div>
+              <div class="f-block fb-cyan"><strong>3. ANSWER</strong> Type answer in your own words</div>
+              <div class="f-block fb-pink"><strong>4. CHECK</strong> Check keywords against board criteria</div>
+              <div class="f-block fb-purple"><strong>5. LOCK</strong> Save your completed summary report</div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 35: LAB RULES &bull; ENOUGH WATCHING -->
+        <div class="carousel-slide" data-index="34" data-section="115–120 MIN • PART 7: RESPONSIBLE AI & LAB" data-title="LAB RULES &bull; ENOUGH WATCHING">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">115–120 MIN • PART 7: RESPONSIBLE AI & LAB</span>
+                <span class="m-badge badge-navy">PART 35 OF 36</span>
+              </div>
+              <h2 class="m-slide-title">LAB RULES <span class="title-sep">&bull;</span> ENOUGH WATCHING</h2>
+            </div>
+            
+            <div class="merged-slide-grid">
+              <div class="m-panel panel-left">
+                <div class="slide-content-box">
+            <span class="slide-eyebrow">LAB INTEGRITY</span>
+            <h2 class="slide-heading-standard">BEFORE YOU START IN THE LAB:</h2>
+            <div class="bullet-list-editorial">
+              <div class="bullet-item">✓ You MUST type your answer before viewing AI solutions</div>
+              <div class="bullet-item">✓ Write in your own words (no copying)</div>
+              <div class="bullet-item">✓ Use NotebookLM for textbook verification</div>
+              <div class="bullet-item">✓ Timer is set for 60 Minutes</div>
+            </div>
+          </div>
+              </div>
+              <div class="m-panel panel-right">
+                <div class="poster-slide-card poster-pink">
+            <div class="poster-badge-row">
+              <span class="brutal-sticker sticker-yellow">THE WORKSHOP SHIFT</span>
+              <span class="brutal-stamp stamp-tilt">HANDS ON KEYBOARD</span>
+            </div>
+            <h2 class="poster-hero-heading" style="font-size: 1.6rem;">AUDITORIUM: I TEACH.<br><mark class="poster-highlight">COMPUTER LAB: YOU DO!</mark></h2>
+            <div class="poster-contrast-grid mt-2">
+              <div class="contrast-col col-white">
+                <div class="contrast-header">⏰ 60-MINUTE COMPUTER LAB</div>
+                <p class="contrast-body">The auditorium taught the 6 skills. Now you execute them on your own Karnataka Board chapters!</p>
+              </div>
+              <div class="contrast-col col-yellow">
+                <div class="contrast-header">🏆 7 HANDS-ON MISSIONS</div>
+                <p class="contrast-body">Complete the 7 lab missions in pairs and export your personalized AI Exam Study Dossier.</p>
+              </div>
+            </div>
+            <div class="text-center mt-3">
+              <button type="button" class="btn btn-large btn-primary" onclick="switchMainMode('lab')">
+                🧪 LAUNCH STUDENT COMPUTER LAB WORKSPACE &rarr;
+              </button>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERGED SLIDE 36: CLOSING QUOTE -->
+        <div class="carousel-slide" data-index="35" data-section="115–120 MIN • PART 7: RESPONSIBLE AI & LAB" data-title="CLOSING QUOTE">
+          <div class="merged-slide-container">
+            <div class="merged-slide-header">
+              <div class="m-badge-group">
+                <span class="m-badge badge-gradient">115–120 MIN • PART 7: RESPONSIBLE AI & LAB</span>
+                <span class="m-badge badge-navy">PART 36 OF 36 &bull; FINALE</span>
+              </div>
+              <h2 class="m-slide-title">CLOSING QUOTE</h2>
+            </div>
+            <div class="merged-slide-single">
+              <div class="slide-content-box center-aligned">
+            <span class="slide-eyebrow">GENIUSPHERE PHILOSOPHY</span>
+            <blockquote class="slide-blockquote">
+              “The smartest student isn't the one who knows everything. It's the one who knows how to learn.”
+            </blockquote>
+            <p class="slide-quote-sub">Don't use AI to avoid thinking. Use AI to think better.</p>
+            <div class="slide-footer-tag mt-3">GENIUSPHERE AI EXAM LAB &bull; BANGALORE</div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Click Arrow: Right (Next Slide) -->
+      <button type="button" class="carousel-nav-btn next-arrow" id="deckNextBtn" onclick="nextSlide()" aria-label="Next Slide">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+    </div>
+
+    <!-- CAROUSEL BOTTOM DOTS TRACKER (30 SLIDES) -->
+    <div class="deck-bottom-bar">
+      <div class="carousel-dots-tracker" id="carouselDotsTracker">
+        <!-- Injected dynamically by JS -->
+      </div>
+    </div>
+
+    <!-- PRESENTER SCRIPT DRAWER (TOGGLEABLE) -->
+    <div class="presenter-script-drawer" id="presenterDrawer" style="display: none;">
+      <div class="drawer-header">
+        <span class="drawer-title">🎤 Presenter Stage Script & Attention Loop Cues</span>
+        <button type="button" class="drawer-close-btn" onclick="togglePresenterScript()">✕ Close Drawer</button>
+      </div>
+      <div class="drawer-body" id="drawerScriptContent">
+        <!-- Injected dynamically by JS -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- MODE 2: 🧪 DEDICATED STUDENT LAB (7 MISSIONS WITH CLICK ARROWS)          -->
+  <!-- ========================================================================= -->
+  <main class="lab-wrapper" id="labContainer" style="display: none;">
+
+    <div class="lab-nav-bar">
+      <div class="lab-meta-group">
+        <span class="lab-active-badge">STUDENT LAB</span>
+        <span class="lab-current-topic" id="labTopicDisplay">Topic: <strong>Newton's First Law</strong> (Class 9)</span>
+      </div>
+
+      <div class="lab-arrow-controls">
+        <button type="button" class="btn btn-outline btn-xs" onclick="prevLabMission()">‹ Prev Mission</button>
+        <span class="lab-step-indicator" id="labStepIndicator">Mission 01 / 07</span>
+        <button type="button" class="btn btn-outline btn-xs" onclick="nextLabMission()">Next Mission ›</button>
+      </div>
+
+      <div class="lab-right-tools">
+        <div class="lab-timer-chip">
+          <span>⏱️</span>
+          <span class="lab-timer-digits" id="labTimerDigits">60:00</span>
+          <button type="button" class="btn-timer-toggle" id="labTimerToggleBtn" onclick="toggleLabTimer()">Start</button>
+        </div>
+        <button type="button" class="btn btn-outline btn-xs" id="labBackupToggle" onclick="toggleBackupMode()">Backup Mode</button>
+      </div>
+    </div>
+
+    <div class="lab-stepper-dots" id="labStepperDots">
+      <div class="m-dot active" data-m="0" onclick="goToLabMission(0)">Setup</div>
+      <div class="m-dot" data-m="1" onclick="goToLabMission(1)">01. Teach Me</div>
+      <div class="m-dot" data-m="2" onclick="goToLabMission(2)">02. Compare AI</div>
+      <div class="m-dot" data-m="3" onclick="goToLabMission(3)">03. Test Me</div>
+      <div class="m-dot" data-m="4" onclick="goToLabMission(4)">04. Catch Mistake</div>
+      <div class="m-dot" data-m="5" onclick="goToLabMission(5)">05. Textbook Notes</div>
+      <div class="m-dot" data-m="6" onclick="goToLabMission(6)">06. Fix Prompt</div>
+      <div class="m-dot" data-m="7" onclick="goToLabMission(7)">07. Final Boss</div>
+      <div class="m-dot" data-m="8" onclick="goToLabMission(8)">Submit</div>
+    </div>
+
+    <div class="lab-missions-viewport">
+      <button type="button" class="carousel-nav-btn lab-arrow lab-prev-arrow" onclick="prevLabMission()" aria-label="Previous Mission">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <div class="lab-screens-container">
+
+        <!-- SCREEN 0: SETUP -->
+        <div class="lab-card-screen active" data-step="0">
+          <div class="lab-screen-content">
+            <span class="mission-tag">MISSION SETUP</span>
+            <h2 class="mission-title">Choose Your Lab Mission</h2>
+            <p class="mission-desc">Select <strong>one topic you genuinely struggle with</strong>. Turn AI into your private 24/7 tutor.</p>
+
+            <form id="labSetupForm" onsubmit="event.preventDefault(); nextLabMission();">
+              <div class="form-grid-editorial">
+                <div class="form-group">
+                  <label for="studentNameInput">Student Name / Roll No <span class="opt">(Optional)</span></label>
+                  <input type="text" id="studentNameInput" class="form-input" placeholder="e.g. Rahul S. / Roll 14">
+                </div>
+
+                <div class="form-group">
+                  <label>Your Class <span class="req">*</span></label>
+                  <div class="pills-row" id="classSelector">
+                    <button type="button" class="pill active" data-class="9">Class 9</button>
+                    <button type="button" class="pill" data-class="10">Class 10</button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="subjectSelect">Subject <span class="req">*</span></label>
+                  <select id="subjectSelect" class="form-input">
+                    <option value="Science (Physics)">Science (Physics)</option>
+                    <option value="Science (Chemistry)">Science (Chemistry)</option>
+                    <option value="Science (Biology)">Science (Biology)</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Social Science">Social Science</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Confidence in this topic right now (1–5) <span class="req">*</span></label>
+                  <div class="pills-row" id="confBeforeSelector">
+                    <button type="button" class="pill" data-conf="1">1 (Lost)</button>
+                    <button type="button" class="pill active" data-conf="2">2 (Weak)</button>
+                    <button type="button" class="pill" data-conf="3">3 (Average)</button>
+                    <button type="button" class="pill" data-conf="4">4 (Good)</button>
+                    <button type="button" class="pill" data-conf="5">5 (Strong)</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group mt-3">
+                <label for="topicInput">The Difficult Chapter/Topic You Want to Master <span class="req">*</span></label>
+                <input type="text" id="topicInput" required class="form-input" value="Newton's First Law of Motion">
+                <div class="quick-chips-row">
+                  <span class="qc-label">Quick Suggestions:</span>
+                  <button type="button" class="q-chip" data-chip="Newton's Laws of Motion">Newton's Laws</button>
+                  <button type="button" class="q-chip" data-chip="Electric Current & Ohm's Law">Electricity & Ohm's Law</button>
+                  <button type="button" class="q-chip" data-chip="Photosynthesis & Life Processes">Photosynthesis</button>
+                  <button type="button" class="q-chip" data-chip="Light: Reflection & Refraction">Light & Optics</button>
+                  <button type="button" class="q-chip" data-chip="Chemical Reactions & Equations">Chemical Reactions</button>
+                  <button type="button" class="q-chip" data-chip="Quadratic Equations & Roots">Quadratic Equations</button>
+                </div>
+              </div>
+
+              <div class="mission-footer-nav justify-end">
+                <button type="submit" class="btn btn-primary btn-large">Start Lab Mission 1 🚀</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- SCREEN 1: MISSION 1 -->
+        <div class="lab-card-screen" data-step="1">
+          <div class="lab-screen-content">
+            <span class="mission-tag">MISSION 01 / 07 &bull; 10 MINS</span>
+            <h2 class="mission-title">🧠 Make AI Teach Me</h2>
+            <p class="mission-desc">Do not ask for a boring definition. Ask AI to explain using a real-life analogy and test your understanding with ONE question.</p>
+
+            <div class="prompt-box-editorial">
+              <div class="pb-header">
+                <span>STEP 1: Copy this prompt into ChatGPT or Gemini</span>
+                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p1Code">Copy Prompt</button>
+              </div>
+              <pre class="prompt-code" id="p1Code">I'm a Class <span class="var-class">9</span> Karnataka State Board student.
+I'm struggling to understand <span class="var-topic">Newton's First Law of Motion</span>.
+Explain it in simple language suitable for my class.
+Use one real-life example (like riding a school bus or playing cricket).
+Then ask me ONE question to check whether I understood it.
+Do not give me the answer to the question until I try.</pre>
+              <div class="tool-links-editorial">
+                <span>Open Tool:</span>
+                <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs">Open ChatGPT ↗</a>
+                <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs">Open Gemini ↗</a>
+              </div>
+            </div>
+
+            <div class="backup-box-editorial" id="backup1">
+              <div class="backup-header-btn" onclick="toggleBackupContent('bc1')">
+                <span>💡 Backup AI Response (Use if AI website is blocked)</span>
+                <span>▾</span>
+              </div>
+              <div class="backup-body" id="bc1" style="display: none;">
+                <p><strong>AI Explanation:</strong> Imagine you are on a moving bus. When the driver slams the brakes, your feet stop with the bus floor, but your upper body lunges forward. Why? Because your body wanted to keep moving at the same speed! This is inertia.</p>
+                <p><strong>Check Question:</strong> If you place a coin on a card over a glass and flick the card away horizontally, what happens to the coin and why?</p>
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="m1_answer"><strong>STEP 2:</strong> Answer the AI's question, then record in your own words: What did you understand?</label>
+              <textarea id="m1_answer" class="form-input form-textarea" rows="3" placeholder="Write 2-3 sentences in your own words. Explain the concept without copying AI text..."></textarea>
+              <span class="field-hint">Your own thinking is what matters — do not copy-paste AI text!</span>
+            </div>
+
+            <div class="mission-footer-nav">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (Compare AI) →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 2: MISSION 2 -->
+        <div class="lab-card-screen" data-step="2">
+          <div class="lab-screen-content">
+            <span class="mission-tag">MISSION 02 / 07 &bull; 8 MINS</span>
+            <h2 class="mission-title">⚔️ Same Question, Different AI</h2>
+            <p class="mission-desc">Take the exact same topic and prompt to the other tool. Compare which explanation was clearer for your brain.</p>
+
+            <div class="prompt-box-editorial">
+              <div class="pb-header">
+                <span>STEP 1: Copy into the other AI platform</span>
+                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p2Code">Copy Prompt</button>
+              </div>
+              <pre class="prompt-code" id="p2Code">I'm a Class <span class="var-class">9</span> student.
+Explain <span class="var-topic">Newton's First Law of Motion</span> in simple language.
+Use one real-life example that a student would understand.
+Then give me one question to check whether I understood it.
+Do not give me the answer before I try.</pre>
+              <div class="tool-links-editorial">
+                <span>Switch Tool:</span>
+                <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs">Try on ChatGPT ↗</a>
+                <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs">Try on Gemini ↗</a>
+              </div>
+            </div>
+
+            <div class="backup-box-editorial" id="backup2">
+              <div class="backup-header-btn" onclick="toggleBackupContent('bc2')">
+                <span>💡 Backup AI Responses (ChatGPT vs Gemini side-by-side simulation)</span>
+                <span>▾</span>
+              </div>
+              <div class="backup-body" id="bc2" style="display: none;">
+                <p><strong>ChatGPT:</strong> "Think of a skateboard. If you push it on a smooth road, it rolls forever until friction slows it down. Your body has inertia — the natural stubbornness of matter to resist any sudden change in speed."</p>
+                <p><strong>Gemini:</strong> "Newton's First Law (Law of Inertia): An object remains at rest or in uniform motion along a straight line unless acted upon by a net external unbalanced force. Everyday example: Dust particles fly off a rug when struck by a stick."</p>
+                <p class="text-brand-cyan" style="font-size:0.85rem;"><em>Comparison tip: ChatGPT provided a mental picture; Gemini gave the precise textbook definition and board keywords.</em></p>
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              <label><strong>STEP 2:</strong> Which explanation helped YOU understand better?</label>
+              <div class="pills-row" id="m2ToolChoice">
+                <button type="button" class="pill" data-tool="ChatGPT">ChatGPT</button>
+                <button type="button" class="pill" data-tool="Gemini">Gemini</button>
+                <button type="button" class="pill active" data-tool="Both">Both</button>
+                <button type="button" class="pill" data-tool="Neither">Neither</button>
+              </div>
+            </div>
+
+            <div class="form-group mt-2">
+              <label for="m2_reason">Why was that explanation more helpful for your learning?</label>
+              <input type="text" id="m2_reason" class="form-input" placeholder="e.g. ChatGPT gave a clearer analogy, while Gemini used shorter bullet points.">
+            </div>
+
+            <div class="mission-footer-nav">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (Test Me) →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 3: MISSION 3 -->
+        <div class="lab-card-screen" data-step="3">
+          <div class="lab-screen-content">
+            <span class="mission-tag">MISSION 03 / 07 &bull; 10 MINS</span>
+            <h2 class="mission-title">🎯 Don't Ask for Answers. Ask for Questions.</h2>
+            <p class="mission-desc">Turn AI into an examiner! It generates 3 progressive board-style questions without spoiling answers.</p>
+
+            <div class="prompt-box-editorial">
+              <div class="pb-header">
+                <span>STEP 1: Copy this Examiner prompt</span>
+                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p3Code">Copy Prompt</button>
+              </div>
+              <pre class="prompt-code" id="p3Code">I am preparing for my Class <span class="var-class">9</span> exam.
+I have just studied <span class="var-topic">Newton's First Law of Motion</span>.
+Give me 3 exam-style questions about this topic.
+Ask me one question at a time.
+Do not show me the answer before I respond.
+Start with an easy question and gradually make the questions harder.</pre>
+            </div>
+
+            <div class="backup-box-editorial" id="backup3">
+              <div class="backup-header-btn" onclick="toggleBackupContent('bc3')">
+                <span>💡 Backup AI Response (Examiner Question Generation)</span>
+                <span>▾</span>
+              </div>
+              <div class="backup-body" id="bc3" style="display: none;">
+                <p><strong>Question 1 (1 Mark / Recall):</strong> State Newton's First Law of Motion and state the physical quantity that measures an object's inertia.</p>
+                <p><strong>Question 2 (2 Marks / Conceptual):</strong> Why does an athlete run a short distance before taking a long jump? Explain in terms of inertia.</p>
+                <p><strong>Question 3 (3 Marks / Application):</strong> A passenger standing in a moving bus falls forward when brakes are applied suddenly, but falls backward when it starts suddenly. Give reasons for both situations.</p>
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              <label><strong>STEP 2:</strong> Answer each question yourself before seeing what AI thinks:</label>
+              <div class="qa-item mt-1">
+                <label for="m3_q1">Question 1 (Easy / Recall) — Your Answer:</label>
+                <textarea id="m3_q1" class="form-input form-textarea" rows="2" placeholder="Write your answer to Q1..."></textarea>
+              </div>
+              <div class="qa-item mt-2">
+                <label for="m3_q2">Question 2 (Medium / Conceptual) — Your Answer:</label>
+                <textarea id="m3_q2" class="form-input form-textarea" rows="2" placeholder="Write your answer to Q2..."></textarea>
+              </div>
+              <div class="qa-item mt-2">
+                <label for="m3_q3">Question 3 (Hard / Application) — Your Answer:</label>
+                <textarea id="m3_q3" class="form-input form-textarea" rows="2" placeholder="Write your answer to Q3..."></textarea>
+              </div>
+            </div>
+
+            <div class="mission-footer-nav">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (Catch Mistake) →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 4: MISSION 4 -->
+        <div class="lab-card-screen" data-step="4">
+          <div class="lab-screen-content">
+            <span class="mission-tag">MISSION 04 / 07 &bull; 7 MINS</span>
+            <h2 class="mission-title">🔍 Catch My Mistake</h2>
+            <p class="mission-desc">Take one of your answers from Mission 3. Give it to AI and tell it to mark it like a teacher: What is right, what is missed, and hints to improve.</p>
+
+            <div class="prompt-box-editorial">
+              <div class="pb-header">
+                <span>STEP 1: Give your answer to AI for evaluation</span>
+                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p4Code">Copy Prompt</button>
+              </div>
+              <pre class="prompt-code" id="p4Code">Here is my answer to the question:
+[PASTE YOUR ANSWER FROM MISSION 3 HERE]
+
+Check my answer like a strict board exam teacher.
+Tell me:
+1. What I got right
+2. What I misunderstood or missed
+3. What I should improve
+Do not rewrite the complete answer for me.
+Give me a hint that helps me improve it myself.</pre>
+            </div>
+
+            <div class="backup-box-editorial" id="backup4">
+              <div class="backup-header-btn" onclick="toggleBackupContent('bc4')">
+                <span>💡 Backup AI Response (Strict Teacher Answer Evaluation)</span>
+                <span>▾</span>
+              </div>
+              <div class="backup-body" id="bc4" style="display: none;">
+                <p><strong>Teacher Evaluation of your answer:</strong></p>
+                <p>✅ <strong>What you got right:</strong> You clearly stated that inertia of motion keeps the upper body moving forward when brakes are applied.</p>
+                <p>⚠️ <strong>What was missed:</strong> You did not mention that the lower body comes to rest immediately due to contact and friction with the bus floor. Both parts of the body must be contrasted to get full marks on Karnataka Board exams.</p>
+                <p>💡 <strong>Improvement Hint:</strong> Rewrite with the phrase: <em>'The lower part of the body comes to rest with the vehicle, while the upper part continues in its state of motion due to inertia.'</em></p>
+              </div>
+            </div>
+
+            <div class="form-grid-editorial mt-3">
+              <div class="form-group">
+                <label for="m4_right">Something I got right:</label>
+                <input type="text" id="m4_right" class="form-input" placeholder="e.g. Correctly stated that inertia resists change.">
+              </div>
+              <div class="form-group">
+                <label for="m4_wrong">Something I missed / misunderstood:</label>
+                <input type="text" id="m4_wrong" class="form-input" placeholder="e.g. Forgot to mention 'unbalanced external force'.">
+              </div>
+            </div>
+
+            <div class="form-group mt-2">
+              <label for="m4_improved"><strong>YOUR IMPROVED ANSWER:</strong> (Written by YOU, not AI)</label>
+              <textarea id="m4_improved" class="form-input form-textarea" rows="3" placeholder="Rewrite your full answer with the missing concept included in your own words..."></textarea>
+            </div>
+
+            <div class="mission-footer-nav">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (NotebookLM) →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 5: MISSION 5 -->
+        <div class="lab-card-screen" data-step="5">
+          <div class="lab-screen-content">
+            <span class="mission-tag">MISSION 05 / 07 &bull; 8 MINS</span>
+            <h2 class="mission-title">📚 My Study Material + AI (NotebookLM)</h2>
+            <p class="mission-desc">Ground AI in approved school notes or textbook chapters. No hallucinations, no out-of-syllabus surprises.</p>
+
+            <div class="notebooklm-banner">
+              <strong>Open NotebookLM Workspace:</strong>
+              <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs">Launch NotebookLM ↗</a>
+            </div>
+
+            <div class="prompt-box-editorial mt-2">
+              <div class="pb-header">
+                <span>Prompt A: Identify Key Concepts</span>
+                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p5aCode">Copy Prompt A</button>
+              </div>
+              <pre class="prompt-code" id="p5aCode">Based only on the study material I provided, identify the key concepts I should understand before my exam. Explain each one briefly in simple language.</pre>
+            </div>
+
+            <div class="prompt-box-editorial mt-2">
+              <div class="pb-header">
+                <span>Prompt B: Source-Based Quiz</span>
+                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p5bCode">Copy Prompt B</button>
+              </div>
+              <pre class="prompt-code" id="p5bCode">Using only the study material I provided, quiz me on this topic.
+Ask one question at a time.
+Do not reveal the answer until I respond.
+Include both conceptual and application-based questions.</pre>
+            </div>
+
+            <div class="backup-box-editorial" id="backup5">
+              <div class="backup-header-btn" onclick="toggleBackupContent('bc5')">
+                <span>💡 Backup AI Response (NotebookLM Grounded Textbook Study)</span>
+                <span>▾</span>
+              </div>
+              <div class="backup-body" id="bc5" style="display: none;">
+                <p><strong>NotebookLM Sourced Finding (From Class 9 Science Chapter 9):</strong></p>
+                <p><strong>Key Concept:</strong> Inertia is an inherent property of all bodies. Mass is the quantitative measure of inertia (Page 118, Section 9.2). A 5-rupee coin has more inertia than a 1-rupee coin because it has greater mass.</p>
+                <p><strong>Source-grounded Exam Question:</strong> "Which has more inertia: a rubber ball and a stone of the same size? Explain with reference to textbook definition."</p>
+              </div>
+            </div>
+
+            <div class="form-grid-editorial mt-3">
+              <div class="form-group">
+                <label for="m5_concept">One high-yield concept identified:</label>
+                <input type="text" id="m5_concept" class="form-input" placeholder="e.g. Mass as the measure of inertia.">
+              </div>
+              <div class="form-group">
+                <label for="m5_question">One tricky question you encountered:</label>
+                <input type="text" id="m5_question" class="form-input" placeholder="e.g. Why dust falls off a carpet when beaten with a stick.">
+              </div>
+            </div>
+
+            <div class="mission-footer-nav">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (Fix Prompt) →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 6: MISSION 6 -->
+        <div class="lab-card-screen" data-step="6">
+          <div class="lab-screen-content">
+            <span class="mission-tag">MISSION 06 / 07 &bull; 5 MINS</span>
+            <h2 class="mission-title">⚔️ Fix the Terrible Prompt</h2>
+            <p class="mission-desc">Upgrade this vague 2-word prompt using the 5-part formula (WHO + WHAT + CONTEXT + HOW + RULE).</p>
+
+            <div class="bad-prompt-banner">
+              <span class="bad-prompt-tag">THE TERRIBLE PROMPT:</span>
+              <span class="bad-prompt-text">“Explain electricity.”</span>
+            </div>
+
+            <div class="formula-tags-editorial">
+              <span><strong>WHO:</strong> Class 9/10 student</span>
+              <span><strong>WHAT:</strong> Concept gap</span>
+              <span><strong>CONTEXT:</strong> Exam prep</span>
+              <span><strong>HOW:</strong> Analogy</span>
+              <span><strong>RULE:</strong> Ask 1 question</span>
+            </div>
+
+            <div class="backup-box-editorial" id="backup6">
+              <div class="backup-header-btn" onclick="toggleBackupContent('bc6')">
+                <span>💡 Backup AI Response (Upgraded 5-Part Prompt Example)</span>
+                <span>▾</span>
+              </div>
+              <div class="backup-body" id="bc6" style="display: none;">
+                <p><strong>Upgraded Prompt Blueprint:</strong></p>
+                <p><code>"I am a Class 10 Karnataka State Board student preparing for my Science exam [WHO + CONTEXT]. Explain the difference between electric current and potential difference [WHAT] using an analogy of water flowing through pipes and pressure from a water pump [HOW]. Then give me 2 board exam numerical practice problems one at a time without revealing the answers [RULE]."</code></p>
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="m6_prompt_input"><strong>YOUR TURN:</strong> Write an improved prompt using the 5 parts:</label>
+              <textarea id="m6_prompt_input" class="form-input form-textarea" rows="3" placeholder="I'm a Class 10 student preparing for my Science board exam. I don't understand electric current and potential difference. Explain it using a water pipe analogy, then ask me two questions one by one..."></textarea>
+              
+              <div class="formula-pills" id="formulaPills">
+                <span class="fp-badge" id="fp-who">⚪ WHO</span>
+                <span class="fp-badge" id="fp-what">⚪ WHAT</span>
+                <span class="fp-badge" id="fp-context">⚪ CONTEXT</span>
+                <span class="fp-badge" id="fp-how">⚪ HOW</span>
+                <span class="fp-badge" id="fp-rule">⚪ RULE</span>
+              </div>
+            </div>
+
+            <div class="mission-footer-nav">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (Final Boss) →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 7: MISSION 7 -->
+        <div class="lab-card-screen" data-step="7">
+          <div class="lab-screen-content">
+            <span class="mission-tag">MISSION 07 / 07 &bull; 5 MINS</span>
+            <h2 class="mission-title">🧪 Final Boss: Can You Beat AI?</h2>
+            <p class="mission-desc">Challenge AI for one brand new conceptual question about <strong class="var-topic">this topic</strong>. Answer it without looking at any notes!</p>
+
+            <div class="prompt-box-editorial">
+              <div class="pb-header">
+                <span>STEP 1: Challenge AI with this prompt</span>
+                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p7Code">Copy Prompt</button>
+              </div>
+              <pre class="prompt-code" id="p7Code">I have been studying <span class="var-topic">Newton's First Law of Motion</span>.
+Give me one brand new conceptual question that tests whether I ACTUALLY understand the concept or just memorised it.
+Make it different from earlier questions.
+Do not give me the answer.
+Wait for my response.</pre>
+            </div>
+
+            <div class="backup-box-editorial" id="backup7">
+              <div class="backup-header-btn" onclick="toggleBackupContent('bc7')">
+                <span>💡 Backup AI Response (Final Boss Question & Evaluation)</span>
+                <span>▾</span>
+              </div>
+              <div class="backup-body" id="bc7" style="display: none;">
+                <p><strong>Final Boss Question:</strong> A magician suddenly pulls a smooth cloth from underneath a pile of heavy ceramic plates on a dining table without breaking them. Explain why this works using Newton's First Law and friction.</p>
+                <p><strong>Evaluation Criteria:</strong> 1) Plates have large mass hence large inertia at rest; 2) The pull is extremely quick, making time of contact tiny; 3) The unbalanced frictional force acts for too brief an instant to change the plates' state of rest.</p>
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="m7_boss_q">The question AI gave you:</label>
+              <input type="text" id="m7_boss_q" class="form-input" placeholder="Paste the tricky question AI asked you...">
+            </div>
+
+            <div class="form-group mt-2">
+              <label for="m7_boss_attempt">Your attempt (Reason it out yourself):</label>
+              <textarea id="m7_boss_attempt" class="form-input form-textarea" rows="3" placeholder="Write your full reasoning here..."></textarea>
+            </div>
+
+            <div class="form-group mt-2">
+              <label for="m7_boss_eval">What did AI evaluate about your reasoning?</label>
+              <input type="text" id="m7_boss_eval" class="form-input" placeholder="e.g. Got the logic 100% right, but need to mention SI units.">
+            </div>
+
+            <div class="mission-footer-nav">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Finish & Submit Lab 🏁</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 8: SUBMISSION -->
+        <div class="lab-card-screen" data-step="8">
+          <div class="lab-screen-content">
+            <span class="mission-tag">MISSION ACCOMPLISHED</span>
+            <h2 class="mission-title">You didn't just ask AI. You used it to learn.</h2>
+            <div class="accomplishment-checklist">
+              <div>✓ Understood a topic through analogies</div>
+              <div>✓ Practised exam-style questions</div>
+              <div>✓ Checked reasoning & caught mistakes</div>
+              <div>✓ Grounded learning in textbook material</div>
+              <div>✓ Upgraded prompt engineering skills</div>
+              <div>✓ Defeated the Final Boss challenge</div>
+            </div>
+
+            <div class="form-grid-editorial mt-3">
+              <div class="form-group">
+                <label>Confidence in <strong class="var-topic">this topic</strong> NOW (1 to 5):</label>
+                <div class="pills-row" id="confAfterSelector">
+                  <button type="button" class="pill" data-conf="1">1</button>
+                  <button type="button" class="pill" data-conf="2">2</button>
+                  <button type="button" class="pill" data-conf="3">3</button>
+                  <button type="button" class="pill active" data-conf="4">4 (Confident)</button>
+                  <button type="button" class="pill" data-conf="5">5 (Exam Ready!)</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>During this lab, did AI mainly:</label>
+                <div class="pills-row" id="mindsetSelector">
+                  <button type="button" class="pill" data-val="Give answers">Give answers</button>
+                  <button type="button" class="pill active" data-val="Help me learn">Help me learn</button>
+                  <button type="button" class="pill" data-val="Both">A bit of both</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-grid-editorial mt-3">
+              <div class="form-group">
+                <label for="refl_learned">What do you understand NOW that you didn't understand before?</label>
+                <textarea id="refl_learned" class="form-input form-textarea" rows="2" placeholder="e.g. I finally understood why inertia depends on mass..."></textarea>
+              </div>
+              <div class="form-group">
+                <label for="refl_revise">What is ONE thing you still need to revise from your textbook?</label>
+                <textarea id="refl_revise" class="form-input form-textarea" rows="2" placeholder="e.g. Revise the exact board definitions and numerical problems..."></textarea>
+              </div>
+            </div>
+
+            <div class="submission-card-cta mt-3">
+              <div>
+                <strong>Ready to submit your mission record?</strong>
+                <p>Your work is saved locally in this browser. You can generate your summary report or print it.</p>
+              </div>
+              <div class="cta-btns-row">
+                <button type="button" class="btn btn-outline" onclick="downloadStudentDossier()">💾 Download Dossier (.txt)</button>
+                <button type="button" class="btn btn-outline" onclick="window.print()">🖨️ Print Summary</button>
+                <button type="button" class="btn btn-primary" onclick="submitMissionReport()">Submit Mission Record ✅</button>
+              </div>
+            </div>
+
+            <div class="final-report-card" id="finalReportCard" style="display: none;">
+              <div class="report-header">
+                <h3>🎓 GENIUSPHERE AI EXAM LAB &bull; MISSION REPORT</h3>
+                <span class="report-status">STATUS: COMPLETED</span>
+              </div>
+              <div class="report-body" id="finalReportContent"></div>
+              <div class="report-actions">
+                <button type="button" class="btn btn-primary btn-sm" onclick="switchMainMode('deck')">Return to Deck 📽️</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="downloadStudentDossier()">Download Dossier (.txt) 💾</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="window.print()">Print Certificate 🖨️</button>
+              </div>
+            </div>
+
+            <div class="mission-footer-nav mt-3">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button type="button" class="carousel-nav-btn lab-arrow lab-next-arrow" onclick="nextLabMission()" aria-label="Next Mission">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- MODE 3: 📖 ATTENTION ARCHITECTURE & WORKSHOP GUIDE                        -->
+  <!-- ========================================================================= -->
+  <main class="overview-wrapper" id="overviewContainer" style="display: none;">
+    <div class="container py-4">
+      <div class="section-lead">
+        <span class="eyebrow">CURRICULUM ARCHITECTURE &bull; 6 SKILLS &bull; 7 TEACHING PARTS</span>
+        <h1 class="section-title">Teaching Class 9 & 10 to Prepare for Board Exams</h1>
+        <p class="section-text">
+          The agenda is NOT to run a 2-hour AI entertainment show. <strong>The games, questions, and jokes are delivery mechanisms—the 6 AI study skills are the curriculum.</strong><br>
+          Core principle: <strong>Auditorium (120 min) = I TEACH &bull; Computer Lab (60 min) = YOU DO.</strong>
+        </p>
+      </div>
+
+      <!-- The 6 Core Skills Syllabus Table -->
+      <div class="cheatsheet-card mb-4" style="background: var(--bx-navy); border: 2px solid var(--bx-cobalt); border-radius: 12px; padding: 1.5rem;">
+        <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; color: var(--nb-ink); margin-bottom: 1rem;">
+          🎯 THE 6 CORE AI EXAM PREPARATION SKILLS
+        </h3>
+        <table class="attention-table">
+          <thead>
+            <tr>
+              <th>SKILL</th>
+              <th>WHAT YOU TEACH THEM</th>
+              <th>PRIMARY TOOL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: var(--bx-cyan);">1. UNDERSTAND</strong></td>
+              <td>How to make AI explain a difficult concept at their level</td>
+              <td>ChatGPT / Gemini</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--bx-emerald);">2. ASK</strong></td>
+              <td>How to give AI useful context and instructions</td>
+              <td>ChatGPT / Gemini</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--bx-amber);">3. STUDY</strong></td>
+              <td>How to turn a chapter into concepts, examples and explanations</td>
+              <td>ChatGPT / Gemini</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--bx-rose);">4. PRACTISE</strong></td>
+              <td>How to make AI generate exam-style questions and conduct a quiz</td>
+              <td>ChatGPT / Gemini</td>
+            </tr>
+            <tr>
+              <td><strong style="color: #a78bfa);">5. CHECK</strong></td>
+              <td>How to submit <em>their own</em> answer and get feedback</td>
+              <td>ChatGPT / Gemini</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--bx-cobalt);">6. STUDY YOUR MATERIAL</strong></td>
+              <td>How to give their textbook/notes/PDF to NotebookLM and study from it</td>
+              <td>NotebookLM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="attention-table-box">
+        <table class="attention-table">
+          <thead>
+            <tr>
+              <th>Minutes</th>
+              <th>What happens</th>
+              <th>Student Action / Interaction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>0–15 min</strong><br><span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--bx-cyan);">PART 1</span></td>
+              <td><strong>What AI Can Actually Do for Exam Prep</strong><br>AI is not an answer generator; 6 Study Roles</td>
+              <td>Icebreaker raise hands ➔ Student persona shoutout ➔ 6 Roles demonstration</td>
+            </tr>
+            <tr>
+              <td><strong>15–40 min</strong><br><span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--bx-emerald);">PART 2</span></td>
+              <td><strong>ChatGPT: Use It as Your Personal Tutor</strong><br>Skill 1: Ask to Explain + Context Anchors<br>Skill 2: Follow-up Questions (Learning Conversation)</td>
+              <td>Bad prompt vs Better prompt ➔ Chaining questions (Newton ➔ Inertia ➔ Cricket ➔ Quiz) ➔ Students predict AI output</td>
+            </tr>
+            <tr>
+              <td><strong>40–65 min</strong><br><span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--bx-amber);">PART 3</span></td>
+              <td><strong>ChatGPT: Exam Practice Partner</strong><br>Generate questions ➔ Answer yourself ➔ Check ➔ Improve</td>
+              <td>30-Second Stage Countdown Timer ➔ Student to microphone ➔ Live Socratic AI Tutor Simulator</td>
+            </tr>
+            <tr>
+              <td><strong>65–80 min</strong><br><span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--bx-rose);">PART 4</span></td>
+              <td><strong>Gemini: Don't Teach as "Another ChatGPT"</strong><br>Same problem to both tools; compare & evaluate</td>
+              <td>Side-by-side comparison (Electric current) ➔ Audience voting on explanation clarity ➔ Visual ray diagrams & circuits</td>
+            </tr>
+            <tr>
+              <td><strong>80–105 min</strong><br><span style="font-family: var(--font-mono); font-size: 0.72rem; color: #a78bfa);">PART 5</span></td>
+              <td><strong>NotebookLM: Studying Your Actual Material</strong><br>Upload textbook/PDF ➔ Understand ➔ Revise ➔ Quiz</td>
+              <td>Upload Karnataka Board chapter ➔ Workflows A–E: Concepts ➔ Difficult sections ➔ Revision ➔ Quiz me only from material</td>
+            </tr>
+            <tr>
+              <td><strong>105–115 min</strong><br><span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--bx-cobalt);">PART 6</span></td>
+              <td><strong>Prompting in 10 Minutes</strong><br>WHO + WHAT + CONTEXT + HOW + RULE</td>
+              <td>Rapid prompt overhaul: "Explain electricity" ➔ Production board command</td>
+            </tr>
+            <tr>
+              <td><strong>115–120 min</strong><br><span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--bx-emerald);">PART 7</span></td>
+              <td><strong>Responsible AI & 60-Minute Lab Briefing</strong><br>5 Rules (AI can be wrong, verify, privacy)</td>
+              <td>Auditorium: I TEACH ➔ Lab: YOU DO ➔ Briefing the 7 Hands-on Missions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="overview-launch-strip mt-3">
+        <div>
+          <h3>Ready to run the presentation?</h3>
+          <p>Switch to the 71-Slide Carousel Deck with full click arrows and synchronized presenter script.</p>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="switchMainMode('deck')">Launch 71-Slide Presentation Deck →</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+
+  <!-- ========================================================================= -->
+  <!-- 🧭 SLIDE QUICK-NAVIGATOR MODAL (HOTKEY: G)                                 -->
+  <!-- ========================================================================= -->
+  <div class="nav-modal-backdrop" id="slideNavModal" onclick="closeSlideNavigator(event)">
+    <div class="nav-modal-content" onclick="event.stopPropagation()">
+      <div class="nav-modal-header">
+        <div class="nav-header-left">
+          <span class="nav-title-icon">🧭</span>
+          <div>
+            <h3 class="nav-title">SLIDE NAVIGATOR</h3>
+            <p class="nav-subtitle">Click any slide to jump instantly &bull; Press <kbd>Esc</kbd> or <kbd>G</kbd> to close</p>
+          </div>
+        </div>
+        <div class="nav-filter-chips" id="navFilterChips">
+          <button type="button" class="n-chip active" onclick="filterNavGrid('ALL')">ALL (36)</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('PART 1')">PART 1: EXAM AI</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('PART 2')">PART 2: CHATGPT TUTOR</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('PART 3')">PART 3: EXAM PRACTICE</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('PART 4')">PART 4: GEMINI</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('PART 5')">PART 5: NOTEBOOKLM</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('PART 6')">PART 6: PROMPTING</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('PART 7')">PART 7: LAB BRIEFING</button>
+        </div>
+        <button type="button" class="nav-close-btn" onclick="closeSlideNavigator()" aria-label="Close Navigator">&times;</button>
+      </div>
+      <div class="nav-grid" id="navSlidesGrid">
+        <!-- Dynamically populated by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 🤖 SOCRATIC AI TUTOR INTERACTIVE STAGE SIMULATOR MODAL                     -->
+  <!-- ========================================================================= -->
+  <div class="sim-modal-backdrop" id="socraticSimModal" onclick="closeSocraticSimulator(event)">
+    <div class="sim-modal-content" onclick="event.stopPropagation()">
+      <div class="sim-modal-header">
+        <div class="sim-header-title">
+          <span class="sim-sparkle">✨</span>
+          <div>
+            <h3>LIVE SOCRATIC AI TUTOR SIMULATOR</h3>
+            <p>Auditorium Interactive Demonstration &bull; Karnataka Board Science</p>
+          </div>
+        </div>
+        <button type="button" class="nav-close-btn" onclick="closeSocraticSimulator()">&times;</button>
+      </div>
+      <div class="sim-modal-body">
+        <div class="sim-question-card">
+          <span class="sim-badge">BOARD EXAM QUESTION (2 MARKS)</span>
+          <h4>“When a moving bus suddenly stops, why do passengers fall forward?”</h4>
+        </div>
+
+        <div class="sim-interactive-area">
+          <label for="simStudentInput" class="sim-label">Type a student attempt (or click a sample):</label>
+          <div class="sim-sample-chips">
+            <button type="button" class="sample-chip" onclick="loadSimSample('flawed')">Sample A: “The bus pushes them forward.” (0 Marks)</button>
+            <button type="button" class="sample-chip" onclick="loadSimSample('partial')">Sample B: “Because of inertia they fall.” (1 Mark)</button>
+            <button type="button" class="sample-chip" onclick="loadSimSample('perfect')">Sample C: “Inertia of motion keeps upper body moving.” (2 Marks)</button>
+          </div>
+          <textarea id="simStudentInput" class="form-input form-textarea" placeholder="Type what a Class 9/10 student might say..."></textarea>
+          <div class="sim-actions-row">
+            <button type="button" class="btn btn-primary" onclick="runSocraticSimEvaluation()">⚡ Evaluate with Socratic AI</button>
+            <button type="button" class="btn btn-outline" onclick="clearSimInput()">Clear</button>
+          </div>
+        </div>
+
+        <div class="sim-feedback-result" id="simFeedbackResult" style="display: none;">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 📄 STUDENT 1-PAGER EXAM CHEATSHEET MODAL (PRINTABLE)                        -->
+  <!-- ========================================================================= -->
+  <div class="cheatsheet-modal-backdrop" id="cheatsheetModal" onclick="closeCheatsheetModal(event)">
+    <div class="cheatsheet-modal-content" onclick="event.stopPropagation()">
+      <div class="cheatsheet-modal-header">
+        <div class="sim-header-title">
+          <span class="sim-sparkle">📄</span>
+          <div>
+            <h3>STUDENT 1-PAGER EXAM CHEATSHEET</h3>
+            <p>Karnataka State Board &bull; Classes 9 & 10 &bull; ChatGPT, Gemini & NotebookLM</p>
+          </div>
+        </div>
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-primary btn-sm" onclick="window.print()">🖨️ Print / Save PDF</button>
+          <button type="button" class="nav-close-btn" onclick="closeCheatsheetModal()">&times;</button>
+        </div>
+      </div>
+      <div class="cheatsheet-modal-body">
+        <div class="cheatsheet-grid">
+          <!-- Syllabus Matrix Card -->
+          <div class="cheatsheet-card" style="grid-column: 1 / -1;">
+            <h4>🎯 THE 6 CONCRETE AI EXAM PREPARATION SKILLS</h4>
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--bx-navy-border); color: var(--text-muted); font-family: var(--font-display);">
+                    <th style="padding: 0.4rem 0.6rem;">SKILL</th>
+                    <th style="padding: 0.4rem 0.6rem;">WHAT YOU TEACH THEM</th>
+                    <th style="padding: 0.4rem 0.6rem;">TOOL</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 0.4rem 0.6rem; font-weight: 800; color: var(--bx-cyan);">1. UNDERSTAND</td>
+                    <td style="padding: 0.4rem 0.6rem;">How to make AI explain a difficult concept at your exact level</td>
+                    <td style="padding: 0.4rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">ChatGPT / Gemini</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 0.4rem 0.6rem; font-weight: 800; color: var(--bx-emerald);">2. ASK</td>
+                    <td style="padding: 0.4rem 0.6rem;">How to give AI useful context, constraints & instructions</td>
+                    <td style="padding: 0.4rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">ChatGPT / Gemini</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 0.4rem 0.6rem; font-weight: 800; color: var(--bx-amber);">3. STUDY</td>
+                    <td style="padding: 0.4rem 0.6rem;">How to turn a chapter into concepts, examples and explanations</td>
+                    <td style="padding: 0.4rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">ChatGPT / Gemini</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 0.4rem 0.6rem; font-weight: 800; color: var(--bx-rose);">4. PRACTISE</td>
+                    <td style="padding: 0.4rem 0.6rem;">How to make AI generate exam questions and conduct a quiz</td>
+                    <td style="padding: 0.4rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">ChatGPT / Gemini</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 0.4rem 0.6rem; font-weight: 800; color: #a78bfa;">5. CHECK</td>
+                    <td style="padding: 0.4rem 0.6rem;">How to submit YOUR OWN answer and get examiner feedback</td>
+                    <td style="padding: 0.4rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">ChatGPT / Gemini</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.4rem 0.6rem; font-weight: 800; color: var(--bx-cobalt);">6. STUDY YOUR MATERIAL</td>
+                    <td style="padding: 0.4rem 0.6rem;">How to upload your textbook/notes/PDF to NotebookLM and study from it</td>
+                    <td style="padding: 0.4rem 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--nb-ink); font-weight: 700;">NotebookLM</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Card 1: 5 Golden Rules -->
+          <div class="cheatsheet-card">
+            <h4>🏆 THE 5 GOLDEN RULES OF STUDYING WITH AI</h4>
+            <ul class="cheatsheet-list">
+              <li><span class="cs-num">01</span> <div><strong>Never Ask for the Answer:</strong> Passive reading creates an illusion of knowing. Always ask AI to quiz you and grade your mistakes.</div></li>
+              <li><span class="cs-num">02</span> <div><strong>Ground Your Source:</strong> Use NotebookLM with your exact Karnataka State Board / NCERT textbook PDF to prevent hallucinations.</div></li>
+              <li><span class="cs-num">03</span> <div><strong>The 5-Part Formula:</strong> Always specify: <code>[WHO I AM] + [WHAT TOPIC] + [BOARD STYLE] + [HOW] + [RULE]</code>.</div></li>
+              <li><span class="cs-num">04</span> <div><strong>Scientific Keywords Rule:</strong> Board evaluators grade strictly on keywords (e.g. <em>“inertia of motion”</em>, not <em>“it pushes them”</em>).</div></li>
+              <li><span class="cs-num">05</span> <div><strong>The 15-Minute Daily Drill:</strong> 5m concept breakdown → 5m active retrieval quiz → 5m self-correction.</div></li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Prompt 1 Strict Examiner -->
+          <div class="cheatsheet-card">
+            <h4>🎯 1. THE STRICT BOARD EXAMINER PROMPT</h4>
+            <p class="text-sm text-secondary mb-2">Forces AI to grade your handwritten or typed attempt against official marking keys:</p>
+            <div class="demo-prompt-card">
+              <pre><code>I am a Karnataka State Board Class [9/10] student preparing for Science.
+Grade this answer out of [2/3] marks strictly like a board evaluator:
+1. Marks awarded out of total
+2. Missing scientific keywords or technical terms
+3. One precise hint for me to rewrite it myself.
+My Answer: [Paste answer]</code></pre>
+            </div>
+          </div>
+
+          <!-- Card 3: Prompt 2 Socratic Coach -->
+          <div class="cheatsheet-card">
+            <h4>🧠 2. THE SOCRATIC TUTOR (NO ANSWERS GIVEN)</h4>
+            <p class="text-sm text-secondary mb-2">Makes AI act like a private tutor who asks guided questions one step at a time:</p>
+            <div class="demo-prompt-card">
+              <pre><code>You are my Karnataka Board Science tutor. I am struggling with [Topic].
+RULE: Do NOT explain everything at once. Do NOT give me the final answer.
+Ask me ONE diagnostic question to test what I already know.
+Wait for my reply before asking the next step.</code></pre>
+            </div>
+          </div>
+
+          <!-- Card 4: Prompt 3 Analogy Visualizer -->
+          <div class="cheatsheet-card">
+            <h4>💡 3. THE ANALOGY & MENTAL MODEL BUILDER</h4>
+            <p class="text-sm text-secondary mb-2">Demystifies abstract concepts with memorable real-world mechanics:</p>
+            <div class="demo-prompt-card">
+              <pre><code>Explain [e.g. Electric Potential Difference / Refraction] to a 15-year-old student using an everyday physical analogy (like water flowing in pipes or a car moving from tarmac into mud).
+After the analogy, connect every part directly to the official textbook definition and SI unit.</code></pre>
+            </div>
+          </div>
+
+          <!-- Card 5: Prompt 4 NotebookLM Textbook Drill -->
+          <div class="cheatsheet-card">
+            <h4>📚 4. NOTEBOOKLM SOURCE-GROUNDED DRILL</h4>
+            <p class="text-sm text-secondary mb-2">Guarantees zero hallucinations by binding exclusively to your uploaded notes:</p>
+            <div class="demo-prompt-card">
+              <pre><code>Based STRICTLY on the uploaded Karnataka Board textbook chapter:
+1. List the top 5 high-frequency questions likely to appear for 3 or 4 marks.
+2. Generate a 5-question fill-in-the-blank quiz on key definitions and SI units.
+3. Do not include answers—quiz me first.</code></pre>
+            </div>
+          </div>
+
+          <!-- Card 6: Prompt 5 Keyword Diagnostic Grader -->
+          <div class="cheatsheet-card">
+            <h4>⚡ 5. KEYWORD DIAGNOSTIC AUDITOR</h4>
+            <p class="text-sm text-secondary mb-2">Audits your written answer against textbook key terms before you walk into exam hall:</p>
+            <div class="demo-prompt-card">
+              <pre><code>Here is a board question: [Question]
+Here is my drafted response: [Answer]
+Highlight every essential keyword present in green.
+List in red every critical scientific phrase that was omitted and must be included for full marks.</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- ⌨️ KEYBOARD SHORTCUTS REFERENCE MODAL                                      -->
+  <!-- ========================================================================= -->
+  <div class="sim-modal-backdrop" id="shortcutsModal" onclick="closeShortcutsModal(event)">
+    <div class="sim-modal-content" style="max-width: 620px;" onclick="event.stopPropagation()">
+      <div class="sim-modal-header">
+        <div class="sim-header-title">
+          <span class="sim-sparkle">⌨️</span>
+          <div>
+            <h3>KEYBOARD SHORTCUTS & AUDITORIUM CONTROLS</h3>
+            <p>Presenter shortcuts for fluid stage delivery</p>
+          </div>
+        </div>
+        <button type="button" class="nav-close-btn" onclick="closeShortcutsModal()">&times;</button>
+      </div>
+      <div class="sim-modal-body">
+        <table class="shortcuts-table">
+          <thead>
+            <tr>
+              <th>ACTION</th>
+              <th>KEYBOARD SHORTCUT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Next Slide / Advance</td>
+              <td><span class="shortcut-key-badge">Space</span> or <span class="shortcut-key-badge">&rarr;</span> or <span class="shortcut-key-badge">PageDown</span></td>
+            </tr>
+            <tr>
+              <td>Previous Slide</td>
+              <td><span class="shortcut-key-badge">&larr;</span> or <span class="shortcut-key-badge">Backspace</span> or <span class="shortcut-key-badge">PageUp</span></td>
+            </tr>
+            <tr>
+              <td>Slide Quick-Jump Navigator Grid</td>
+              <td><span class="shortcut-key-badge">G</span></td>
+            </tr>
+            <tr>
+              <td>Toggle Presenter Notes Drawer</td>
+              <td><span class="shortcut-key-badge">P</span></td>
+            </tr>
+            <tr>
+              <td>Start / Pause Workshop Session Timer</td>
+              <td><span class="shortcut-key-badge">T</span></td>
+            </tr>
+            <tr>
+              <td>Toggle Fullscreen Stage Projection</td>
+              <td><span class="shortcut-key-badge">F</span></td>
+            </tr>
+            <tr>
+              <td>Toggle High-Contrast Projector Mode</td>
+              <td><span class="shortcut-key-badge">B</span></td>
+            </tr>
+            <tr>
+              <td>Toggle Neo-Brutalist Light / Dark Theme</td>
+              <td><span class="shortcut-key-badge">D</span></td>
+            </tr>
+            <tr>
+              <td>Mute / Unmute Audio Effects</td>
+              <td><span class="shortcut-key-badge">M</span></td>
+            </tr>
+            <tr>
+              <td>Launch Socratic AI Tutor Simulator</td>
+              <td><span class="shortcut-key-badge">S</span></td>
+            </tr>
+            <tr>
+              <td>Open Student 1-Pager Cheatsheet</td>
+              <td><span class="shortcut-key-badge">C</span></td>
+            </tr>
+            <tr>
+              <td>Show Shortcuts Help</td>
+              <td><span class="shortcut-key-badge">?</span></td>
+            </tr>
+            <tr>
+              <td>Close Any Active Modal</td>
+              <td><span class="shortcut-key-badge">Esc</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 🍞 GLOBAL TOAST NOTIFICATION CONTAINER                                    -->
+  <!-- ========================================================================= -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+</body>
+</html>
+
