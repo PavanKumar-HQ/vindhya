@@ -11,7 +11,7 @@ const appState = {
   totalSlides: 36,
   
   labStep: 0,
-  totalLabSteps: 8,
+  totalLabSteps: 6,
   
   // Timer State
   timerSeconds: 60 * 60,
@@ -323,8 +323,8 @@ function goToLabMission(stepIdx) {
   const stepLabel = document.getElementById('labStepIndicator');
   if (stepLabel) {
     if (stepIdx === 0) stepLabel.textContent = 'Mission Setup';
-    else if (stepIdx === 8) stepLabel.textContent = 'Mission Complete';
-    else stepLabel.textContent = `Mission 0${stepIdx} / 07`;
+    else if (stepIdx === 6) stepLabel.textContent = 'Final Submission';
+    else stepLabel.textContent = `Mission 0${stepIdx} / 05`;
   }
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1295,3 +1295,21 @@ window.closeCheatsheetModal = closeCheatsheetModal;
 window.openShortcutsModal = openShortcutsModal;
 window.closeShortcutsModal = closeShortcutsModal;
 
+
+function setSubPill(btn, containerId, val) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  saveLabData();
+}
+
+function submitFinalLab() {
+  const student = document.getElementById('studentNameInput')?.value.trim() || 'Student';
+  const topic = document.getElementById('topicInput')?.value.trim() || "Newton's First Law of Motion";
+  const problem = document.getElementById('final_problem')?.value.trim() || topic;
+  const tool = document.getElementById('final_tool')?.value.trim() || 'ChatGPT / Gemini / NotebookLM';
+  
+  alert(`🎉 CONGRATULATIONS, ${student.toUpperCase()}!\n\nYou have completed the Geniusphere AI Exam Lab Practical (60 Minutes)!\n\nProblem Solved: ${problem}\nAI Tool Mastered: ${tool}\n\nTHE RULE OF THE LAB:\n✅ ASK → THINK → TRY → CHECK → IMPROVE\nYou didn't win by getting the answer. You won by understanding it!`);
+  saveLabData();
+}

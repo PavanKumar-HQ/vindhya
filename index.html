@@ -2017,7 +2017,7 @@ Do not rewrite the complete answer for me. Give me a hint so I can improve it my
 
       <div class="lab-arrow-controls">
         <button type="button" class="btn btn-outline btn-xs" onclick="prevLabMission()">‹ Prev Mission</button>
-        <span class="lab-step-indicator" id="labStepIndicator">Mission 01 / 07</span>
+        <span class="lab-step-indicator" id="labStepIndicator">Mission Setup</span>
         <button type="button" class="btn btn-outline btn-xs" onclick="nextLabMission()">Next Mission ›</button>
       </div>
 
@@ -2027,22 +2027,21 @@ Do not rewrite the complete answer for me. Give me a hint so I can improve it my
           <span class="lab-timer-digits" id="labTimerDigits">60:00</span>
           <button type="button" class="btn-timer-toggle" id="labTimerToggleBtn" onclick="toggleLabTimer()">Start</button>
         </div>
-        <button type="button" class="btn btn-outline btn-xs" id="labBackupToggle" onclick="toggleBackupMode()">Backup Mode</button>
       </div>
     </div>
 
+    <!-- 5 MISSIONS + SETUP + FINAL STEPPER DOTS -->
     <div class="lab-stepper-dots" id="labStepperDots">
       <div class="m-dot active" data-m="0" onclick="goToLabMission(0)">Setup</div>
-      <div class="m-dot" data-m="1" onclick="goToLabMission(1)">01. Teach Me</div>
-      <div class="m-dot" data-m="2" onclick="goToLabMission(2)">02. Compare AI</div>
-      <div class="m-dot" data-m="3" onclick="goToLabMission(3)">03. Test Me</div>
-      <div class="m-dot" data-m="4" onclick="goToLabMission(4)">04. Catch Mistake</div>
-      <div class="m-dot" data-m="5" onclick="goToLabMission(5)">05. Textbook Notes</div>
-      <div class="m-dot" data-m="6" onclick="goToLabMission(6)">06. Fix Prompt</div>
-      <div class="m-dot" data-m="7" onclick="goToLabMission(7)">07. Final Boss</div>
-      <div class="m-dot" data-m="8" onclick="goToLabMission(8)">Submit</div>
+      <div class="m-dot" data-m="1" onclick="goToLabMission(1)">M1. I Don't Get It</div>
+      <div class="m-dot" data-m="2" onclick="goToLabMission(2)">M2. Two AIs</div>
+      <div class="m-dot" data-m="3" onclick="goToLabMission(3)">M3. Don't Give Answer</div>
+      <div class="m-dot" data-m="4" onclick="goToLabMission(4)">M4. Study My Material</div>
+      <div class="m-dot" data-m="5" onclick="goToLabMission(5)">M5. Final Boss</div>
+      <div class="m-dot" data-m="6" onclick="goToLabMission(6)">Final Submission</div>
     </div>
 
+    <!-- LAB MISSIONS VIEWPORT -->
     <div class="lab-missions-viewport">
       <button type="button" class="carousel-nav-btn lab-arrow lab-prev-arrow" onclick="prevLabMission()" aria-label="Previous Mission">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -2053,542 +2052,367 @@ Do not rewrite the complete answer for me. Give me a hint so I can improve it my
         <!-- SCREEN 0: SETUP -->
         <div class="lab-card-screen active" data-step="0">
           <div class="lab-screen-content">
-            <span class="mission-tag">MISSION SETUP</span>
-            <h2 class="mission-title">Choose Your Lab Mission</h2>
-            <p class="mission-desc">Select <strong>one topic you genuinely struggle with</strong>. Turn AI into your private 24/7 tutor.</p>
+            <div class="panel-header-strip">
+              <span class="panel-tag tag-yellow">GENIUSPHERE AI EXAM LAB &bull; 60 MINUTES</span>
+            </div>
+            <h2 class="mission-title">Use AI to Solve a Real Study Problem</h2>
+            <p class="mission-subtitle"><strong>The Mission:</strong> Use AI to solve a real study problem &mdash; <em>without letting AI do the learning for you.</em></p>
+            
+            <div class="three-pillars-strip mt-3 mb-3">
+              <div class="pillar-chip bg-yellow">🤖 CHATGPT</div>
+              <div class="pillar-chip bg-cyan">✨ GEMINI</div>
+              <div class="pillar-chip bg-pink">📚 NOTEBOOKLM</div>
+            </div>
 
             <form id="labSetupForm" onsubmit="event.preventDefault(); nextLabMission();">
               <div class="form-grid-editorial">
                 <div class="form-group">
-                  <label for="studentNameInput">Student Name / Roll No <span class="opt">(Optional)</span></label>
+                  <label for="studentNameInput">Student Name / Roll No</label>
                   <input type="text" id="studentNameInput" class="form-input" placeholder="e.g. Rahul S. / Roll 14">
                 </div>
 
                 <div class="form-group">
-                  <label>Your Class <span class="req">*</span></label>
+                  <label>Your Class</label>
                   <div class="pills-row" id="classSelector">
-                    <button type="button" class="pill active" data-class="9">Class 9</button>
-                    <button type="button" class="pill" data-class="10">Class 10</button>
+                    <button type="button" class="pill active" data-class="Class 9">Class 9</button>
+                    <button type="button" class="pill" data-class="Class 10">Class 10</button>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="subjectSelect">Subject <span class="req">*</span></label>
-                  <select id="subjectSelect" class="form-input">
-                    <option value="Science (Physics)">Science (Physics)</option>
-                    <option value="Science (Chemistry)">Science (Chemistry)</option>
-                    <option value="Science (Biology)">Science (Biology)</option>
-                    <option value="Mathematics">Mathematics</option>
-                    <option value="Social Science">Social Science</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label>Confidence in this topic right now (1–5) <span class="req">*</span></label>
-                  <div class="pills-row" id="confBeforeSelector">
-                    <button type="button" class="pill" data-conf="1">1 (Lost)</button>
-                    <button type="button" class="pill active" data-conf="2">2 (Weak)</button>
-                    <button type="button" class="pill" data-conf="3">3 (Average)</button>
-                    <button type="button" class="pill" data-conf="4">4 (Good)</button>
-                    <button type="button" class="pill" data-conf="5">5 (Strong)</button>
+                <div class="form-group full-width">
+                  <label for="topicInput">Choose ONE Topic You Genuinely Find Difficult</label>
+                  <input type="text" id="topicInput" class="form-input" placeholder="e.g. Newton's First Law of Motion, Ohm's Law, Heredity, Ray Optics" value="Newton's First Law of Motion">
+                  <div class="quick-chips-row mt-2">
+                    <span class="quick-label">Suggestions:</span>
+                    <span class="q-chip" data-chip="Newton's First Law of Motion">Newton's First Law</span>
+                    <span class="q-chip" data-chip="Electric Current & Ohm's Law">Electricity &amp; Ohm's Law</span>
+                    <span class="q-chip" data-chip="Resistance in Series & Parallel">Resistors in Series/Parallel</span>
+                    <span class="q-chip" data-chip="Heredity and Evolution">Heredity &amp; Evolution</span>
                   </div>
                 </div>
               </div>
 
-              <div class="form-group mt-3">
-                <label for="topicInput">The Difficult Chapter/Topic You Want to Master <span class="req">*</span></label>
-                <input type="text" id="topicInput" required class="form-input" value="Newton's First Law of Motion">
-                <div class="quick-chips-row">
-                  <span class="qc-label">Quick Suggestions:</span>
-                  <button type="button" class="q-chip" data-chip="Newton's Laws of Motion">Newton's Laws</button>
-                  <button type="button" class="q-chip" data-chip="Electric Current & Ohm's Law">Electricity & Ohm's Law</button>
-                  <button type="button" class="q-chip" data-chip="Photosynthesis & Life Processes">Photosynthesis</button>
-                  <button type="button" class="q-chip" data-chip="Light: Reflection & Refraction">Light & Optics</button>
-                  <button type="button" class="q-chip" data-chip="Chemical Reactions & Equations">Chemical Reactions</button>
-                  <button type="button" class="q-chip" data-chip="Quadratic Equations & Roots">Quadratic Equations</button>
-                </div>
-              </div>
-
-              <div class="mission-footer-nav justify-end">
-                <button type="submit" class="btn btn-primary btn-large">Start Lab Mission 1 🚀</button>
+              <div class="screen-action-row mt-4">
+                <button type="submit" class="btn btn-primary btn-lg">Start 60-Minute Lab Practical &rarr;</button>
               </div>
             </form>
           </div>
         </div>
 
-        <!-- SCREEN 1: MISSION 1 -->
+        <!-- SCREEN 1: MISSION 1 — “I DON'T GET IT” -->
         <div class="lab-card-screen" data-step="1">
           <div class="lab-screen-content">
-            <span class="mission-tag">MISSION 01 / 07 &bull; 10 MINS</span>
-            <h2 class="mission-title">🧠 Make AI Teach Me</h2>
-            <p class="mission-desc">Do not ask for a boring definition. Ask AI to explain using a real-life analogy and test your understanding with ONE question.</p>
+            <div class="panel-header-strip">
+              <span class="panel-tag tag-yellow">MISSION 01 &bull; 10 MINUTES &bull; TOOL: CHATGPT</span>
+            </div>
+            <h2 class="mission-title">MISSION 1 &mdash; “I DON'T GET IT”</h2>
+            
+            <div class="story-highlight-box mb-3">
+              <p>Choose <strong>one topic you genuinely find difficult</strong> from a subject you're studying.</p>
+              <p class="story-punchline mt-1" style="font-size: 1.05rem !important;">Don't ask: “Give me notes on this topic.” Instead, try to make AI teach you.</p>
+            </div>
 
-            <div class="prompt-box-editorial">
-              <div class="pb-header">
-                <span>STEP 1: Copy this prompt into ChatGPT or Gemini</span>
-                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p1Code">Copy Prompt</button>
+            <div class="bullet-list-editorial mb-3">
+              <div class="bullet-item"><div class="bullet-icon bg-yellow">1</div><div class="bullet-text"><strong>Ask ChatGPT to explain the topic simply</strong></div></div>
+              <div class="bullet-item"><div class="bullet-icon bg-cyan">2</div><div class="bullet-text"><strong>Give you a real-life example</strong></div></div>
+              <div class="bullet-item"><div class="bullet-icon bg-green">3</div><div class="bullet-text"><strong>Ask you one question to check your understanding</strong></div></div>
+            </div>
+
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">🤖 CHATGPT TUTOR PROMPT</span>
+                <button type="button" class="btn-copy-prompt" onclick="copyPromptText(this)">Copy Prompt 📋</button>
               </div>
-              <pre class="prompt-code" id="p1Code">I'm a Class <span class="var-class">9</span> Karnataka State Board student.
-I'm struggling to understand <span class="var-topic">Newton's First Law of Motion</span>.
-Explain it in simple language suitable for my class.
-Use one real-life example (like riding a school bus or playing cricket).
-Then ask me ONE question to check whether I understood it.
-Do not give me the answer to the question until I try.</pre>
-              <div class="tool-links-editorial">
-                <span>Open Tool:</span>
-                <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs">Open ChatGPT ↗</a>
-                <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs">Open Gemini ↗</a>
+              <div class="prompt-text">"I am a <span class="var-class">Class 9</span> student. I don't understand <span class="var-topic">Newton's First Law of Motion</span>. Explain it simply, give me a real-life example, then ask me one question to check my understanding. Don't give me the answer until I respond."</div>
+            </div>
+
+            <div class="lab-submit-card mt-3">
+              <h4 class="submit-card-title">📝 Mission 1 Submission</h4>
+              <div class="form-group mt-2">
+                <label>Topic:</label>
+                <input type="text" id="m1_topic" class="form-input var-topic-input" placeholder="Topic name">
+              </div>
+              <div class="form-group mt-2">
+                <label>What did you understand better?</label>
+                <textarea id="m1_better" class="form-textarea" rows="2" placeholder="Write 1-2 sentences on what clicked for you..."></textarea>
+              </div>
+              <div class="form-group mt-2">
+                <label>Did AI's first explanation work for you?</label>
+                <div class="pills-row" id="m1_worked">
+                  <button type="button" class="pill active" onclick="setSubPill(this, 'm1_worked', 'Yes')">Yes</button>
+                  <button type="button" class="pill" onclick="setSubPill(this, 'm1_worked', 'No')">No</button>
+                </div>
               </div>
             </div>
 
-            <div class="backup-box-editorial" id="backup1">
-              <div class="backup-header-btn" onclick="toggleBackupContent('bc1')">
-                <span>💡 Backup AI Response (Use if AI website is blocked)</span>
-                <span>▾</span>
-              </div>
-              <div class="backup-body" id="bc1" style="display: none;">
-                <p><strong>AI Explanation:</strong> Imagine you are on a moving bus. When the driver slams the brakes, your feet stop with the bus floor, but your upper body lunges forward. Why? Because your body wanted to keep moving at the same speed! This is inertia.</p>
-                <p><strong>Check Question:</strong> If you place a coin on a card over a glass and flick the card away horizontally, what happens to the coin and why?</p>
-              </div>
-            </div>
-
-            <div class="form-group mt-3">
-              <label for="m1_answer"><strong>STEP 2:</strong> Answer the AI's question, then record in your own words: What did you understand?</label>
-              <textarea id="m1_answer" class="form-input form-textarea" rows="3" placeholder="Write 2-3 sentences in your own words. Explain the concept without copying AI text..."></textarea>
-              <span class="field-hint">Your own thinking is what matters — do not copy-paste AI text!</span>
-            </div>
-
-            <div class="mission-footer-nav">
-              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
-              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (Compare AI) →</button>
+            <div class="screen-action-row mt-3">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">&larr; Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Complete Mission 1 &rarr;</button>
             </div>
           </div>
         </div>
 
-        <!-- SCREEN 2: MISSION 2 -->
+        <!-- SCREEN 2: MISSION 2 — “TWO AIs, ONE QUESTION” -->
         <div class="lab-card-screen" data-step="2">
           <div class="lab-screen-content">
-            <span class="mission-tag">MISSION 02 / 07 &bull; 8 MINS</span>
-            <h2 class="mission-title">⚔️ Same Question, Different AI</h2>
-            <p class="mission-desc">Take the exact same topic and prompt to the other tool. Compare which explanation was clearer for your brain.</p>
+            <div class="panel-header-strip">
+              <span class="panel-tag tag-cyan">MISSION 02 &bull; 10 MINUTES &bull; TOOLS: CHATGPT + GEMINI</span>
+            </div>
+            <h2 class="mission-title">MISSION 2 &mdash; “TWO AIs, ONE QUESTION”</h2>
+            <p class="mission-subtitle">Take the <strong>same topic</strong> from Mission 1. Ask ChatGPT and Gemini to explain it using the exact same request.</p>
 
-            <div class="prompt-box-editorial">
-              <div class="pb-header">
-                <span>STEP 1: Copy into the other AI platform</span>
-                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p2Code">Copy Prompt</button>
+            <div class="comparison-card mt-2 mb-3">
+              <div class="compare-col" style="background: #FFFBEB;">
+                <span class="compare-badge bg-yellow" style="color:#000;">TOOL 1: CHATGPT</span>
+                <p>Run your prompt in ChatGPT</p>
               </div>
-              <pre class="prompt-code" id="p2Code">I'm a Class <span class="var-class">9</span> student.
-Explain <span class="var-topic">Newton's First Law of Motion</span> in simple language.
-Use one real-life example that a student would understand.
-Then give me one question to check whether I understood it.
-Do not give me the answer before I try.</pre>
-              <div class="tool-links-editorial">
-                <span>Switch Tool:</span>
-                <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs">Try on ChatGPT ↗</a>
-                <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs">Try on Gemini ↗</a>
+              <div class="compare-versus-badge">VS</div>
+              <div class="compare-col" style="background: #ECFEFF;">
+                <span class="compare-badge bg-cyan" style="color:#000;">TOOL 2: GEMINI</span>
+                <p>Run the exact same prompt in Gemini</p>
               </div>
             </div>
 
-            <div class="backup-box-editorial" id="backup2">
-              <div class="backup-header-btn" onclick="toggleBackupContent('bc2')">
-                <span>💡 Backup AI Responses (ChatGPT vs Gemini side-by-side simulation)</span>
-                <span>▾</span>
-              </div>
-              <div class="backup-body" id="bc2" style="display: none;">
-                <p><strong>ChatGPT:</strong> "Think of a skateboard. If you push it on a smooth road, it rolls forever until friction slows it down. Your body has inertia — the natural stubbornness of matter to resist any sudden change in speed."</p>
-                <p><strong>Gemini:</strong> "Newton's First Law (Law of Inertia): An object remains at rest or in uniform motion along a straight line unless acted upon by a net external unbalanced force. Everyday example: Dust particles fly off a rug when struck by a stick."</p>
-                <p class="text-brand-cyan" style="font-size:0.85rem;"><em>Comparison tip: ChatGPT provided a mental picture; Gemini gave the precise textbook definition and board keywords.</em></p>
-              </div>
+            <div class="lesson-banner mb-3" style="background: #F0FDF4; border: 1.5px solid #22C55E; padding: 0.75rem 1rem; border-radius: 8px;">
+              💡 <strong>Core Lesson:</strong> Different AI response &ne; automatically wrong. Compare to find which explanation clicks for you!
             </div>
 
-            <div class="form-group mt-3">
-              <label><strong>STEP 2:</strong> Which explanation helped YOU understand better?</label>
-              <div class="pills-row" id="m2ToolChoice">
-                <button type="button" class="pill" data-tool="ChatGPT">ChatGPT</button>
-                <button type="button" class="pill" data-tool="Gemini">Gemini</button>
-                <button type="button" class="pill active" data-tool="Both">Both</button>
-                <button type="button" class="pill" data-tool="Neither">Neither</button>
+            <div class="lab-submit-card">
+              <h4 class="submit-card-title">📝 Mission 2 Submission</h4>
+              <div class="form-group mt-2">
+                <label>Which explanation was easier for ME to understand? Why?</label>
+                <textarea id="m2_easier" class="form-textarea" rows="2" placeholder="e.g. ChatGPT used a school-bus example which clicked, while Gemini used bullet points..."></textarea>
+              </div>
+              <div class="form-group mt-2">
+                <label>Check against your textbook: Did the textbook support the explanation?</label>
+                <div class="pills-row" id="m2_textbook">
+                  <button type="button" class="pill active" onclick="setSubPill(this, 'm2_textbook', 'Yes')">Yes</button>
+                  <button type="button" class="pill" onclick="setSubPill(this, 'm2_textbook', 'No')">No</button>
+                  <button type="button" class="pill" onclick="setSubPill(this, 'm2_textbook', 'Not sure')">Not sure</button>
+                </div>
               </div>
             </div>
 
-            <div class="form-group mt-2">
-              <label for="m2_reason">Why was that explanation more helpful for your learning?</label>
-              <input type="text" id="m2_reason" class="form-input" placeholder="e.g. ChatGPT gave a clearer analogy, while Gemini used shorter bullet points.">
-            </div>
-
-            <div class="mission-footer-nav">
-              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
-              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (Test Me) →</button>
+            <div class="screen-action-row mt-3">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">&larr; Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Complete Mission 2 &rarr;</button>
             </div>
           </div>
         </div>
 
-        <!-- SCREEN 3: MISSION 3 -->
+        <!-- SCREEN 3: MISSION 3 — “DON'T GIVE ME THE ANSWER” -->
         <div class="lab-card-screen" data-step="3">
           <div class="lab-screen-content">
-            <span class="mission-tag">MISSION 03 / 07 &bull; 10 MINS</span>
-            <h2 class="mission-title">🎯 Don't Ask for Answers. Ask for Questions.</h2>
-            <p class="mission-desc">Turn AI into an examiner! It generates 3 progressive board-style questions without spoiling answers.</p>
+            <div class="panel-header-strip">
+              <span class="panel-tag tag-pink">MISSION 03 &bull; 12 MINUTES &bull; TOOL: CHATGPT OR GEMINI</span>
+            </div>
+            <h2 class="mission-title">MISSION 3 &mdash; “DON'T GIVE ME THE ANSWER”</h2>
 
-            <div class="prompt-box-editorial">
-              <div class="pb-header">
-                <span>STEP 1: Copy this Examiner prompt</span>
-                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p3Code">Copy Prompt</button>
-              </div>
-              <pre class="prompt-code" id="p3Code">I am preparing for my Class <span class="var-class">9</span> exam.
-I have just studied <span class="var-topic">Newton's First Law of Motion</span>.
-Give me 3 exam-style questions about this topic.
-Ask me one question at a time.
-Do not show me the answer before I respond.
-Start with an easy question and gradually make the questions harder.</pre>
+            <div class="story-highlight-box mb-3">
+              <p>Choose a topic you've already studied. Ask AI to give you <strong>one exam-style question</strong>.</p>
+              <p class="story-punchline mt-1" style="font-size: 1.05rem !important;">Rule: You must answer before asking AI for feedback.</p>
             </div>
 
-            <div class="backup-box-editorial" id="backup3">
-              <div class="backup-header-btn" onclick="toggleBackupContent('bc3')">
-                <span>💡 Backup AI Response (Examiner Question Generation)</span>
-                <span>▾</span>
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <span class="prompt-label">🥊 SPARRING &amp; CHECK PROMPT</span>
+                <button type="button" class="btn-copy-prompt" onclick="copyPromptText(this)">Copy Prompt 📋</button>
               </div>
-              <div class="backup-body" id="bc3" style="display: none;">
-                <p><strong>Question 1 (1 Mark / Recall):</strong> State Newton's First Law of Motion and state the physical quantity that measures an object's inertia.</p>
-                <p><strong>Question 2 (2 Marks / Conceptual):</strong> Why does an athlete run a short distance before taking a long jump? Explain in terms of inertia.</p>
-                <p><strong>Question 3 (3 Marks / Application):</strong> A passenger standing in a moving bus falls forward when brakes are applied suddenly, but falls backward when it starts suddenly. Give reasons for both situations.</p>
-              </div>
+              <div class="prompt-text">"I have studied <span class="var-topic">Newton's First Law</span>. Give me ONE exam-style question. Do not show me the answer until I respond."
+
+[Type your own answer]
+
+"Check my answer like a teacher. Tell me:
+1. What I got right
+2. What I misunderstood
+3. What I should improve
+Do not rewrite the complete answer for me. Give me a hint so I can improve it myself."</div>
             </div>
 
-            <div class="form-group mt-3">
-              <label><strong>STEP 2:</strong> Answer each question yourself before seeing what AI thinks:</label>
-              <div class="qa-item mt-1">
-                <label for="m3_q1">Question 1 (Easy / Recall) — Your Answer:</label>
-                <textarea id="m3_q1" class="form-input form-textarea" rows="2" placeholder="Write your answer to Q1..."></textarea>
+            <div class="lab-submit-card mt-3">
+              <h4 class="submit-card-title">📝 Mission 3 Submission</h4>
+              <div class="form-group mt-2">
+                <label>What mistake did you discover in your answer?</label>
+                <textarea id="m3_mistake" class="form-textarea" rows="2" placeholder="e.g. I forgot to mention external unbalanced force..."></textarea>
               </div>
-              <div class="qa-item mt-2">
-                <label for="m3_q2">Question 2 (Medium / Conceptual) — Your Answer:</label>
-                <textarea id="m3_q2" class="form-input form-textarea" rows="2" placeholder="Write your answer to Q2..."></textarea>
-              </div>
-              <div class="qa-item mt-2">
-                <label for="m3_q3">Question 3 (Hard / Application) — Your Answer:</label>
-                <textarea id="m3_q3" class="form-input form-textarea" rows="2" placeholder="Write your answer to Q3..."></textarea>
+              <div class="form-group mt-2">
+                <label>What did you change in your improved answer?</label>
+                <textarea id="m3_changed" class="form-textarea" rows="2" placeholder="e.g. In my second draft, I added both states of motion to score full marks..."></textarea>
               </div>
             </div>
 
-            <div class="mission-footer-nav">
-              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
-              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (Catch Mistake) →</button>
+            <div class="screen-action-row mt-3">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">&larr; Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Complete Mission 3 &rarr;</button>
             </div>
           </div>
         </div>
 
-        <!-- SCREEN 4: MISSION 4 -->
+        <!-- SCREEN 4: MISSION 4 — “STUDY MY MATERIAL” -->
         <div class="lab-card-screen" data-step="4">
           <div class="lab-screen-content">
-            <span class="mission-tag">MISSION 04 / 07 &bull; 7 MINS</span>
-            <h2 class="mission-title">🔍 Catch My Mistake</h2>
-            <p class="mission-desc">Take one of your answers from Mission 3. Give it to AI and tell it to mark it like a teacher: What is right, what is missed, and hints to improve.</p>
+            <div class="panel-header-strip">
+              <span class="panel-tag tag-green">MISSION 04 &bull; 12 MINUTES &bull; TOOL: NOTEBOOKLM</span>
+            </div>
+            <h2 class="mission-title">MISSION 4 &mdash; “STUDY MY MATERIAL”</h2>
+            <p class="mission-subtitle">Open the prepared Geniusphere NotebookLM material. Choose one section/topic.</p>
 
-            <div class="prompt-box-editorial">
-              <div class="pb-header">
-                <span>STEP 1: Give your answer to AI for evaluation</span>
-                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p4Code">Copy Prompt</button>
-              </div>
-              <pre class="prompt-code" id="p4Code">Here is my answer to the question:
-[PASTE YOUR ANSWER FROM MISSION 3 HERE]
-
-Check my answer like a strict board exam teacher.
-Tell me:
-1. What I got right
-2. What I misunderstood or missed
-3. What I should improve
-Do not rewrite the complete answer for me.
-Give me a hint that helps me improve it myself.</pre>
+            <div class="prompt-box mt-2">
+              <div class="prompt-header"><span class="prompt-label">📚 STEP 1: EXTRACT KEY CONCEPTS</span><button type="button" class="btn-copy-prompt" onclick="copyPromptText(this)">Copy 📋</button></div>
+              <div class="prompt-text">"Based only on the study material I provided, identify the key concepts I should understand for my exam. Explain them briefly in simple language."</div>
             </div>
 
-            <div class="backup-box-editorial" id="backup4">
-              <div class="backup-header-btn" onclick="toggleBackupContent('bc4')">
-                <span>💡 Backup AI Response (Strict Teacher Answer Evaluation)</span>
-                <span>▾</span>
-              </div>
-              <div class="backup-body" id="bc4" style="display: none;">
-                <p><strong>Teacher Evaluation of your answer:</strong></p>
-                <p>✅ <strong>What you got right:</strong> You clearly stated that inertia of motion keeps the upper body moving forward when brakes are applied.</p>
-                <p>⚠️ <strong>What was missed:</strong> You did not mention that the lower body comes to rest immediately due to contact and friction with the bus floor. Both parts of the body must be contrasted to get full marks on Karnataka Board exams.</p>
-                <p>💡 <strong>Improvement Hint:</strong> Rewrite with the phrase: <em>'The lower part of the body comes to rest with the vehicle, while the upper part continues in its state of motion due to inertia.'</em></p>
-              </div>
+            <div class="prompt-box mt-2">
+              <div class="prompt-header"><span class="prompt-label">🔍 STEP 2: SIMPLIFY DIFFICULT CONCEPT</span><button type="button" class="btn-copy-prompt" onclick="copyPromptText(this)">Copy 📋</button></div>
+              <div class="prompt-text">"I don't understand this concept. Explain it in simpler language using an everyday example. Stay close to my study material."</div>
             </div>
 
-            <div class="form-grid-editorial mt-3">
-              <div class="form-group">
-                <label for="m4_right">Something I got right:</label>
-                <input type="text" id="m4_right" class="form-input" placeholder="e.g. Correctly stated that inertia resists change.">
+            <div class="prompt-box mt-2">
+              <div class="prompt-header"><span class="prompt-label">🎯 STEP 3: TEST YOURSELF</span><button type="button" class="btn-copy-prompt" onclick="copyPromptText(this)">Copy 📋</button></div>
+              <div class="prompt-text">"Using only my study material, ask me one question about this concept. Don't give me the answer until I respond."</div>
+            </div>
+
+            <div class="lab-submit-card mt-3">
+              <h4 class="submit-card-title">📝 Mission 4 Submission</h4>
+              <div class="form-group mt-2">
+                <label>Concept I struggled with:</label>
+                <input type="text" id="m4_struggled" class="form-input" placeholder="e.g. Resistance vs Resistivity">
               </div>
-              <div class="form-group">
-                <label for="m4_wrong">Something I missed / misunderstood:</label>
-                <input type="text" id="m4_wrong" class="form-input" placeholder="e.g. Forgot to mention 'unbalanced external force'.">
+              <div class="form-group mt-2">
+                <label>Something I understood better:</label>
+                <textarea id="m4_understood" class="form-textarea" rows="2" placeholder="Explain what clicked using your textbook material..."></textarea>
               </div>
             </div>
 
-            <div class="form-group mt-2">
-              <label for="m4_improved"><strong>YOUR IMPROVED ANSWER:</strong> (Written by YOU, not AI)</label>
-              <textarea id="m4_improved" class="form-input form-textarea" rows="3" placeholder="Rewrite your full answer with the missing concept included in your own words..."></textarea>
-            </div>
-
-            <div class="mission-footer-nav">
-              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
-              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (NotebookLM) →</button>
+            <div class="screen-action-row mt-3">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">&larr; Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Complete Mission 4 &rarr;</button>
             </div>
           </div>
         </div>
 
-        <!-- SCREEN 5: MISSION 5 -->
+        <!-- SCREEN 5: MISSION 5 — FINAL BOSS -->
         <div class="lab-card-screen" data-step="5">
           <div class="lab-screen-content">
-            <span class="mission-tag">MISSION 05 / 07 &bull; 8 MINS</span>
-            <h2 class="mission-title">📚 My Study Material + AI (NotebookLM)</h2>
-            <p class="mission-desc">Ground AI in approved school notes or textbook chapters. No hallucinations, no out-of-syllabus surprises.</p>
+            <div class="panel-header-strip">
+              <span class="panel-tag tag-pink">MISSION 05 &bull; 10 MINUTES &bull; TOOL: YOUR CHOICE</span>
+            </div>
+            <h2 class="mission-title">MISSION 5 &mdash; FINAL BOSS</h2>
 
-            <div class="notebooklm-banner">
-              <strong>Open NotebookLM Workspace:</strong>
-              <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs">Launch NotebookLM ↗</a>
+            <div class="story-highlight-box mb-3">
+              <p>Now <strong>YOU decide which AI tool is appropriate</strong>.</p>
+              <p class="story-punchline mt-1" style="font-size: 1.05rem !important;">You have a real study problem. Choose: ChatGPT / Gemini / NotebookLM.</p>
             </div>
 
-            <div class="prompt-box-editorial mt-2">
-              <div class="pb-header">
-                <span>Prompt A: Identify Key Concepts</span>
-                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p5aCode">Copy Prompt A</button>
-              </div>
-              <pre class="prompt-code" id="p5aCode">Based only on the study material I provided, identify the key concepts I should understand before my exam. Explain each one briefly in simple language.</pre>
+            <div class="bullet-list-editorial mb-3">
+              <div class="bullet-item"><div class="bullet-icon bg-yellow">A</div><div class="bullet-text"><strong>“I don't understand a concept.”</strong></div></div>
+              <div class="bullet-item"><div class="bullet-icon bg-cyan">B</div><div class="bullet-text"><strong>“I need to practise questions.”</strong></div></div>
+              <div class="bullet-item"><div class="bullet-icon bg-pink">C</div><div class="bullet-text"><strong>“I want feedback on my answer.”</strong></div></div>
+              <div class="bullet-item"><div class="bullet-icon bg-green">D</div><div class="bullet-text"><strong>“I need to revise my textbook material.”</strong></div></div>
             </div>
 
-            <div class="prompt-box-editorial mt-2">
-              <div class="pb-header">
-                <span>Prompt B: Source-Based Quiz</span>
-                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p5bCode">Copy Prompt B</button>
-              </div>
-              <pre class="prompt-code" id="p5bCode">Using only the study material I provided, quiz me on this topic.
-Ask one question at a time.
-Do not reveal the answer until I respond.
-Include both conceptual and application-based questions.</pre>
+            <div class="box-bad mb-3">
+              <span class="box-tag tag-red">⚠️ MANDATORY LAB RULE:</span>
+              <p class="box-note" style="color: #BE123C; font-weight: 700;">You are NOT allowed to simply copy an AI answer! You must: ASK &rarr; THINK &rarr; ANSWER &rarr; CHECK.</p>
             </div>
 
-            <div class="backup-box-editorial" id="backup5">
-              <div class="backup-header-btn" onclick="toggleBackupContent('bc5')">
-                <span>💡 Backup AI Response (NotebookLM Grounded Textbook Study)</span>
-                <span>▾</span>
+            <div class="lab-submit-card">
+              <h4 class="submit-card-title">📝 Final Boss Submission</h4>
+              <div class="form-group mt-2">
+                <label>1. My study problem:</label>
+                <input type="text" id="m5_problem" class="form-input" placeholder="e.g. Understanding Series and Parallel circuit calculation">
               </div>
-              <div class="backup-body" id="bc5" style="display: none;">
-                <p><strong>NotebookLM Sourced Finding (From Class 9 Science Chapter 9):</strong></p>
-                <p><strong>Key Concept:</strong> Inertia is an inherent property of all bodies. Mass is the quantitative measure of inertia (Page 118, Section 9.2). A 5-rupee coin has more inertia than a 1-rupee coin because it has greater mass.</p>
-                <p><strong>Source-grounded Exam Question:</strong> "Which has more inertia: a rubber ball and a stone of the same size? Explain with reference to textbook definition."</p>
+              <div class="form-group mt-2">
+                <label>2. AI tool I chose:</label>
+                <div class="pills-row" id="m5_toolSelector">
+                  <button type="button" class="pill active" onclick="setSubPill(this, 'm5_toolSelector', 'ChatGPT')">ChatGPT</button>
+                  <button type="button" class="pill" onclick="setSubPill(this, 'm5_toolSelector', 'Gemini')">Gemini</button>
+                  <button type="button" class="pill" onclick="setSubPill(this, 'm5_toolSelector', 'NotebookLM')">NotebookLM</button>
+                </div>
               </div>
-            </div>
-
-            <div class="form-grid-editorial mt-3">
-              <div class="form-group">
-                <label for="m5_concept">One high-yield concept identified:</label>
-                <input type="text" id="m5_concept" class="form-input" placeholder="e.g. Mass as the measure of inertia.">
-              </div>
-              <div class="form-group">
-                <label for="m5_question">One tricky question you encountered:</label>
-                <input type="text" id="m5_question" class="form-input" placeholder="e.g. Why dust falls off a carpet when beaten with a stick.">
+              <div class="form-group mt-2">
+                <label>3. Why I chose it:</label>
+                <textarea id="m5_why" class="form-textarea" rows="2" placeholder="e.g. I chose NotebookLM because I wanted to stay strictly within my textbook's syllabus..."></textarea>
               </div>
             </div>
 
-            <div class="mission-footer-nav">
-              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
-              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (Fix Prompt) →</button>
+            <div class="screen-action-row mt-3">
+              <button type="button" class="btn btn-outline" onclick="prevLabMission()">&larr; Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Proceed to Final Submission &rarr;</button>
             </div>
           </div>
         </div>
 
-        <!-- SCREEN 6: MISSION 6 -->
+        <!-- SCREEN 6: FINAL SUBMISSION & CERTIFICATE -->
         <div class="lab-card-screen" data-step="6">
           <div class="lab-screen-content">
-            <span class="mission-tag">MISSION 06 / 07 &bull; 5 MINS</span>
-            <h2 class="mission-title">⚔️ Fix the Terrible Prompt</h2>
-            <p class="mission-desc">Upgrade this vague 2-word prompt using the 5-part formula (WHO + WHAT + CONTEXT + HOW + RULE).</p>
+            <div class="panel-header-strip">
+              <span class="panel-tag tag-green">PRACTICAL COMPLETE &bull; 60 MINUTES</span>
+            </div>
+            <h2 class="mission-title">FINAL SUBMISSION &bull; CERTIFICATION</h2>
 
-            <div class="bad-prompt-banner">
-              <span class="bad-prompt-tag">THE TERRIBLE PROMPT:</span>
-              <span class="bad-prompt-text">“Explain electricity.”</span>
+            <div class="rule-of-the-lab-banner mb-3" style="background: #0B132B; color: #FFF; border-radius: 12px; padding: 1.25rem 1.5rem; text-align: center;">
+              <div style="font-size: 0.85rem; font-weight: 800; color: #94A3B8; letter-spacing: 0.08em;">THE RULE OF THE LAB</div>
+              <div style="font-size: 1.15rem; color: #EF4444; font-weight: 800; margin-top: 0.35rem;">❌ ASK &rarr; COPY &rarr; FORGET</div>
+              <div style="font-size: 1.3rem; color: #22C55E; font-weight: 900; margin-top: 0.25rem;">✅ ASK &rarr; THINK &rarr; TRY &rarr; CHECK &rarr; IMPROVE</div>
+              <p style="font-size: 1.1rem; font-weight: 800; color: #FFDE59; margin: 0.75rem 0 0 0;">YOU DON'T WIN BY GETTING THE ANSWER. YOU WIN BY UNDERSTANDING IT.</p>
             </div>
 
-            <div class="formula-tags-editorial">
-              <span><strong>WHO:</strong> Class 9/10 student</span>
-              <span><strong>WHAT:</strong> Concept gap</span>
-              <span><strong>CONTEXT:</strong> Exam prep</span>
-              <span><strong>HOW:</strong> Analogy</span>
-              <span><strong>RULE:</strong> Ask 1 question</span>
-            </div>
-
-            <div class="backup-box-editorial" id="backup6">
-              <div class="backup-header-btn" onclick="toggleBackupContent('bc6')">
-                <span>💡 Backup AI Response (Upgraded 5-Part Prompt Example)</span>
-                <span>▾</span>
-              </div>
-              <div class="backup-body" id="bc6" style="display: none;">
-                <p><strong>Upgraded Prompt Blueprint:</strong></p>
-                <p><code>"I am a Class 10 Karnataka State Board student preparing for my Science exam [WHO + CONTEXT]. Explain the difference between electric current and potential difference [WHAT] using an analogy of water flowing through pipes and pressure from a water pump [HOW]. Then give me 2 board exam numerical practice problems one at a time without revealing the answers [RULE]."</code></p>
-              </div>
-            </div>
-
-            <div class="form-group mt-3">
-              <label for="m6_prompt_input"><strong>YOUR TURN:</strong> Write an improved prompt using the 5 parts:</label>
-              <textarea id="m6_prompt_input" class="form-input form-textarea" rows="3" placeholder="I'm a Class 10 student preparing for my Science board exam. I don't understand electric current and potential difference. Explain it using a water pipe analogy, then ask me two questions one by one..."></textarea>
-              
-              <div class="formula-pills" id="formulaPills">
-                <span class="fp-badge" id="fp-who">⚪ WHO</span>
-                <span class="fp-badge" id="fp-what">⚪ WHAT</span>
-                <span class="fp-badge" id="fp-context">⚪ CONTEXT</span>
-                <span class="fp-badge" id="fp-how">⚪ HOW</span>
-                <span class="fp-badge" id="fp-rule">⚪ RULE</span>
-              </div>
-            </div>
-
-            <div class="mission-footer-nav">
-              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
-              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Next Mission (Final Boss) →</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- SCREEN 7: MISSION 7 -->
-        <div class="lab-card-screen" data-step="7">
-          <div class="lab-screen-content">
-            <span class="mission-tag">MISSION 07 / 07 &bull; 5 MINS</span>
-            <h2 class="mission-title">🧪 Final Boss: Can You Beat AI?</h2>
-            <p class="mission-desc">Challenge AI for one brand new conceptual question about <strong class="var-topic">this topic</strong>. Answer it without looking at any notes!</p>
-
-            <div class="prompt-box-editorial">
-              <div class="pb-header">
-                <span>STEP 1: Challenge AI with this prompt</span>
-                <button type="button" class="btn btn-outline btn-xs copy-btn" data-target="p7Code">Copy Prompt</button>
-              </div>
-              <pre class="prompt-code" id="p7Code">I have been studying <span class="var-topic">Newton's First Law of Motion</span>.
-Give me one brand new conceptual question that tests whether I ACTUALLY understand the concept or just memorised it.
-Make it different from earlier questions.
-Do not give me the answer.
-Wait for my response.</pre>
-            </div>
-
-            <div class="backup-box-editorial" id="backup7">
-              <div class="backup-header-btn" onclick="toggleBackupContent('bc7')">
-                <span>💡 Backup AI Response (Final Boss Question & Evaluation)</span>
-                <span>▾</span>
-              </div>
-              <div class="backup-body" id="bc7" style="display: none;">
-                <p><strong>Final Boss Question:</strong> A magician suddenly pulls a smooth cloth from underneath a pile of heavy ceramic plates on a dining table without breaking them. Explain why this works using Newton's First Law and friction.</p>
-                <p><strong>Evaluation Criteria:</strong> 1) Plates have large mass hence large inertia at rest; 2) The pull is extremely quick, making time of contact tiny; 3) The unbalanced frictional force acts for too brief an instant to change the plates' state of rest.</p>
-              </div>
-            </div>
-
-            <div class="form-group mt-3">
-              <label for="m7_boss_q">The question AI gave you:</label>
-              <input type="text" id="m7_boss_q" class="form-input" placeholder="Paste the tricky question AI asked you...">
-            </div>
-
-            <div class="form-group mt-2">
-              <label for="m7_boss_attempt">Your attempt (Reason it out yourself):</label>
-              <textarea id="m7_boss_attempt" class="form-input form-textarea" rows="3" placeholder="Write your full reasoning here..."></textarea>
-            </div>
-
-            <div class="form-group mt-2">
-              <label for="m7_boss_eval">What did AI evaluate about your reasoning?</label>
-              <input type="text" id="m7_boss_eval" class="form-input" placeholder="e.g. Got the logic 100% right, but need to mention SI units.">
-            </div>
-
-            <div class="mission-footer-nav">
-              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
-              <button type="button" class="btn btn-primary" onclick="nextLabMission()">Finish & Submit Lab 🏁</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- SCREEN 8: SUBMISSION -->
-        <div class="lab-card-screen" data-step="8">
-          <div class="lab-screen-content">
-            <span class="mission-tag">MISSION ACCOMPLISHED</span>
-            <h2 class="mission-title">You didn't just ask AI. You used it to learn.</h2>
-            <div class="accomplishment-checklist">
-              <div>✓ Understood a topic through analogies</div>
-              <div>✓ Practised exam-style questions</div>
-              <div>✓ Checked reasoning & caught mistakes</div>
-              <div>✓ Grounded learning in textbook material</div>
-              <div>✓ Upgraded prompt engineering skills</div>
-              <div>✓ Defeated the Final Boss challenge</div>
-            </div>
-
-            <div class="form-grid-editorial mt-3">
-              <div class="form-group">
-                <label>Confidence in <strong class="var-topic">this topic</strong> NOW (1 to 5):</label>
-                <div class="pills-row" id="confAfterSelector">
-                  <button type="button" class="pill" data-conf="1">1</button>
-                  <button type="button" class="pill" data-conf="2">2</button>
-                  <button type="button" class="pill" data-conf="3">3</button>
-                  <button type="button" class="pill active" data-conf="4">4 (Confident)</button>
-                  <button type="button" class="pill" data-conf="5">5 (Exam Ready!)</button>
+            <form id="finalSubmissionForm" onsubmit="event.preventDefault(); submitFinalLab();">
+              <div class="form-grid-editorial">
+                <div class="form-group">
+                  <label>1. My study problem</label>
+                  <input type="text" id="final_problem" class="form-input" placeholder="Your study problem">
+                </div>
+                <div class="form-group">
+                  <label>2. AI tool I chose</label>
+                  <input type="text" id="final_tool" class="form-input" placeholder="ChatGPT / Gemini / NotebookLM">
+                </div>
+                <div class="form-group full-width">
+                  <label>3. Why I chose it</label>
+                  <input type="text" id="final_why" class="form-input" placeholder="Reason for selecting this tool">
+                </div>
+                <div class="form-group full-width">
+                  <label>4. One thing AI helped me understand</label>
+                  <textarea id="final_understood" class="form-textarea" rows="2" placeholder="What key scientific concept clicked?"></textarea>
+                </div>
+                <div class="form-group full-width">
+                  <label>5. One thing I still need to revise</label>
+                  <textarea id="final_revise" class="form-textarea" rows="2" placeholder="What should you check in your textbook tonight?"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>6. My confidence BEFORE the lab (1 to 5):</label>
+                  <div class="pills-row" id="final_confBefore">
+                    <button type="button" class="pill" onclick="setSubPill(this, 'final_confBefore', '1')">1</button>
+                    <button type="button" class="pill active" onclick="setSubPill(this, 'final_confBefore', '2')">2</button>
+                    <button type="button" class="pill" onclick="setSubPill(this, 'final_confBefore', '3')">3</button>
+                    <button type="button" class="pill" onclick="setSubPill(this, 'final_confBefore', '4')">4</button>
+                    <button type="button" class="pill" onclick="setSubPill(this, 'final_confBefore', '5')">5</button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>7. My confidence AFTER the lab (1 to 5):</label>
+                  <div class="pills-row" id="final_confAfter">
+                    <button type="button" class="pill" onclick="setSubPill(this, 'final_confAfter', '1')">1</button>
+                    <button type="button" class="pill" onclick="setSubPill(this, 'final_confAfter', '2')">2</button>
+                    <button type="button" class="pill" onclick="setSubPill(this, 'final_confAfter', '3')">3</button>
+                    <button type="button" class="pill" onclick="setSubPill(this, 'final_confAfter', '4')">4</button>
+                    <button type="button" class="pill active" onclick="setSubPill(this, 'final_confAfter', '5')">5 🌟</button>
+                  </div>
                 </div>
               </div>
 
-              <div class="form-group">
-                <label>During this lab, did AI mainly:</label>
-                <div class="pills-row" id="mindsetSelector">
-                  <button type="button" class="pill" data-val="Give answers">Give answers</button>
-                  <button type="button" class="pill active" data-val="Help me learn">Help me learn</button>
-                  <button type="button" class="pill" data-val="Both">A bit of both</button>
-                </div>
+              <div class="screen-action-row mt-4">
+                <button type="button" class="btn btn-outline" onclick="prevLabMission()">&larr; Back</button>
+                <button type="submit" class="btn btn-primary btn-lg" style="background: #22C55E; color: #000; border: none; font-weight: 900;">🏆 Complete Practical &amp; Generate Certificate</button>
               </div>
-            </div>
-
-            <div class="form-grid-editorial mt-3">
-              <div class="form-group">
-                <label for="refl_learned">What do you understand NOW that you didn't understand before?</label>
-                <textarea id="refl_learned" class="form-input form-textarea" rows="2" placeholder="e.g. I finally understood why inertia depends on mass..."></textarea>
-              </div>
-              <div class="form-group">
-                <label for="refl_revise">What is ONE thing you still need to revise from your textbook?</label>
-                <textarea id="refl_revise" class="form-input form-textarea" rows="2" placeholder="e.g. Revise the exact board definitions and numerical problems..."></textarea>
-              </div>
-            </div>
-
-            <div class="submission-card-cta mt-3">
-              <div>
-                <strong>Ready to submit your mission record?</strong>
-                <p>Your work is saved locally in this browser. You can generate your summary report or print it.</p>
-              </div>
-              <div class="cta-btns-row">
-                <button type="button" class="btn btn-outline" onclick="downloadStudentDossier()">💾 Download Dossier (.txt)</button>
-                <button type="button" class="btn btn-outline" onclick="window.print()">🖨️ Print Summary</button>
-                <button type="button" class="btn btn-primary" onclick="submitMissionReport()">Submit Mission Record ✅</button>
-              </div>
-            </div>
-
-            <div class="final-report-card" id="finalReportCard" style="display: none;">
-              <div class="report-header">
-                <h3>🎓 GENIUSPHERE AI EXAM LAB &bull; MISSION REPORT</h3>
-                <span class="report-status">STATUS: COMPLETED</span>
-              </div>
-              <div class="report-body" id="finalReportContent"></div>
-              <div class="report-actions">
-                <button type="button" class="btn btn-primary btn-sm" onclick="switchMainMode('deck')">Return to Deck 📽️</button>
-                <button type="button" class="btn btn-outline btn-sm" onclick="downloadStudentDossier()">Download Dossier (.txt) 💾</button>
-                <button type="button" class="btn btn-outline btn-sm" onclick="window.print()">Print Certificate 🖨️</button>
-              </div>
-            </div>
-
-            <div class="mission-footer-nav mt-3">
-              <button type="button" class="btn btn-outline" onclick="prevLabMission()">← Previous</button>
-            </div>
+            </form>
           </div>
         </div>
 
       </div>
-
-      <button type="button" class="carousel-nav-btn lab-arrow lab-next-arrow" onclick="nextLabMission()" aria-label="Next Mission">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
-
     </div>
-
-  </main>
+</main>
 
   <!-- ========================================================================= -->
   <!-- MODE 3: 📖 ATTENTION ARCHITECTURE & WORKSHOP GUIDE                        -->
