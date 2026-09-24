@@ -2150,3 +2150,695 @@ body.site-body {
 .option-card.highlight .vote-meter-fill, .vote-option.vo-winner .vote-meter-fill {
   background: #10b981;
 }
+
+/* ==========================================================================
+   GENIUSPHERE 6 CORE MODULES & VERIFICATION - HIGH-IMPACT NEO-BRUTALIST CSS
+   ========================================================================== */
+
+/* 1. Roadmap & Pills */
+.roadmap-grid-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.roadmap-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  background: #FFFFFF;
+  border: 2px solid #000;
+  border-radius: 8px;
+  box-shadow: 2px 2px 0 #000;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: transform 0.15s ease;
+}
+
+.roadmap-pill:hover {
+  transform: translateX(4px);
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 2px solid #000;
+  font-weight: 900;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* 2. Purpose Cards */
+.purpose-card {
+  background: #FFFDF0;
+  border: 2.5px solid #000;
+  border-left: 6px solid var(--nb-yellow);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.purpose-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #555;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+.purpose-text {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--nb-ink);
+  margin: 0;
+}
+
+/* 3. Chat Simulation Cards */
+.chat-simulation-card {
+  background: #F8FAFC;
+  border: 2.5px solid #000;
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.chat-msg {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.chat-avatar {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.chat-bubble {
+  background: #FFFFFF;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  box-shadow: 2px 2px 0 #000;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--nb-ink);
+}
+
+.chat-bubble p {
+  margin: 0;
+}
+
+.highlight-quote {
+  background: #FFF9C4;
+  border-left: 3px solid #000;
+  padding: 0.4rem 0.6rem;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+/* 4. Compare Boxes (Bad vs Good) */
+.compare-box-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.box-bad {
+  background: #FFF1F2;
+  border: 2px solid var(--nb-red);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.box-good {
+  background: #F0FDF4;
+  border: 2px solid var(--nb-green);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.box-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.4rem;
+}
+
+.code-preview {
+  font-family: 'JetBrains Mono', monospace;
+  background: #FFFFFF;
+  border: 1.5px solid #000;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.box-note {
+  font-size: 0.82rem;
+  color: #666;
+  margin: 0.35rem 0 0 0;
+}
+
+/* 5. Big Takeaway Cards */
+.takeaway-big-card {
+  background: #FFFFFF;
+  border: 2.5px solid #000;
+  border-radius: 10px;
+  padding: 1.15rem 1.25rem;
+  box-shadow: 4px 4px 0 #000;
+  text-align: center;
+}
+
+.takeaway-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.takeaway-headline {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--nb-ink);
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.takeaway-desc {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #333;
+  margin: 0;
+}
+
+/* 6. Exam Benefit Cards */
+.exam-benefit-card {
+  background: #F4FBF7;
+  border: 2.5px solid #000;
+  border-radius: 10px;
+  padding: 1.15rem 1.25rem;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.benefit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.65rem;
+}
+
+.benefit-tag {
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 0.2rem 0.6rem;
+  border: 1.5px solid #000;
+  border-radius: 4px;
+}
+
+.marks-pill {
+  background: var(--nb-green);
+  color: #000;
+  font-weight: 900;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.6rem;
+  border: 1.5px solid #000;
+  border-radius: 20px;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.benefit-body {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--nb-ink);
+  margin: 0;
+}
+
+.benefit-conclusion {
+  background: #FFFFFF;
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* 7. Question Tiers Grid */
+.tier-card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.tier-card {
+  background: #FFFFFF;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.tier-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 0.2rem 0.5rem;
+  border: 1.5px solid #000;
+  border-radius: 4px;
+  margin-bottom: 0.35rem;
+}
+
+.tier-card p {
+  font-size: 0.92rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* 8. Mic Challenge & Callout */
+.mic-challenge-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--nb-yellow);
+  border: 2.5px solid #000;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.mic-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.mic-text strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.mic-text span {
+  font-size: 0.85rem;
+}
+
+/* 9. Student Draft & Audit Cards */
+.student-draft-card {
+  background: #FFFFFF;
+  border: 2.5px solid #000;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.draft-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 0.15rem 0.5rem;
+  border: 1.5px solid #000;
+  border-radius: 4px;
+  background: #FFF9C4;
+  margin-bottom: 0.35rem;
+}
+
+.draft-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--nb-ink);
+  margin: 0;
+}
+
+.draft-v2 {
+  background: #F0FDF4;
+  border-color: #000;
+}
+
+.audit-result-card {
+  background: #FFFFFF;
+  border: 2.5px solid #000;
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.audit-row {
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.audit-row p {
+  margin: 0.25rem 0 0 0;
+}
+
+.audit-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 0.15rem 0.5rem;
+  border: 1.5px solid #000;
+  border-radius: 4px;
+}
+
+.score-strip {
+  background: #FFFDE7;
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.score-perfect {
+  background: #DCFCE7;
+  color: #14532D;
+  border-color: #000;
+}
+
+/* 10. The 4 Pillars Grid */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.pillar-box {
+  background: #FFFFFF;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 0.75rem 0.85rem;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.p-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1.5px solid #000;
+  font-size: 0.75rem;
+  font-weight: 900;
+  margin-bottom: 0.35rem;
+}
+
+.pillar-box strong {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.pillar-box p {
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: #444;
+  margin: 0;
+}
+
+/* 11. Revision Sheet Preview & Citations */
+.revision-sheet-preview {
+  background: #FFFFFF;
+  border: 2.5px solid #000;
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 #000;
+  overflow: hidden;
+}
+
+.sheet-header {
+  background: var(--nb-yellow);
+  border-bottom: 2px solid #000;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.sheet-body {
+  padding: 0.85rem 1rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.sheet-body p {
+  margin: 0.35rem 0;
+}
+
+.citation-pill {
+  display: inline-block;
+  background: #E0F2FE;
+  border: 1.5px solid #0284C7;
+  color: #0369A1;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.citation-demo-box {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  background: #F0F9FF;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.demo-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.demo-text strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.demo-text span {
+  font-size: 0.82rem;
+  color: #444;
+}
+
+/* 12. Flywheel Pills */
+.flywheel-pill-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  font-weight: 900;
+}
+
+.fw-pill {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border: 2px solid #000;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 #000;
+  font-size: 0.85rem;
+}
+
+/* 13. Formula Stack & Lego Blocks */
+.formula-stack-editorial {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.f-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #FFFFFF;
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.f-tag {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border: 1.5px solid #000;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 900;
+  min-width: 75px;
+  text-align: center;
+}
+
+.f-info {
+  font-size: 0.88rem;
+}
+
+.lego-formula-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  background: #FAFAFA;
+  border: 2.5px solid #000;
+  border-radius: 10px;
+  padding: 1.25rem 1rem;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.lego-brick {
+  width: 90%;
+  text-align: center;
+  padding: 0.55rem 0.75rem;
+  border: 2px solid #000;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.brick-who { background: var(--nb-yellow); }
+.brick-context { background: var(--nb-cyan); }
+.brick-what { background: #FFD1DC; }
+.brick-how { background: var(--nb-green); }
+.brick-rule { background: #FFF3C4; }
+
+.lego-connector {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #000;
+  line-height: 1;
+}
+
+/* 14. Bad Prompt & Danger Box */
+.bad-prompt-preview {
+  background: #FFFFFF;
+  border: 2px solid var(--nb-red);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.bad-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: var(--nb-red);
+  margin-bottom: 0.35rem;
+}
+
+.code-box-bad {
+  font-family: 'JetBrains Mono', monospace;
+  background: #FFF1F2;
+  border: 1.5px dashed var(--nb-red);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.danger-case-box {
+  background: #FFFFFF;
+  border: 2.5px solid #000;
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.danger-tag {
+  display: inline-block;
+  color: #FFF;
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 0.2rem 0.5rem;
+  border: 1.5px solid #000;
+  border-radius: 4px;
+}
+
+/* 15. Protocol Stack (Stop, Check, Think) */
+.protocol-card-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.p-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.bg-red-tint { background: #FFF1F2; }
+.bg-yellow-tint { background: #FFFDE7; }
+.bg-green-tint { background: #F0FDF4; }
+
+.p-icon {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #000;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.p-text strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+.p-text span {
+  font-size: 0.84rem;
+  color: #333;
+}
+
+/* 16. Mission Preview List */
+.mission-preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.m-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: #FFFFFF;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.m-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 28px;
+  border: 1.5px solid #000;
+  border-radius: 6px;
+  font-weight: 900;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.m-desc {
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
