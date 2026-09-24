@@ -3040,3 +3040,703 @@ body.site-body {
   box-shadow: 2px 2px 0 #000;
 }
 
+/* ==========================================================================
+   DECLUTTERED & REFINED MODERN PRESENTATION THEME (CLEAN EDITORIAL)
+   Removes visual noise, eliminates chunky nested borders, adds breathing room
+   ========================================================================== */
+
+/* 1. Core Carousel & Layout Clean Up */
+.carousel-stage {
+  padding: 0.75rem 1.5rem !important;
+  background: #F1F5F9 !important;
+}
+
+.merged-slide-container {
+  max-width: 1540px !important;
+  width: 96vw !important;
+  height: calc(100vh - 120px) !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+
+.merged-slide-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1.5rem !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+  align-items: stretch !important;
+}
+
+/* 2. Sleek Panel Containers */
+.m-panel {
+  background: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important;
+  border-radius: 14px !important;
+  padding: 1.75rem 2rem !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  overflow-y: auto !important;
+  position: relative !important;
+}
+
+.m-panel.panel-left {
+  border-left: 5px solid #FFDE59 !important;
+}
+
+.m-panel.panel-right {
+  border-left: 5px solid #00C2CB !important;
+}
+
+/* 3. Panel Header Strip & Typographic Hierarchy */
+.panel-header-strip {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.panel-tag {
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 0.25rem 0.65rem !important;
+  border-radius: 6px !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.panel-tag.tag-yellow { background: #FEF08A !important; color: #854D0E !important; }
+.panel-tag.tag-cyan { background: #CFFAFE !important; color: #0E7490 !important; }
+.panel-tag.tag-pink { background: #FFE4E6 !important; color: #BE123C !important; }
+.panel-tag.tag-green { background: #DCFCE7 !important; color: #15803D !important; }
+.panel-tag.tag-red { background: #FEE2E2 !important; color: #B91C1C !important; }
+
+.panel-heading {
+  font-family: 'Space Grotesk', system-ui, sans-serif !important;
+  font-size: 1.45rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.25 !important;
+  color: #0F172A !important;
+  margin: 0.25rem 0 1rem 0 !important;
+}
+
+/* 4. Remove Panel Footer Meta Clutter */
+.panel-footer-meta {
+  margin-top: auto !important;
+  padding-top: 1rem !important;
+  border-top: 1px solid #F1F5F9 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+}
+
+.panel-footer-meta .kid-badge {
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  box-shadow: none !important;
+}
+
+/* 5. Bullet List Editorial: Clean, Non-Boxy & Modern */
+.bullet-list-editorial {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+
+.bullet-item {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: none !important;
+  border-radius: 10px !important;
+  padding: 0.85rem 1.15rem !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  color: #1E293B !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 0.85rem !important;
+  transition: all 0.15s ease !important;
+}
+
+.bullet-item:hover {
+  background: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04) !important;
+  transform: translateY(-1px) !important;
+}
+
+.bullet-icon {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(0,0,0,0.06) !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.1rem !important;
+  flex-shrink: 0 !important;
+}
+
+.bullet-text strong {
+  display: block !important;
+  font-size: 0.98rem !important;
+  font-weight: 700 !important;
+  color: #0F172A !important;
+  margin-bottom: 0.15rem !important;
+}
+
+.bullet-sub {
+  font-size: 0.88rem !important;
+  color: #475569 !important;
+  line-height: 1.4 !important;
+  font-weight: 400 !important;
+}
+
+/* 6. Studio-Grade Precision Prompt Box */
+.prompt-box {
+  background: #0B132B !important;
+  border: 1.5px solid #1E293B !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px -4px rgba(11, 19, 43, 0.25) !important;
+  overflow: hidden !important;
+  margin: 0.75rem 0 !important;
+}
+
+.prompt-header {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding: 0.55rem 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.prompt-label {
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  color: #94A3B8 !important;
+  text-transform: uppercase !important;
+}
+
+.btn-copy-prompt {
+  background: #FFDE59 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  font-size: 0.75rem !important;
+  padding: 0.25rem 0.65rem !important;
+  border-radius: 6px !important;
+  border: none !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: opacity 0.15s ease !important;
+}
+
+.btn-copy-prompt:hover {
+  opacity: 0.9 !important;
+}
+
+.prompt-text {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+  font-size: 0.92rem !important;
+  line-height: 1.55 !important;
+  color: #F8FAFC !important;
+  padding: 1rem 1.15rem !important;
+}
+
+/* 7. Clean Comparison Cards (No Clashing Borders) */
+.comparison-card {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1rem !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+.compare-col {
+  border-radius: 12px !important;
+  padding: 1.15rem !important;
+  box-shadow: none !important;
+}
+
+.compare-col.bad-col {
+  background: #FFF1F2 !important;
+  border: 1px solid #FECDD3 !important;
+}
+
+.compare-col.good-col {
+  background: #F0FDF4 !important;
+  border: 1px solid #BBF7D0 !important;
+}
+
+.compare-badge {
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  padding: 0.2rem 0.6rem !important;
+  border-radius: 4px !important;
+  display: inline-block !important;
+  margin-bottom: 0.5rem !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.badge-bad { background: #FFE4E6 !important; color: #BE123C !important; }
+.badge-good { background: #DCFCE7 !important; color: #15803D !important; }
+
+.compare-versus-badge {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background: #0F172A !important;
+  color: #FFFFFF !important;
+  font-size: 0.75rem !important;
+  font-weight: 900 !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15) !important;
+  z-index: 2 !important;
+}
+
+/* 8. Interactive Poll Grid: Clean & Airy */
+.interactive-poll-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 0.75rem !important;
+}
+
+.option-card {
+  background: #F8FAFC !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 10px !important;
+  padding: 0.85rem 1rem !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+}
+
+.option-card:hover {
+  background: #FFFFFF !important;
+  border-color: #00C2CB !important;
+  box-shadow: 0 4px 12px rgba(0, 194, 203, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+.option-card.highlight-card {
+  background: #FFFBEB !important;
+  border-color: #F59E0B !important;
+}
+
+.option-badge {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 6px !important;
+  border: none !important;
+  background: #E2E8F0 !important;
+  color: #0F172A !important;
+  font-weight: 800 !important;
+  font-size: 0.85rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  box-shadow: none !important;
+}
+
+.option-card.highlight-card .option-badge {
+  background: #FFDE59 !important;
+  color: #000000 !important;
+}
+
+/* 9. Relatable Story & Nightmare Banner Declutter */
+.relatable-story-card {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  padding: 1.25rem 1.5rem !important;
+  box-shadow: none !important;
+}
+
+.story-highlight-box {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  border-left: 4px solid #F59E0B !important;
+  border-radius: 8px !important;
+  padding: 1rem 1.25rem !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+}
+
+.nightmare-banner {
+  background: #0B132B !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  box-shadow: 0 8px 24px rgba(11, 19, 43, 0.2) !important;
+}
+
+.highlight-red {
+  background: #DC2626 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.3rem 0.85rem !important;
+}
+
+/* 10. Big Hook Card */
+.big-hook-card {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 14px !important;
+  padding: 2rem 1.75rem !important;
+  box-shadow: none !important;
+}
+
+.hook-quote {
+  font-size: 1.85rem !important;
+  font-weight: 800 !important;
+  color: #0F172A !important;
+  line-height: 1.35 !important;
+}
+
+/* 11. Question Ladder Clean Up */
+.question-ladder {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.6rem !important;
+}
+
+.ladder-item {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+  padding: 0.65rem 1rem !important;
+}
+
+.ladder-item.item-master {
+  background: #F0FDF4 !important;
+  border-color: #86EFAC !important;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.1) !important;
+}
+
+/* 12. Retention & Progress Meters */
+.retention-meter-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 10px !important;
+  padding: 1rem 1.25rem !important;
+  box-shadow: none !important;
+}
+
+.meter-bar {
+  background: #F1F5F9 !important;
+  border: none !important;
+  height: 10px !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
+.meter-fill {
+  border-radius: 20px !important;
+}
+
+/* 13. Audit & Teacher Evaluation Cards */
+.audit-result-card {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 10px !important;
+  padding: 1rem 1.25rem !important;
+  box-shadow: none !important;
+}
+
+.audit-badge {
+  border: none !important;
+}
+
+.score-strip {
+  border: 1px solid #CBD5E1 !important;
+  box-shadow: none !important;
+}
+
+/* 14. Top Navigation Cleanliness */
+.deck-top-bar {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  padding: 0.5rem 1.5rem !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03) !important;
+}
+
+.top-bar-title {
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  color: #0F172A !important;
+}
+
+.badge-slide-count {
+  background: #F1F5F9 !important;
+  color: #0F172A !important;
+  border: 1px solid #CBD5E1 !important;
+  box-shadow: none !important;
+  font-weight: 800 !important;
+}
+
+/* 15. Scrollbar Polish */
+.m-panel::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.m-panel::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.m-panel::-webkit-scrollbar-thumb {
+  background: #CBD5E1 !important;
+  border-radius: 10px !important;
+}
+
+.m-panel::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8 !important;
+}
+
+/* ==========================================================================
+   MINIMALIST EDITORIAL LUXURY THEME FOR AUDITORIUM & CLASSROOM
+   Eliminates all box-in-box clutter, heavy black borders & visual noise
+   ========================================================================== */
+
+/* 1. Canvas & Viewport Cleanliness */
+.deck-wrapper {
+  background: #F8FAFC !important;
+}
+
+.carousel-stage {
+  padding: 1rem 3.5rem !important;
+  background: #F8FAFC !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+}
+
+.slides-viewport {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.merged-slide-container {
+  max-width: 1560px !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+.merged-slide-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1.75rem !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+  align-items: stretch !important;
+}
+
+/* 2. Sleek Floating Panels (Breathing Room) */
+.m-panel {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 18px !important;
+  padding: 2.25rem 2.5rem !important;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.03) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  overflow-y: auto !important;
+  position: relative !important;
+  transition: box-shadow 0.2s ease !important;
+}
+
+.m-panel:hover {
+  box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.08), 0 6px 16px -2px rgba(15, 23, 42, 0.04) !important;
+}
+
+.m-panel.panel-left {
+  border-top: 4px solid #FFDE59 !important;
+}
+
+.m-panel.panel-right {
+  border-top: 4px solid #00C2CB !important;
+}
+
+/* 3. Refined Typography & Tagging */
+.panel-header-strip {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.panel-tag {
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 6px !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.panel-heading {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif !important;
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.25 !important;
+  color: #0F172A !important;
+  margin: 0 0 1.25rem 0 !important;
+}
+
+/* 4. Remove Panel Footer Meta Clutter completely */
+.panel-footer-meta {
+  display: none !important;
+}
+
+/* 5. Minimalist Navigation Arrows */
+.carousel-nav-btn {
+  background: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08) !important;
+  color: #0F172A !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 20 !important;
+}
+
+.carousel-nav-btn.prev-arrow {
+  left: 0.75rem !important;
+}
+
+.carousel-nav-btn.next-arrow {
+  right: 0.75rem !important;
+}
+
+.carousel-nav-btn:hover {
+  background: #0F172A !important;
+  color: #FFFFFF !important;
+  border-color: #0F172A !important;
+  transform: translateY(-50%) scale(1.08) !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.15) !important;
+}
+
+/* 6. Clean Deck Top Bar */
+.deck-top-bar {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  padding: 0.6rem 2rem !important;
+  height: 52px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.section-tag {
+  background: #F1F5F9 !important;
+  color: #0F172A !important;
+  border: 1px solid #E2E8F0 !important;
+  font-weight: 700 !important;
+  font-size: 0.78rem !important;
+  padding: 0.2rem 0.6rem !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+.deck-timing-badge {
+  color: #64748B !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+}
+
+.deck-counter {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 8px !important;
+  padding: 0.25rem 0.75rem !important;
+  font-weight: 800 !important;
+  box-shadow: none !important;
+}
+
+/* 7. Clean Progress Bar */
+.deck-progress-bar {
+  height: 3px !important;
+  background: #E2E8F0 !important;
+}
+
+.deck-progress-fill {
+  background: #00C2CB !important;
+  height: 100% !important;
+}
+
+/* 8. Slide 36 Single Hero Cleanliness */
+.merged-slide-single {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06) !important;
+  padding: 3rem 2.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* Hide redundant bottom dots to give slides maximum vertical breathing room */
+.deck-bottom-bar {
+  display: none !important;
+}
+
+.carousel-stage {
+  height: calc(100vh - 110px) !important;
+  max-height: calc(100vh - 110px) !important;
+}
+
+.merged-slide-container {
+  height: 100% !important;
+  max-height: 100% !important;
+}

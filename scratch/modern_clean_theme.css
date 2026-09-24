@@ -1,0 +1,206 @@
+/* ==========================================================================
+   MINIMALIST EDITORIAL LUXURY THEME FOR AUDITORIUM & CLASSROOM
+   Eliminates all box-in-box clutter, heavy black borders & visual noise
+   ========================================================================== */
+
+/* 1. Canvas & Viewport Cleanliness */
+.deck-wrapper {
+  background: #F8FAFC !important;
+}
+
+.carousel-stage {
+  padding: 1rem 3.5rem !important;
+  background: #F8FAFC !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+}
+
+.slides-viewport {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.merged-slide-container {
+  max-width: 1560px !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+.merged-slide-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1.75rem !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+  align-items: stretch !important;
+}
+
+/* 2. Sleek Floating Panels (Breathing Room) */
+.m-panel {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 18px !important;
+  padding: 2.25rem 2.5rem !important;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.03) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  overflow-y: auto !important;
+  position: relative !important;
+  transition: box-shadow 0.2s ease !important;
+}
+
+.m-panel:hover {
+  box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.08), 0 6px 16px -2px rgba(15, 23, 42, 0.04) !important;
+}
+
+.m-panel.panel-left {
+  border-top: 4px solid #FFDE59 !important;
+}
+
+.m-panel.panel-right {
+  border-top: 4px solid #00C2CB !important;
+}
+
+/* 3. Refined Typography & Tagging */
+.panel-header-strip {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.panel-tag {
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 6px !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.panel-heading {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif !important;
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.25 !important;
+  color: #0F172A !important;
+  margin: 0 0 1.25rem 0 !important;
+}
+
+/* 4. Remove Panel Footer Meta Clutter completely */
+.panel-footer-meta {
+  display: none !important;
+}
+
+/* 5. Minimalist Navigation Arrows */
+.carousel-nav-btn {
+  background: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08) !important;
+  color: #0F172A !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 20 !important;
+}
+
+.carousel-nav-btn.prev-arrow {
+  left: 0.75rem !important;
+}
+
+.carousel-nav-btn.next-arrow {
+  right: 0.75rem !important;
+}
+
+.carousel-nav-btn:hover {
+  background: #0F172A !important;
+  color: #FFFFFF !important;
+  border-color: #0F172A !important;
+  transform: translateY(-50%) scale(1.08) !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.15) !important;
+}
+
+/* 6. Clean Deck Top Bar */
+.deck-top-bar {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  padding: 0.6rem 2rem !important;
+  height: 52px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.section-tag {
+  background: #F1F5F9 !important;
+  color: #0F172A !important;
+  border: 1px solid #E2E8F0 !important;
+  font-weight: 700 !important;
+  font-size: 0.78rem !important;
+  padding: 0.2rem 0.6rem !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+.deck-timing-badge {
+  color: #64748B !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+}
+
+.deck-counter {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 8px !important;
+  padding: 0.25rem 0.75rem !important;
+  font-weight: 800 !important;
+  box-shadow: none !important;
+}
+
+/* 7. Clean Progress Bar */
+.deck-progress-bar {
+  height: 3px !important;
+  background: #E2E8F0 !important;
+}
+
+.deck-progress-fill {
+  background: #00C2CB !important;
+  height: 100% !important;
+}
+
+/* 8. Slide 36 Single Hero Cleanliness */
+.merged-slide-single {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06) !important;
+  padding: 3rem 2.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
