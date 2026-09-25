@@ -59,7 +59,7 @@
   </header>
 
   <!-- ========================================================================= -->
-  <!-- MODE 1: 📽️ AUDITORIUM CAROUSEL STAGE (71 SLIDES COMPLETE)                -->
+  <!-- MODE 1: 📽️ AUDITORIUM CAROUSEL STAGE (36 PANORAMIC SLIDES COMPLETE)       -->
   <!-- ========================================================================= -->
   <main class="deck-wrapper" id="deckContainer">
 
@@ -70,6 +70,16 @@
         <span class="deck-timing-badge" id="deckTimingBadge">THE AI REALITY CHECK</span>
       </div>
 
+      <!-- Quick Module Selector Pill Bar -->
+      <div class="deck-module-nav" id="deckModuleNav">
+        <button type="button" class="mod-pill active" data-mod="0" onclick="goToSlide(0)" title="Module 1: Opening &amp; Icebreaker">1. Hook</button>
+        <button type="button" class="mod-pill" data-mod="1" onclick="goToSlide(5)" title="Module 1: ChatGPT Study System">2. ChatGPT</button>
+        <button type="button" class="mod-pill" data-mod="2" onclick="goToSlide(17)" title="Module 1 &amp; 2: Prompting &amp; Rules">3. Prompting</button>
+        <button type="button" class="mod-pill" data-mod="3" onclick="goToSlide(20)" title="Module 2: Gemini Explorer">4. Gemini</button>
+        <button type="button" class="mod-pill" data-mod="4" onclick="goToSlide(27)" title="Module 3: NotebookLM Grounding">5. NotebookLM</button>
+        <button type="button" class="mod-pill" data-mod="5" onclick="goToSlide(33)" title="Module 4–6: Synthesis &amp; Lab Kickoff">6. Lab</button>
+      </div>
+
       <!-- Slide Counter -->
       <div class="deck-counter clickable-counter" onclick="openSlideNavigator()" title="Click to open Slide Navigator (Hotkey: G)">
         <span class="current-slide-num" id="currentSlideDisplay">01</span>
@@ -78,8 +88,8 @@
       </div>
 
       <!-- Presenter Script Drawer Toggle -->
-      <button type="button" class="btn btn-primary btn-xs" id="toggleScriptBtn" onclick="togglePresenterScript()">
-        🎤 <span id="scriptToggleLabel">Show Presenter Script [P]</span>
+      <button type="button" class="btn btn-outline btn-xs" id="toggleScriptBtn" onclick="togglePresenterScript()">
+        🎤 <span id="scriptToggleLabel">Notes [P]</span>
       </button>
     </div>
 
@@ -2121,9 +2131,24 @@ Do not rewrite the complete answer for me. Give me a hint so I can improve it my
             <div class="prompt-box">
               <div class="prompt-header">
                 <span class="prompt-label">🤖 CHATGPT TUTOR PROMPT</span>
-                <button type="button" class="btn-copy-prompt" onclick="copyPromptText(this)">Copy Prompt 📋</button>
+                <div class="prompt-actions-row">
+                  <a href="https://chatgpt.com/" target="_blank" rel="noopener" class="btn-tool-link">🚀 Open in ChatGPT ↗</a>
+                  <button type="button" class="btn-copy-prompt" onclick="copyPromptText(this)">Copy Prompt 📋</button>
+                  <button type="button" class="btn-sim-toggle" onclick="toggleSimResponse('m1_sim')">⚡ Simulate Response</button>
+                </div>
               </div>
               <div class="prompt-text">"I am a <span class="var-class">Class 9</span> student. I don't understand <span class="var-topic">Newton's First Law of Motion</span>. Explain it simply, give me a real-life example, then ask me one question to check my understanding. Don't give me the answer until I respond."</div>
+            </div>
+
+                        <!-- Offline Simulated AI Response (For offline labs / slow school WiFi) -->
+            <div class="ai-sim-response-box" id="m1_sim">
+              <div class="sim-box-header">
+                <span>🤖 SIMULATED CHATGPT TUTOR RESPONSE (FOR <span class="var-topic">NEWTON'S FIRST LAW</span>):</span>
+                <button type="button" class="btn btn-outline btn-xs" onclick="toggleSimResponse('m1_sim')">✕ Close</button>
+              </div>
+              <p><strong>1. Simple Explanation:</strong> Imagine an object is lazy. If it's resting on a table, it wants to stay there forever. If it's sliding, it wants to keep sliding forever at the same speed. It will ONLY change what it's doing if an external push or pull forces it to change. This tendency to resist change is called <strong>inertia</strong>.</p>
+              <p><strong>2. Real-Life Example:</strong> Think about standing in a school bus. When the driver suddenly hits the brakes, your feet stop with the bus floor, but your upper body was already moving forward, so it keeps moving forward! That's why you lurch forward.</p>
+              <p style="background: #EFF6FF; padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px solid #BFDBFE; margin-top: 0.5rem;"><strong>🎯 My Question for You:</strong> If you slide a book across a rough classroom floor, it eventually stops. Does this violate Newton's First Law? Why or why not? (Type your answer below!)</p>
             </div>
 
             <div class="lab-submit-card mt-3">
@@ -2161,6 +2186,10 @@ Do not rewrite the complete answer for me. Give me a hint so I can improve it my
             <h2 class="mission-title">MISSION 2 &mdash; “TWO AIs, ONE QUESTION”</h2>
             <p class="mission-subtitle">Take the <strong>same topic</strong> from Mission 1. Ask ChatGPT and Gemini to explain it using the exact same request.</p>
 
+                        <div class="d-flex gap-2 justify-content-center mb-3">
+              <a href="https://chatgpt.com/" target="_blank" rel="noopener" class="btn btn-outline btn-sm">🚀 Open ChatGPT ↗</a>
+              <a href="https://gemini.google.com/app" target="_blank" rel="noopener" class="btn btn-outline btn-sm">✨ Open Gemini ↗</a>
+            </div>
             <div class="comparison-card mt-2 mb-3">
               <div class="compare-col" style="background: #FFFBEB;">
                 <span class="compare-badge bg-yellow" style="color:#000;">TOOL 1: CHATGPT</span>
@@ -2256,6 +2285,10 @@ Do not rewrite the complete answer for me. Give me a hint so I can improve it my
             </div>
             <h2 class="mission-title">MISSION 4 &mdash; “STUDY MY MATERIAL”</h2>
             <p class="mission-subtitle">Open the prepared Geniusphere NotebookLM material. Choose one section/topic.</p>
+            <div class="d-flex gap-2 justify-content-center mb-3">
+              <a href="https://notebooklm.google.com/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">📚 Open NotebookLM Workspace ↗</a>
+            </div>
+
 
             <div class="prompt-box mt-2">
               <div class="prompt-header"><span class="prompt-label">📚 STEP 1: EXTRACT KEY CONCEPTS</span><button type="button" class="btn-copy-prompt" onclick="copyPromptText(this)">Copy 📋</button></div>
@@ -2528,9 +2561,9 @@ Do not rewrite the complete answer for me. Give me a hint so I can improve it my
       <div class="overview-launch-strip mt-3">
         <div>
           <h3>Ready to run the presentation?</h3>
-          <p>Switch to the 71-Slide Carousel Deck with full click arrows and synchronized presenter script.</p>
+          <p>Switch to the 36-Slide Panoramic Carousel Deck with full click arrows and synchronized presenter script.</p>
         </div>
-        <button type="button" class="btn btn-primary" onclick="switchMainMode('deck')">Launch 71-Slide Presentation Deck →</button>
+        <button type="button" class="btn btn-primary" onclick="switchMainMode('deck')">Launch 36-Slide Presentation Deck →</button>
       </div>
     </div>
   </main>
@@ -2552,13 +2585,12 @@ Do not rewrite the complete answer for me. Give me a hint so I can improve it my
         </div>
         <div class="nav-filter-chips" id="navFilterChips">
           <button type="button" class="n-chip active" onclick="filterNavGrid('ALL')">ALL (36)</button>
-          <button type="button" class="n-chip" onclick="filterNavGrid('PART 1')">PART 1: EXAM AI</button>
-          <button type="button" class="n-chip" onclick="filterNavGrid('PART 2')">PART 2: CHATGPT TUTOR</button>
-          <button type="button" class="n-chip" onclick="filterNavGrid('PART 3')">PART 3: EXAM PRACTICE</button>
-          <button type="button" class="n-chip" onclick="filterNavGrid('PART 4')">PART 4: GEMINI</button>
-          <button type="button" class="n-chip" onclick="filterNavGrid('PART 5')">PART 5: NOTEBOOKLM</button>
-          <button type="button" class="n-chip" onclick="filterNavGrid('PART 6')">PART 6: PROMPTING</button>
-          <button type="button" class="n-chip" onclick="filterNavGrid('PART 7')">PART 7: LAB BRIEFING</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('OPENING')">1. Opening &amp; Hook (5)</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('CHATGPT')">2. ChatGPT Tutor (12)</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('PROMPTING')">3. Prompting &amp; Rules (3)</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('GEMINI')">4. Gemini Explorer (7)</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('NOTEBOOKLM')">5. NotebookLM Grounding (6)</button>
+          <button type="button" class="n-chip" onclick="filterNavGrid('LAB')">6. Synthesis &amp; Lab (3)</button>
         </div>
         <button type="button" class="nav-close-btn" onclick="closeSlideNavigator()" aria-label="Close Navigator">&times;</button>
       </div>
@@ -2842,6 +2874,60 @@ List in red every critical scientific phrase that was omitted and must be includ
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 🎓 OFFICIAL STUDENT PRACTICAL CERTIFICATE MODAL                             -->
+  <!-- ========================================================================= -->
+  <div class="cert-modal-backdrop" id="studentCertModal" onclick="closeCertModal(event)">
+    <div class="cert-container" onclick="event.stopPropagation()">
+      <div class="cert-frame" id="printableCertArea">
+        <div class="cert-seal">🎓</div>
+        <div class="cert-org-label">GENIUSPHERE AI EXAM LAB &bull; OFFICIAL PRACTICAL CREDENTIAL</div>
+        <h2 class="cert-title">CERTIFICATE OF PRACTICAL MASTERY</h2>
+        <p class="cert-recipient-pre">This certifies that</p>
+        <div class="cert-recipient-name" id="certStudentName">Student Name</div>
+        <p class="cert-body-text">
+          Has actively completed the intensive <strong>60-Minute Hands-on AI Exam Lab</strong> for 
+          <strong id="certStudentClass">Class 9</strong> (<span id="certStudentTopic">Newton's First Law of Motion</span>). 
+          Demonstrating practical competency in applying generative AI as an active study partner without passive memorization.
+        </p>
+
+        <div class="cert-skills-pills">
+          <span class="cert-skill-tag">⚡ Prompting with Persona &amp; Constraints (ChatGPT)</span>
+          <span class="cert-skill-tag">✨ Socratic Sparring &amp; Self-Testing</span>
+          <span class="cert-skill-tag">🔍 Cross-Checking Explanations (Gemini)</span>
+          <span class="cert-skill-tag">📚 Source-Grounded Study &amp; Verification (NotebookLM)</span>
+        </div>
+
+        <div class="cert-golden-rule">
+          THE GOLDEN RULE: “You didn't win by getting the answer. You won by understanding it.”
+        </div>
+
+        <div class="cert-footer-row">
+          <div class="cert-sig-block">
+            <strong id="certDateDisplay">September 25, 2026</strong>
+            <span>Date of Completion</span>
+          </div>
+          <div class="cert-sig-block" style="text-align: center;">
+            <strong id="certConfidenceGrowth">Confidence Growth: +3 Levels</strong>
+            <span>Active Retrieval Shift</span>
+          </div>
+          <div class="cert-sig-block" style="text-align: right;">
+            <strong>Geniusphere Exam Lab</strong>
+            <span>AI Study System Verified</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-actions-bar">
+        <button type="button" class="btn btn-outline" onclick="closeCertModal()">✕ Close</button>
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-outline" onclick="copyCertSummary()">📋 Copy Summary</button>
+          <button type="button" class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        </div>
       </div>
     </div>
   </div>

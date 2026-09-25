@@ -163,6 +163,24 @@ function updateSlideView() {
     slide.classList.toggle('active', idx === appState.currentSlide);
   });
 
+  
+  // Update Module Navigation Pills on Deck Header
+  const modPills = document.querySelectorAll('#deckModuleNav .mod-pill');
+  if (modPills.length > 0) {
+    let activeMod = 0;
+    const cur = appState.currentSlide;
+    if (cur >= 0 && cur <= 4) activeMod = 0;
+    else if (cur >= 5 && cur <= 16) activeMod = 1;
+    else if (cur >= 17 && cur <= 19) activeMod = 2;
+    else if (cur >= 20 && cur <= 26) activeMod = 3;
+    else if (cur >= 27 && cur <= 32) activeMod = 4;
+    else if (cur >= 33) activeMod = 5;
+
+    modPills.forEach((p, idx) => {
+      p.classList.toggle('active', idx === activeMod);
+    });
+  }
+
   // Update counters
   const curDisplay = document.getElementById('currentSlideDisplay');
   if (curDisplay) curDisplay.textContent = String(appState.currentSlide + 1).padStart(2, '0');
@@ -1313,3 +1331,165 @@ function submitFinalLab() {
   alert(`🎉 CONGRATULATIONS, ${student.toUpperCase()}!\n\nYou have completed the Geniusphere AI Exam Lab Practical (60 Minutes)!\n\nProblem Solved: ${problem}\nAI Tool Mastered: ${tool}\n\nTHE RULE OF THE LAB:\n✅ ASK → THINK → TRY → CHECK → IMPROVE\nYou didn't win by getting the answer. You won by understanding it!`);
   saveLabData();
 }
+
+
+// ==========================================================================
+// INTERACTIVE ENHANCEMENTS: CLICK-TO-COPY, AUDIENCE VOTES, CERTIFICATE & SIM
+// ==========================================================================
+
+function copyPromptText(btn) {
+  if (!btn) return;
+  const box = btn.closest('.prompt-box, .prompt-terminal-card, .demo-prompt-card');
+  if (!box) return;
+  const textEl = box.querySelector('.prompt-text, pre code, code') || box;
+  const text = (textEl.innerText || textEl.textContent || '').trim();
+  
+  if (text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const origText = btn.innerHTML;
+      btn.innerHTML = 'Copied! ✓';
+      btn.style.backgroundColor = '#10b981';
+      btn.style.color = '#ffffff';
+      playHarmonicChime(659.25, 0.15);
+      showToast('Prompt copied to clipboard! Ready to paste into ChatGPT/Gemini.', '📋');
+      setTimeout(() => {
+        btn.innerHTML = origText;
+        btn.style.backgroundColor = '';
+        btn.style.color = '';
+      }, 2000);
+    }).catch(() => {
+      showToast('Prompt selected! Press Ctrl+C to copy.', '📋');
+    });
+  }
+}
+
+function castAudienceVote(el, pct) {
+  if (!el) return;
+  const grid = el.closest('.interactive-poll-grid, .options-grid');
+  if (!grid) return;
+
+  const cards = Array.from(grid.querySelectorAll('.option-card, .vote-option'));
+  cards.forEach(c => c.classList.remove('highlight', 'highlight-card', 'vo-winner'));
+  el.classList.add('highlight-card');
+
+  const totalCards = cards.length;
+  cards.forEach(c => {
+    let meter = c.querySelector('.vote-result-meter');
+    if (!meter) {
+      meter = document.createElement('div');
+      meter.className = 'vote-result-meter';
+      meter.innerHTML = `
+        <div class="vote-meter-label">
+          <span>Audience Vote</span>
+          <span class="vote-pct-text">0%</span>
+        </div>
+        <div class="vote-meter-bar">
+          <div class="vote-meter-fill"></div>
+        </div>
+      `;
+      c.appendChild(meter);
+    }
+    const isSelected = (c === el);
+    const targetPct = isSelected ? pct : Math.max(5, Math.round((100 - pct) / (totalCards - 1)));
+    
+    setTimeout(() => {
+      const fill = meter.querySelector('.vote-meter-fill');
+      const txt = meter.querySelector('.vote-pct-text');
+      if (fill) fill.style.width = `${targetPct}%`;
+      if (txt) txt.innerText = `${targetPct}%`;
+    }, 50);
+  });
+
+  playHarmonicChime(523.25, 0.12);
+  const title = el.querySelector('strong')?.innerText || 'Option';
+  showToast(`Audience Vote Recorded: ${title} (${pct}%)`, '🗳️');
+}
+
+function toggleSimResponse(boxId) {
+  const box = document.getElementById(boxId);
+  if (!box) return;
+  const isOpen = box.classList.toggle('open');
+  if (isOpen) {
+    playHarmonicChime(440, 0.12);
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function submitFinalLab() {
+  const student = document.getElementById('studentNameInput')?.value.trim() || 'Class 9/10 Student';
+  const topic = document.getElementById('topicInput')?.value.trim() || "Newton's First Law of Motion";
+  const problem = document.getElementById('final_problem')?.value.trim() || topic;
+  const tool = document.getElementById('final_tool')?.value.trim() || 'ChatGPT, Gemini & NotebookLM';
+  
+  const classVal = document.querySelector('#classSelector .pill.active')?.getAttribute('data-class') || 'Class 9';
+  
+  // Update certificate modal elements
+  const certModal = document.getElementById('studentCertModal');
+  const certName = document.getElementById('certStudentName');
+  const certClass = document.getElementById('certStudentClass');
+  const certTopic = document.getElementById('certStudentTopic');
+  const certDate = document.getElementById('certDateDisplay');
+  const certGrowth = document.getElementById('certConfidenceGrowth');
+
+  if (certName) certName.innerText = student;
+  if (certClass) certClass.innerText = classVal;
+  if (certTopic) certTopic.innerText = problem;
+  if (certDate) {
+    const today = new Date();
+    certDate.innerText = today.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  }
+  if (certGrowth) {
+    const confBefore = document.querySelector('#final_confBefore .pill.active')?.innerText || '2';
+    const confAfter = document.querySelector('#final_confAfter .pill.active')?.innerText.split(' ')[0] || '5';
+    const delta = Math.max(1, parseInt(confAfter, 10) - parseInt(confBefore, 10));
+    certGrowth.innerText = `Confidence Growth: +${delta} Levels (${confBefore} → ${confAfter}/5)`;
+  }
+
+  // Play 3-tone celebration chime
+  playHarmonicChime(523.25, 0.2);
+  setTimeout(() => playHarmonicChime(659.25, 0.2), 120);
+  setTimeout(() => playHarmonicChime(783.99, 0.4), 240);
+
+  if (certModal) {
+    certModal.classList.add('open');
+  }
+
+  showToast(`🎉 Congratulations, ${student}! Practical Certified.`, '🎓');
+  saveLabData();
+}
+
+function closeCertModal(e) {
+  if (e && e.target && e.target.closest('.cert-container')) return;
+  const modal = document.getElementById('studentCertModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function copyCertSummary() {
+  const student = document.getElementById('certStudentName')?.innerText || 'Student';
+  const topic = document.getElementById('certStudentTopic')?.innerText || "Newton's First Law";
+  const classVal = document.getElementById('certStudentClass')?.innerText || 'Class 9';
+  const growth = document.getElementById('certConfidenceGrowth')?.innerText || 'Confidence Growth: +3 Levels';
+  
+  const text = `🎓 GENIUSPHERE AI EXAM LAB — PRACTICAL DOSSIER
+Student: ${student} (${classVal})
+Topic Mastered: ${topic}
+${growth}
+Core Skills Validated:
+1. Formulating Persona & Context-Rich Prompts (ChatGPT)
+2. Socratic Sparring & Self-Testing before Answering
+3. Cross-Checking Alternative Explanations (Gemini)
+4. Textbook Grounding & Sourced Verification (NotebookLM)
+The Golden Rule: "You didn't win by getting the answer. You won by understanding it."`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    playHarmonicChime(659.25, 0.15);
+    showToast('Student dossier summary copied to clipboard!', '📋');
+  });
+}
+
+window.copyPromptText = copyPromptText;
+window.castAudienceVote = castAudienceVote;
+window.toggleSimResponse = toggleSimResponse;
+window.closeCertModal = closeCertModal;
+window.copyCertSummary = copyCertSummary;
+window.submitFinalLab = submitFinalLab;
