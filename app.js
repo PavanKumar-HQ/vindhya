@@ -847,7 +847,7 @@ function filterNavGrid(filter) {
   });
 }
 
-// 2.5 Theme Switcher (Neo-Brutalist Light / Dark)
+// 2.5 Theme Switcher (Modern Clean Light / Dark)
 function toggleBrutalistTheme() {
   const isDark = document.body.classList.toggle('dark-mode');
   const btn = document.getElementById('themeToggleBtn');
@@ -855,7 +855,7 @@ function toggleBrutalistTheme() {
     btn.innerHTML = isDark ? '🌙 Dark' : '☀️ Light';
   }
   if (typeof showToast === 'function') {
-    showToast(isDark ? 'Neo-Brutalist Dark Ink enabled' : 'Neo-Brutalist Light Paper enabled', isDark ? '🌙' : '☀️');
+    showToast(isDark ? 'Dark Mode enabled' : 'Light Mode enabled', isDark ? '🌙' : '☀️');
   }
 }
 
